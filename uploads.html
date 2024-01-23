@@ -79,6 +79,16 @@
             width: 80%;
             height: 20px;
         }
+
+        #message {
+            margin-top: 10px;
+            color: green;
+        }
+
+        #error {
+            margin-top: 10px;
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +118,9 @@
             <label for="mediaFile">Selecione um arquivo de vídeo ou imagem para enviar</label>
             <input type="file" id="mediaFile" name="mediaFile" accept="image/*, video/*" required alt="Selecione um arquivo de vídeo ou imagem para enviar">
             <button type="submit">Enviar</button>
+            <progress id="uploadProgress" value="0" max="100"></progress>
+            <p id="message"></p>
+            <p id="error"></p>
         </form>
     </main>
 
@@ -132,42 +145,60 @@
             // Criando um formulário com o arquivo e o ID
             const formData = new FormData();
             formData.append('mediaFile', mediaFile);
-            formData.append('mediaId', uploadedMediaId);
+            formData.append('uploadedMediaId', uploadedMediaId);
 
-            // Criando um elemento progress para mostrar o andamento do upload
-            const progress = document.createElement('progress');
-            progress.max = 100;
-            progress.value = 0;
-            document.getElementById('uploadForm').appendChild(progress);
+            // Criando um objeto XMLHttpRequest para fazer o upload via Ajax
+            const xhr = new XMLHttpRequest();
 
-            // Enviando o formulário para o servidor usando a API fetch
-            const response = await fetch('upload.php', {
-                method: 'POST',
-                body: formData
+            // Adicionando um evento de progresso ao objeto xhr
+            xhr.upload.addEventListener("progress", function(e) {
+                // Calculando a porcentagem do upload
+                const percent = Math.round(e.loaded / e.total * 100);
+
+                // Atualizando o elemento progress com o valor da porcentagem
+                const progress = document.getElementById('uploadProgress');
+                progress.value = percent;
             });
 
-            // Verificando se o upload foi bem-sucedido ou não
-            if (response.ok) {
-                // Obtendo a URL do arquivo enviado
-                const uploadedMediaUrl = await response.text();
+            // Adicionando um evento de load ao objeto xhr
+            xhr.addEventListener("load", function() {
+                // Verificando se o status do upload foi 200 (OK)
+                if (xhr.status == 200) {
+                    // Obtendo a resposta do servidor
+                    const response = xhr.responseText;
 
-                // Mostrando uma mensagem de sucesso
-                alert(`Upload bem-sucedido! Media URL: ${uploadedMediaUrl}`);
+                    // Mostrando uma mensagem de sucesso ao usuário
+                    const message = document.getElementById('message');
+                    message.textContent = "Upload concluído com sucesso! O seu ID é " + uploadedMediaId;
 
-                // Redirecionando para a página index.html com o ID do arquivo
-                window.location.href = `index.html?mediaId=${uploadedMediaId}`;
-            } else {
-                // Mostrando uma mensagem de erro
-                alert(`Upload falhou! Erro: ${response.status}`);
-            }
+                    // Limpando o elemento error
+                    const error = document.getElementById('error');
+                    error.textContent = "";
+                } else {
+                    // Mostrando uma mensagem de erro ao usuário
+                    const error = document.getElementById('error');
+                    error.textContent = "Ocorreu um erro no upload. Por favor, tente novamente.";
+
+                    // Limpando o elemento message
+                    const message = document.getElementById('message');
+                    message.textContent = "";
+                }
+            });
+
+            // Configurando o objeto xhr para fazer um POST para o arquivo upload.php
+            xhr.open("POST", "upload.php");
+
+            // Enviando o formulário para o servidor
+            xhr.send(formData);
         }
 
-        // Adicionando um evento de clique ao botão de envio
-        document.getElementById('uploadForm').addEventListener('submit', (event) => {
-            // Prevenindo o comportamento padrão do formulário
-            event.preventDefault();
+        // Adicionando um evento de submit ao formulário
+        const form = document.getElementById('uploadForm');
+        form.addEventListener("submit", function(e) {
+            // Impedindo o envio padrão do formulário
+            e.preventDefault();
 
-            // Chamando a função de upload
+            // Chamando a função uploadMedia
             uploadMedia();
         });
     </script>
