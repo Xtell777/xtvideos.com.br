@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOU WEB</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        #search-bar {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #search-bar input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #search-bar button {
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #video-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .video-card {
+            background-color: white;
+            width: calc(33.33% - 20px);
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd;
+        }
+
+        .video-info {
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        .video-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            padding: 5px 0;
+        }
+
+        .channel-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .channel-name {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .views {
+            margin-right: 10px;
+        }
+
+        .time-ago {
+            color: #888;
+        }
+
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        .video-stats p {
+            font-size: 14px;
+        }
+
+        .video-stats span {
+            font-weight: bold;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .video-card {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .video-card {
+                width: calc(100% - 10px);
+            }
+
+            #search-bar input[type="text"] {
+                width: 100%;
+            }
+        }
+
+        /* Estilos para a tab-bar */
+        .tab-bar {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        .tab-bar a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        /* Estilos para a paginação */
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff8009;
+            padding: 8px 12px;
+            border: 2px solid #ff8009;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+                .pagination a:hover {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        /* Estilos para os botões de página anterior/próxima */
+        .pagination-button {
+            background-color: #ff9997;
+            border: none;
+            color: white;
+            padding: 20px 25px;
+            border-radius: 15px;
+            font-size: 56px;
+            cursor: pointer;
+            transition: background-color 0.9s ease;
+        }
+
+        .pagination-button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Estilos CSS para o vídeo e controles */
+        #video-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        #video-controls {
+            background-color: #222;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        #play-pause-button,
+        #volume-slider,
+        #fullscreen-button,
+        #time-elapsed,
+        #time-total {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        #volume-slider {
+            width: 100px;
+        }
+
+        #play-pause-button:hover,
+        #volume-slider:hover,
+        #fullscreen-button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="trends.html">Tendências</a>
+        <a href="subscriptions.html">Inscrições</a>
+        <a href="settings.html">Configurações</a>
+        <a href="uploads.html">Uploads</a>
+        <a href="history.html">Histórico</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="channel.html">Canal</a>
+        <a href="notifications.html">Notificações</a>
+        <a class="vip" href="vip.html">VIP</a>
+        <a href="library.html">Biblioteca</a>
+    </nav>
+
+    <div id="search-bar">
+        <input type="text" placeholder="🔍Pesquisar vídeos">
+        <button>Buscar</button>
+    </div>
+
+    <div id="video-container">
+        <!-- Vídeos serão adicionados dinamicamente aqui -->
+        <video id="video-player" controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="video-controls">
+            <button id="play-pause-button">Play</button>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+            <button id="fullscreen-button">Fullscreen</button>
+            <span id="time-elapsed">00:00</span> / <span id="time-total">00:00</span>
+        </div>
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination" id="pagination">
+        <button id="prev-button">🔙 Back</button>
+        <!-- Links de página serão adicionados dinamicamente aqui -->
+        <button id="next-button">Next ➡️</button>
+    </div>
+
+    <!-- JavaScript para gerar a paginação -->
+    <script>
+        $(document).ready(() => {
+            const totalPages = 5; // Substitua pelo número total de páginas
+            let currentPage = 1;
+
+            // Função para gerar os links de página
+            function generatePageLinks() {
+                const paginationContainer = $("#pagination");
+                paginationContainer.empty();
+
+                // Adicionar botão de voltar
+                paginationContainer.append(`<button id="prev-button" ${currentPage === 1 ? 'disabled' : ''}>🔙 Back</button>`);
+
+                // Adicionar links de página
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationContainer.append(`<a href="#" class="page-link ${currentPage === i ? 'active' : ''}" data-page="${i}">${i}</a>`);
+                }
+
+                // Adicionar botão de avançar
+                paginationContainer.append(`<button id="next-button" ${currentPage === totalPages ? 'disabled' : ''}>Next ➡️</button>`);
+            }
+
+            // Inicialização da página
+            generatePageLinks();
+
+            // Evento de clique nos links de página
+            $("#pagination").on("click", ".page-link", function() {
+                currentPage = parseInt($(this).data("page"));
+                generatePageLinks();
+
+                // Adicione a lógica para carregar e exibir os vídeos da nova página
+                // displayVideosOnPage(currentPage);
+            });
+
+            // Evento de clique no botão de voltar
+            $("#prev-button").on("click", () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    generatePageLinks();
+
+                    // Adicione a lógica para carregar e exibir os vídeos da nova página
+                    // displayVideosOnPage(currentPage);
+                }
+            });
+
+            // Evento de clique no botão de avançar
+            $("#next-button").on("click", () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    generatePageLinks();
+
+                    // Adicione a lógica para carregar e exibir os vídeos da nova página
+                    // displayVideosOnPage(currentPage);
+                }
+            });
+        });
+    </script>
+
+    <!-- JavaScript -->
+    <script>
+        // Função para gerar dados de vídeo com base no número total
+        function generateVideoData(total) {
+            const videoData = [];
+
+                       for (let i = 1; i <= total; i++) {
+                const views = Math.floor(Math.random() * 1000000) + 1000;
+                const hoursAgo = Math.floor(Math.random() * 48) + 1;
+
+                videoData.push({
+                    title: `Vídeo ${i}`,
+                    channelName: `Canal ${i}`,
+                    views: `${views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} visualizações`,
+                    timeAgo: `há ${hoursAgo} horas`,
+                    channelImage: `canal_imagem${i}.jpg`,
+                    url: `video${i}.html`,  // Adicione a URL do vídeo aqui
+                });
+            }
+
+            return videoData;
+        }
+
+        // Dados de todos os vídeos simulados (ajuste o número conforme necessário)
+        const allVideoData = generateVideoData(7777);
+
+        // Função para exibir vídeos na página atual
+        function displayVideosOnPage(currentPage) {
+            const videoContainer = document.getElementById("video-container");
+            videoContainer.innerHTML = "";
+
+            const videosPerPage = 777;
+            const startIndex = (currentPage - 1) * videosPerPage;
+            const endIndex = startIndex + videosPerPage;
+            const videosToDisplay = allVideoData.slice(startIndex, endIndex);
+
+            videosToDisplay.forEach((video) => {
+                const card = document.createElement("div");
+                card.classList.add("video-card");
+                card.innerHTML = `
+                    <a href="${video.url}">
+                        <div class="video-thumbnail"></div>
+                        <div class="video-info">
+                            <div class="video-title">${video.title}</div>
+                            <div class="channel-info">
+                                <img class="channel-image" src="${video.channelImage}" alt="Imagem do Canal">
+                                <span class="channel-name">${video.channelName}</span>
+                            </div>
+                            <div class="video-stats">
+                                <p class="views"><span>${video.views}</span></p>
+                                <p class="time-ago">${video.timeAgo}</p>
+                            </div>
+                        </div>
+                    </a>
+                `;
+
+                videoContainer.appendChild(card);
+            });
+        }
+
+        // Inicialização da página
+        displayVideosOnPage(1);
+
+        // Botões de página anterior e próxima
+        const prevButton = document.getElementById("prev-button");
+        const nextButton = document.getElementById("next-button");
+        let currentPage = 1;
+
+        // Adicionar eventos aos botões
+        prevButton.addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayVideosOnPage(currentPage);
+            }
+        });
+
+        nextButton.addEventListener("click", () => {
+            const totalPages = Math.ceil(allVideoData.length / 7); // 7 vídeos por página
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayVideosOnPage(currentPage);
+            }
+        });
+
+        // Vídeo e controles
+        const video = document.getElementById("video-player");
+        const playPauseButton = document.getElementById("play-pause-button");
+        const volumeSlider = document.getElementById("volume-slider");
+        const fullscreenButton = document.getElementById("fullscreen-button");
+        const timeElapsed = document.getElementById("time-elapsed");
+        const timeTotal = document.getElementById("time-total");
+
+        // Tocar ou pausar o vídeo
+        playPauseButton.addEventListener("click", () => {
+            if (video.paused) {
+                video.play();
+                playPauseButton.textContent = "Pause";
+            } else {
+                video.pause();
+                playPauseButton.textContent = "Play";
+            }
+        });
+
+        // Controle de volume
+        volumeSlider.addEventListener("input", () => {
+            video.volume = volumeSlider.value;
+        });
+
+        // Ativar o modo de tela cheia
+        fullscreenButton.addEventListener("click", () => {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                video.webkitRequestFullscreen();
+            }
+        });
+
+        // Atualizar o tempo decorrido e total do vídeo
+        video.addEventListener("timeupdate", () => {
+            const currentTime = video.currentTime;
+            const duration = video.duration;
+
+            const minutesElapsed = Math.floor(currentTime / 60);
+            const secondsElapsed = Math.floor(currentTime % 60);
+
+            const minutesTotal = Math.floor(duration / 60);
+            const secondsTotal = Math.floor(duration % 60);
+
+            timeElapsed.textContent = `${minutesElapsed}:${secondsElapsed < 10 ? '0' : ''}${secondsElapsed}`;
+            timeTotal.textContent = `${minutesTotal}:${secondsTotal}`;
+        });
+    </script>
+</body>
+</html>
+

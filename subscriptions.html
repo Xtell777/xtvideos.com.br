@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrições - YOU WEB</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #subscriptions-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .subscription-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .subscription-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .subscription-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .subscription-details {
+            flex-grow: 1;
+        }
+
+        .subscription-details h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .subscription-details p {
+            margin: 5px 0;
+            color: #888;
+        }
+
+        .unsubscribe-button {
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 576px) {
+            .subscription-info img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+        <p>O seu site de vídeos favorito</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="trends.html">Tendências</a></li>
+            <li><a href="subscriptions.html">Inscrições</a></li>
+            <li><a href="settings.html">Configurações</a></li>
+            <li><a href="uploads.html">Uploads</a></li>
+            <li><a href="history.html">Histórico</a></li>
+            <li><a href="playlists.html">Playlists</a></li>
+            <li><a href="channel.html">Canal</a></li>
+            <li><a href="notifications.html">Notificações</a></li>
+            <li><a class="vip" href="vip.html">VIP</a></li>
+            <li><a href="library.html">Biblioteca</a></li>
+        </ul>
+    </nav>
+    <div id="subscriptions-container">
+        <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <img src="channel-image.jpg" alt="Imagem do canal">
+                <div class="subscription-details">
+                    <h3>Nome do Canal</h3>
+                    <p>1.234.567 inscritos</p>
+                    <p>Último vídeo há 2 dias</p>
+                </div>
+            </div>
+            <button class="unsubscribe-button">Cancelar Inscrição</button>
+        </div>
+        <!-- Repita o código acima para cada inscrição -->
+    </div>
+    <script>
+        // Seu código JavaScript aqui
+        // ...
+    </script>
+</body>
+</html>

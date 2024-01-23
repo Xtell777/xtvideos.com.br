@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlists - YOU WEB</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #playlists-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .playlist-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .playlist-thumbnail {
+            width: 100%;
+            height: 120px;
+            background-color: #ddd;
+        }
+
+        .playlist-info {
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        .playlist-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .playlist-owner {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            padding: 5px 0;
+        }
+
+        .owner-image {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .owner-name {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .total-videos {
+            margin-right: 10px;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 576px) {
+            .owner-image {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+        <p>O seu site de vídeos favorito</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="trends.html">Tendências</a></li>
+            <li><a href="subscriptions.html">Inscrições</a></li>
+            <li><a href="settings.html">Configurações</a></li>
+            <li><a href="uploads.html">Uploads</a></li>
+            <li><a href="history.html">Histórico</a></li>
+            <li><a href="playlists.html">Playlists</a></li>
+            <li><a href="channel.html">Canal</a></li>
+            <li><a href="notifications.html">Notificações</a></li>
+            <li><a class="vip" href="vip.html">VIP</a></li>
+            <li><a href="library.html">Biblioteca</a></li>
+        </ul>
+    </nav>
+    <div id="playlists-container">
+        <h2>Playlists</h2>
+        <div class="playlist-item">
+            <div class="playlist-thumbnail"></div>
+            <div class="playlist-info">
+                <h3 class="playlist-title">Melhores Vídeos de Web Development</h3>
+                <div class="playlist-owner">
+                    <img src="owner-image.jpg" alt="Imagem do proprietário" class="owner-image">
+                    <p class="owner-name">WebDev Guru</p>
+                </div>
+                <p class="total-videos">15 vídeos</p>
+            </div>
+        </div>
+        <!-- Repita o código acima para cada playlist -->
+    </div>
+    <script>
+        // Seu código JavaScript aqui
+        // ...
+    </script>
+</body>
+</html>

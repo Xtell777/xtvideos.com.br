@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações - YOU WEB</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #notification-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .notification {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .notification-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-thumbnail {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: #ddd;
+        }
+
+        .notification-text {
+            max-width: 80%;
+        }
+
+        .notification-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .mark-as-read {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff8009;
+            padding: 8px 12px;
+            border: 2px solid #ff8009;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #fff;
+            color: #ff8009;
+        }
+
+        /* Estilos para os botões de página anterior/próxima */
+        .pagination-button {
+            background-color: #ff9997;
+            border: none;
+            color: white;
+            padding: 20px 25px;
+            border-radius: 15px;
+            font-size: 56px;
+            cursor: pointer;
+            transition: background-color 0.9s ease;
+        }
+
+        .pagination-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+        <p>O seu site de vídeos favorito</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="trends.html">Tendências</a></li>
+            <li><a href="subscriptions.html">Inscrições</a></li>
+            <li><a href="settings.html">Configurações</a></li>
+            <li><a href="uploads.html">Uploads</a></li>
+            <li><a href="history.html">Histórico</a></li>
+            <li><a href="playlists.html">Playlists</a></li>
+            <li><a href="channel.html">Canal</a></li>
+            <li><a class="vip" href="vip.html">VIP</a></li>
+            <li><a href="library.html">Biblioteca</a></li>
+            <li><a href="notifications.html">Notificações</a></li>
+        </ul>
+    </nav>
+    <div id="notification-container">
+        <!-- Notificações serão adicionadas dinamicamente aqui -->
+                        <div class="notification-thumbnail"></div>
+                <div class="notification-text">
+                    <p><strong>Nome do Usuário:</strong> mencionou você em um comentário.</p>
+                    <span class="time-ago">há 2 horas</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+        <!-- Repita o bloco acima para cada notificação -->
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination" id="pagination">
+        <button class="pagination-button">⬅️</button>
+        <!-- Links de página serão adicionados dinamicamente aqui -->
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <!-- ... adicione mais links conforme necessário -->
+        <button class="pagination-button">➡️</button>
+    </div>
+
+    <script>
+        // Seu código JavaScript para manipulação de notificações aqui
+        // ...
+    </script>
+</body>
+</html>

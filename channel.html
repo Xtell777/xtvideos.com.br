@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal - YOU WEB</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #channel-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        #channel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #channel-thumbnail {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: #ddd;
+        }
+
+        #channel-info {
+            flex: 1;
+        }
+
+        #channel-info h2 {
+            margin: 0;
+        }
+
+        #channel-stats {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .stat-item {
+            margin-right: 20px;
+        }
+
+        #channel-description {
+            margin-top: 20px;
+        }
+
+        .video-card {
+            background-color: white;
+            width: calc(33.33% - 20px);
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd;
+        }
+
+        .video-info {
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        .video-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            padding: 5px 0;
+        }
+
+        .channel-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .channel-name {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .views {
+            margin-right: 10px;
+        }
+
+        .time-ago {
+            color: #888;
+        }
+
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        .video-stats p {
+            font-size: 14px;
+        }
+
+        .video-stats span {
+            font-weight: bold;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .video-card {
+                width: calc(50% - 10px);
+            }
+
+            #channel-thumbnail {
+                width: 80px;
+                height: 80px;
+                margin-right: 15px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .video-card {
+                width: calc(100% - 10px);
+            }
+
+            #channel-thumbnail {
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+        <p>O seu site de vídeos favorito</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="trends.html">Tendências</a></li>
+            <li><a href="subscriptions.html">Inscrições</a></li>
+            <li><a href="settings.html">Configurações</a></li>
+            <li><a href="uploads.html">Uploads</a></li>
+            <li><a href="history.html">Histórico</a></li>
+            <li><a href="playlists.html">Playlists</a></li>
+            <li><a href="channel.html">Canal</a></li>
+            <li><a href="notifications.html">Notificações</a></li>
+            <li><a class="vip" href="vip.html">VIP</a></li>
+            <li><a href="library.html">Biblioteca</a></li>
+        </ul>
+    </nav>
+            <div id="channel-header">
+            <div id="channel-thumbnail"></div>
+            <div id="channel-info">
+                <h2>Nome do Canal</h2>
+                <div id="channel-stats">
+                    <div class="stat-item">Inscritos: 100,000</div>
+                    <div class="stat-item">Vídeos: 200</div>
+                    <div class="stat-item">Visualizações: 5,000,000</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="channel-description">
+            <p>Descrição do canal Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisl nec neque hendrerit, et tincidunt mauris dapibus.</p>
+        </div>
+
+        <div id="video-container">
+            <!-- Aqui vão os cartões de vídeo -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <!-- Aqui vai a imagem do vídeo -->
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Título do Vídeo</h3>
+                    <div class="channel-info">
+                        <img src="channel-image.jpg" alt="Imagem do canal" class="channel-image">
+                        <p class="channel-name">Nome do Canal</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Repita o código acima para cada vídeo -->
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button class="pagination-button">⬅️</button>
+        <!-- Links de página -->
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <!-- ... adicione mais links conforme necessário -->
+        <button class="pagination-button">➡️</button>
+    </div>
+
+    <script>
+        // Seu código JavaScript aqui
+        // ...
+    </script>
+</body>
+</html>
+

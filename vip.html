@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seção VIP - YOU WEB</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #search-bar {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #search-bar input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #search-bar button {
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #vip-content {
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .vip-feature {
+            background-color: white;
+            width: calc(33.33% - 20px);
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            transition: transform 0.3s ease;
+        }
+
+        .vip-feature:hover {
+            transform: scale(1.05);
+        }
+
+        .vip-thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd;
+        }
+
+        .vip-info {
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
+        .vip-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .vip-description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .vip-button {
+            background-color: #ff8009;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .vip-button:hover {
+            background-color: #ff0000;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .vip-feature {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .vip-feature {
+                width: calc(100% - 10px);
+            }
+
+            #search-bar input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+        <p>O seu site de vídeos favorito</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="trends.html">Tendências</a></li>
+            <li><a href="subscriptions.html">Inscrições</a></li>
+            <li><a href="settings.html">Configurações</a></li>
+            <li><a href="uploads.html">Uploads</a></li>
+            <li><a href="history.html">Histórico</a></li>
+            <li><a href="playlists.html">Playlists</a></li>
+            <li><a href="channel.html">Canal</a></li>
+            <li><a href="notifications.html">Notificações</a></li>
+            <li><a class="vip" href="vip.html">VIP</a></li>
+            <li><a href="library.html">Biblioteca</a></li>
+        </ul>
+    </nav>
+
+    <div id="search-bar">
+        <input type="text" placeholder="Pesquisar vídeos...">
+        <button>Pesquisar</button>
+    </div>
+
+    <div id="vip-content">
+        <!-- Conteúdo VIP -->
+        <div class="vip-feature">
+            <div class="vip-thumbnail"></div>
+            <div class="vip-info">
+                <h3 class="vip-title">Recurso VIP 1</h3>
+                <p class="vip-description">                Descrição do recurso VIP 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et purus vel odio varius consequat. Ut in aliquet ligula. Curabitur efficitur, dui at cursus fringilla, dui odio condimentum libero, id tempus dui quam a lectus.
+
+                <button class="vip-button">Ativar VIP</button>
+            </div>
+        </div>
+
+        <div class="vip-feature">
+            <div class="vip-thumbnail"></div>
+            <div class="vip-info">
+                <h3 class="vip-title">Recurso VIP 2</h3>
+                <p class="vip-description">Descrição do recurso VIP 2. Sed euismod quam eu risus tincidunt, a scelerisque velit gravida. Nam eu risus a mi ullamcorper bibendum. Vestibulum eget vulputate ex. Vivamus in odio a libero viverra convallis eu vel nisi.
+
+                <button class="vip-button">Ativar VIP</button>
+            </div>
+        </div>
+
+        <!-- Adicione mais recursos VIP conforme necessário -->
+
+    </div>
+
+    <script>
+        // Seu código JavaScript aqui
+        // ...
+    </script>
+</body>
+</html>
+
