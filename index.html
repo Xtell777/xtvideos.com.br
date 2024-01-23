@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YOU WEB</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilos CSS */
+        /* Estilos embutidos apenas para este exemplo */
+<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -24,238 +26,187 @@
             background-color: #333;
             color: white;
             text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        section {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Proporção 16:9 para o contêiner do vídeo */
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        nav {
+            background-color: #005aa7;
             padding: 10px 0;
+            text-align: center;
         }
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: #fff;
             font-weight: bold;
-            margin-right: 20px;
+            margin: 0 20px;
         }
 
-        #search-bar {
-            background-color: #444;
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #search-bar input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        #search-bar button {
-            background-color: #ff0000;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        #video-container {
-            max-width: 1200px;
-            width: 90%;
+        main {
+            max-width: 800px;
             margin: 20px auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .video-card {
-            background-color: white;
-            width: calc(33.33% - 20px);
-            margin: 10px;
-            padding: 10px;
-            box-shadow: 0px 0px 5px 0px #ccc;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+        main h2 {
+            font-size: 24px;
+            color: #333;
         }
 
-        .video-card:hover {
-            transform: scale(1.05);
+        main p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
         }
 
-        .video-thumbnail {
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 180px;
-            background-color: #ddd;
+            height: 100%;
         }
 
-        .video-info {
-            margin-top: 10px;
-            padding: 0 10px;
-        }
-
-        .video-title {
-            font-weight: bold;
-            font-size: 18px;
-            margin: 5px 0;
-        }
-
-        .channel-info {
-            display: flex;
-            align-items: center;
-            margin-top: 5px;
-            padding: 5px 0;
-        }
-
-        .channel-image {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .channel-name {
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .views {
-            margin-right: 10px;
-        }
-
-        .time-ago {
-            color: #888;
-        }
-
-        .video-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            padding: 0 10px;
-        }
-
-        .video-stats p {
-            font-size: 14px;
-        }
-
-        .video-stats span {
-            font-weight: bold;
-        }
-
-        /* Responsividade */
-        @media screen and (max-width: 768px) {
-            .video-card {
-                width: calc(50% - 10px);
-            }
-        }
-
-        @media screen and (max-width: 576px) {
-            .video-card {
-                width: calc(100% - 10px);
-            }
-
-            #search-bar input[type="text"] {
-                width: 100%;
-            }
-        }
-
-        /* Estilos para a tab-bar */
-        .tab-bar {
-            background-color: #333;
-            color: white;
-            display: flex;
-            justify-content: space-around;
+        .comments-section {
+            margin-top: 20px;
             padding: 10px;
+            background-color: #f5f5f5;
         }
 
-        .tab-bar a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            padding: 5px 10px;
+        .comment {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fff;
         }
 
-        /* Estilos para a paginação */
-        .pagination {
+        .comment h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .comment p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .comment-form {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005aa7;
+        }
+
+        footer {
             text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+  }
+
+        .interaction-bar {
+            display: auto;
+            justify-content: space-between;
             margin-top: 20px;
         }
 
-        .pagination a {
-            text-decoration: none;
-            color: #fff;
-            background-color: #ff8009;
-            padding: 8px 12px;
-            border: 2px solid #ff8009;
-            margin: 0 5px;
-            border-radius: 5px;
+        .interaction-button {
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-                .pagination a:hover {
-            background-color: #ff0000;
-            color: white;
-        }
-
-        /* Estilos para os botões de página anterior/próxima */
-        .pagination-button {
-            background-color: #ff9997;
-            border: none;
-            color: white;
-            padding: 20px 25px;
-            border-radius: 15px;
-            font-size: 56px;
-            cursor: pointer;
-            transition: background-color 0.9s ease;
-        }
-
-        .pagination-button:hover {
-            background-color: #cc0000;
-        }
-
-        /* Estilos CSS para o vídeo e controles */
-        #video-container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #333;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        video {
-            width: 100%;
-            display: block;
-        }
-
-        #video-controls {
-            background-color: #222;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: #eee;
             padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
-        #play-pause-button,
-        #volume-slider,
-        #fullscreen-button,
-        #time-elapsed,
-        #time-total {
-            background-color: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-
-        #volume-slider {
-            width: 100px;
-        }
-
-        #play-pause-button:hover,
-        #volume-slider:hover,
-        #fullscreen-button:hover {
-            opacity: 0.7;
+        .interaction-button:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
@@ -263,9 +214,9 @@
     <header>
         <h1>YOU WEB</h1>
     </header>
-
+    
     <nav>
-        <a href="index.html">Início</a>
+          <a href="index.html">Início</a>
         <a href="trends.html">Tendências</a>
         <a href="subscriptions.html">Inscrições</a>
         <a href="settings.html">Configurações</a>
@@ -278,225 +229,60 @@
         <a href="library.html">Biblioteca</a>
     </nav>
 
-    <div id="search-bar">
-        <input type="text" placeholder="🔍Pesquisar vídeos">
-        <button>Buscar</button>
-    </div>
+    <main>
+        <section>
+            <h2>BEM-VINDO AO YOU WEB!😏</h2>
+            <p>O Melhor Site Para Produtores De conteúdo profissional e amadores.</p>
+        </section>
 
-    <div id="video-container">
-        <!-- Vídeos serão adicionados dinamicamente aqui -->
-        <video id="video-player" controls>
-            <source src="video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div id="video-controls">
-            <button id="play-pause-button">Play</button>
-            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
-            <button id="fullscreen-button">Fullscreen</button>
-            <span id="time-elapsed">00:00</span> / <span id="time-total">00:00</span>
+
+        <section>
+         
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://youtu.be/97P8pFIdXrA?si=1zEzd_LlLYOqZfoi" frameborder="0" allowfullscreen></iframe>
+ </div>
+       
+        </div>
+            </div>
+        </section>
+        <section>
+    
+    <div class="video-container">
+        <iframe width="1920" height="1080" src="https://youtu.be/pYZia9m-mQ8?si=MWWNnRsNc4pgeiw0" frameborder="0" allowfullscreen></iframe>
+ </div>
+        
         </div>
     </div>
+ </div>
+       
+        </div>
+      </section>
 
-    <!-- Paginação -->
-    <div class="pagination" id="pagination">
-        <button id="prev-button">🔙 Back</button>
-        <!-- Links de página serão adicionados dinamicamente aqui -->
-        <button id="next-button">Next ➡️</button>
+      <section>
+    <h2>Reprodução de Vídeos</h2>
+    <div class="video-container">
+        <iframe width="3840" height="2160" src="https://youtu.be/nG03AbYLt44?si=xdvwadkTX_Zv3FAM" frameborder="0" allowfullscreen></iframe>
     </div>
+ </div>
+      
+        </div>
+       </section>
 
-    <!-- JavaScript para gerar a paginação -->
-    <script>
-        $(document).ready(() => {
-            const totalPages = 5; // Substitua pelo número total de páginas
-            let currentPage = 1;
+<section>
+            <h2>Reprodução de Vídeos</h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://youtube.com/watch?v=GxjH3JCzOJE&si=r6KPtaEFLoKJR1AQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+ </div>
+       
+      
+        
+    </main>
 
-            // Função para gerar os links de página
-            function generatePageLinks() {
-                const paginationContainer = $("#pagination");
-                paginationContainer.empty();
+    <footer>
+        &copy; 2024 YOU WEB - Todos os direitos reservados
+    </footer>
 
-                // Adicionar botão de voltar
-                paginationContainer.append(`<button id="prev-button" ${currentPage === 1 ? 'disabled' : ''}>🔙 Back</button>`);
-
-                // Adicionar links de página
-                for (let i = 1; i <= totalPages; i++) {
-                    paginationContainer.append(`<a href="#" class="page-link ${currentPage === i ? 'active' : ''}" data-page="${i}">${i}</a>`);
-                }
-
-                // Adicionar botão de avançar
-                paginationContainer.append(`<button id="next-button" ${currentPage === totalPages ? 'disabled' : ''}>Next ➡️</button>`);
-            }
-
-            // Inicialização da página
-            generatePageLinks();
-
-            // Evento de clique nos links de página
-            $("#pagination").on("click", ".page-link", function() {
-                currentPage = parseInt($(this).data("page"));
-                generatePageLinks();
-
-                // Adicione a lógica para carregar e exibir os vídeos da nova página
-                // displayVideosOnPage(currentPage);
-            });
-
-            // Evento de clique no botão de voltar
-            $("#prev-button").on("click", () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    generatePageLinks();
-
-                    // Adicione a lógica para carregar e exibir os vídeos da nova página
-                    // displayVideosOnPage(currentPage);
-                }
-            });
-
-            // Evento de clique no botão de avançar
-            $("#next-button").on("click", () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    generatePageLinks();
-
-                    // Adicione a lógica para carregar e exibir os vídeos da nova página
-                    // displayVideosOnPage(currentPage);
-                }
-            });
-        });
-    </script>
-
-    <!-- JavaScript -->
-    <script>
-        // Função para gerar dados de vídeo com base no número total
-        function generateVideoData(total) {
-            const videoData = [];
-
-                       for (let i = 1; i <= total; i++) {
-                const views = Math.floor(Math.random() * 1000000) + 1000;
-                const hoursAgo = Math.floor(Math.random() * 48) + 1;
-
-                videoData.push({
-                    title: `Vídeo ${i}`,
-                    channelName: `Canal ${i}`,
-                    views: `${views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} visualizações`,
-                    timeAgo: `há ${hoursAgo} horas`,
-                    channelImage: `canal_imagem${i}.jpg`,
-                    url: `video${i}.html`,  // Adicione a URL do vídeo aqui
-                });
-            }
-
-            return videoData;
-        }
-
-        // Dados de todos os vídeos simulados (ajuste o número conforme necessário)
-        const allVideoData = generateVideoData(7777);
-
-        // Função para exibir vídeos na página atual
-        function displayVideosOnPage(currentPage) {
-            const videoContainer = document.getElementById("video-container");
-            videoContainer.innerHTML = "";
-
-            const videosPerPage = 777;
-            const startIndex = (currentPage - 1) * videosPerPage;
-            const endIndex = startIndex + videosPerPage;
-            const videosToDisplay = allVideoData.slice(startIndex, endIndex);
-
-            videosToDisplay.forEach((video) => {
-                const card = document.createElement("div");
-                card.classList.add("video-card");
-                card.innerHTML = `
-                    <a href="${video.url}">
-                        <div class="video-thumbnail"></div>
-                        <div class="video-info">
-                            <div class="video-title">${video.title}</div>
-                            <div class="channel-info">
-                                <img class="channel-image" src="${video.channelImage}" alt="Imagem do Canal">
-                                <span class="channel-name">${video.channelName}</span>
-                            </div>
-                            <div class="video-stats">
-                                <p class="views"><span>${video.views}</span></p>
-                                <p class="time-ago">${video.timeAgo}</p>
-                            </div>
-                        </div>
-                    </a>
-                `;
-
-                videoContainer.appendChild(card);
-            });
-        }
-
-        // Inicialização da página
-        displayVideosOnPage(1);
-
-        // Botões de página anterior e próxima
-        const prevButton = document.getElementById("prev-button");
-        const nextButton = document.getElementById("next-button");
-        let currentPage = 1;
-
-        // Adicionar eventos aos botões
-        prevButton.addEventListener("click", () => {
-            if (currentPage > 1) {
-                currentPage--;
-                displayVideosOnPage(currentPage);
-            }
-        });
-
-        nextButton.addEventListener("click", () => {
-            const totalPages = Math.ceil(allVideoData.length / 7); // 7 vídeos por página
-            if (currentPage < totalPages) {
-                currentPage++;
-                displayVideosOnPage(currentPage);
-            }
-        });
-
-        // Vídeo e controles
-        const video = document.getElementById("video-player");
-        const playPauseButton = document.getElementById("play-pause-button");
-        const volumeSlider = document.getElementById("volume-slider");
-        const fullscreenButton = document.getElementById("fullscreen-button");
-        const timeElapsed = document.getElementById("time-elapsed");
-        const timeTotal = document.getElementById("time-total");
-
-        // Tocar ou pausar o vídeo
-        playPauseButton.addEventListener("click", () => {
-            if (video.paused) {
-                video.play();
-                playPauseButton.textContent = "Pause";
-            } else {
-                video.pause();
-                playPauseButton.textContent = "Play";
-            }
-        });
-
-        // Controle de volume
-        volumeSlider.addEventListener("input", () => {
-            video.volume = volumeSlider.value;
-        });
-
-        // Ativar o modo de tela cheia
-        fullscreenButton.addEventListener("click", () => {
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.mozRequestFullScreen) { // Firefox
-                video.mozRequestFullScreen();
-            } else if (video.webkitRequestFullscreen) { // Chrome, Safari e Opera
-                video.webkitRequestFullscreen();
-            }
-        });
-
-        // Atualizar o tempo decorrido e total do vídeo
-        video.addEventListener("timeupdate", () => {
-            const currentTime = video.currentTime;
-            const duration = video.duration;
-
-            const minutesElapsed = Math.floor(currentTime / 60);
-            const secondsElapsed = Math.floor(currentTime % 60);
-
-            const minutesTotal = Math.floor(duration / 60);
-            const secondsTotal = Math.floor(duration % 60);
-
-            timeElapsed.textContent = `${minutesElapsed}:${secondsElapsed < 10 ? '0' : ''}${secondsElapsed}`;
-            timeTotal.textContent = `${minutesTotal}:${secondsTotal}`;
-        });
-    </script>
 </body>
 </html>
 
