@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uploads - YOU WEB</title>
+    <title>YOU WEB - Upload</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilos CSS */
+        /* Adicione estilos conforme necessário */
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -43,62 +45,47 @@
             font-weight: bold;
         }
 
-        #upload-container {
-            width: 90%;
-            max-width: 1200px;
+        main {
+            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: white;
-            box-shadow: 0px 0px 5px 0px #ccc;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        #upload-form {
+        form {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        #upload-form label {
+        input {
             margin-bottom: 10px;
         }
 
-        #upload-form input {
-            margin-bottom: 20px;
-            padding: 10px;
-        }
-
-        #upload-form button {
-            background-color: #ff0000;
-            border: none;
-            color: white;
+        button {
+            background-color: #0073e6;
+            color: #fff;
             padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
+            border: none;
             cursor: pointer;
         }
 
-        #uploaded-files {
-            margin-top: 20px;
+        button:hover {
+            background-color: #005aa7;
         }
 
-        #uploaded-files img {
-            max-width: 100%;
-            margin-bottom: 10px;
-        }
-
-        /* Responsividade */
-        @media screen and (max-width: 576px) {
-            #upload-form input {
-                width: 100%;
-            }
+        progress {
+            width: 80%;
+            height: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>YOU WEB</h1>
-        <p>O seu site de vídeos favorito</p>
+        <h1>YOU WEB - Upload</h1>
     </header>
+    
     <nav>
         <ul>
             <li><a href="index.html">Início</a></li>
@@ -114,21 +101,75 @@
             <li><a href="library.html">Biblioteca</a></li>
         </ul>
     </nav>
-    <div id="upload-container">
-        <h2>Envie seus arquivos</h2>
-        <div id="upload-form">
-            <label for="file">Escolha um arquivo:</label>
-            <input type="file" id="file" name="file" accept="video/*, image/*">
-            <button id="upload-button">Enviar</button>
-        </div>
-        <div id="uploaded-files">
-            <!-- Arquivos enviados serão exibidos aqui -->
-        </div>
-    </div>
+
+    <main>
+        <h2>Faça o Upload do Seu Vídeo ou Imagem</h2>
+        <form id="uploadForm" method="post" enctype="multipart/form-data" action="upload.php">
+            <label for="mediaFile">Selecione um arquivo de vídeo ou imagem para enviar</label>
+            <input type="file" id="mediaFile" name="mediaFile" accept="image/*, video/*" required alt="Selecione um arquivo de vídeo ou imagem para enviar">
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <footer>
+        © 2024 YOU WEB - Todos os direitos reservados
+    </footer>
+
     <script>
-        // Seu código JavaScript aqui
-        // ...
+        function generateUniqueId() {
+            // Implemente a geração de IDs únicos conforme necessário
+            return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        }
+
+        async function uploadMedia() {
+            // Obtendo o arquivo de mídia do input
+            const fileInput = document.getElementById('mediaFile');
+            const mediaFile = fileInput.files[0];
+
+            // Gerando um ID único para o arquivo
+            const uploadedMediaId = generateUniqueId();
+
+            // Criando um formulário com o arquivo e o ID
+            const formData = new FormData();
+            formData.append('mediaFile', mediaFile);
+            formData.append('mediaId', uploadedMediaId);
+
+            // Criando um elemento progress para mostrar o andamento do upload
+            const progress = document.createElement('progress');
+            progress.max = 100;
+            progress.value = 0;
+            document.getElementById('uploadForm').appendChild(progress);
+
+            // Enviando o formulário para o servidor usando a API fetch
+            const response = await fetch('upload.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Verificando se o upload foi bem-sucedido ou não
+            if (response.ok) {
+                // Obtendo a URL do arquivo enviado
+                const uploadedMediaUrl = await response.text();
+
+                // Mostrando uma mensagem de sucesso
+                alert(`Upload bem-sucedido! Media URL: ${uploadedMediaUrl}`);
+
+                // Redirecionando para a página index.html com o ID do arquivo
+                window.location.href = `index.html?mediaId=${uploadedMediaId}`;
+            } else {
+                // Mostrando uma mensagem de erro
+                alert(`Upload falhou! Erro: ${response.status}`);
+            }
+        }
+
+        // Adicionando um evento de clique ao botão de envio
+        document.getElementById('uploadForm').addEventListener('submit', (event) => {
+            // Prevenindo o comportamento padrão do formulário
+            event.preventDefault();
+
+            // Chamando a função de upload
+            uploadMedia();
+        });
     </script>
 </body>
 </html>
-
