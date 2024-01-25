@@ -481,11 +481,40 @@
             smirkButton.innerHTML = `🤬 Odiei (${reactionCounts.smirk})`;
         }
     </script>
+    <script>
+    let hasUserInteracted = false;
 
+    function handleInteraction(type) {
+        if (!hasUserInteracted) {
+            reactionCounts[type]++;
+            updateReactionCounts();
+            hasUserInteracted = true;
+            disableInteractionButtons();
+        }
+    }
 
+    function disableInteractionButtons() {
+        const interactionButtons = document.querySelectorAll('.interaction-button');
+        interactionButtons.forEach(button => {
+            button.style.pointerEvents = 'none';
+            button.style.backgroundColor = '#ccc';
+        });
+    }
 
-<footer>
-    &copy; 2024 YOU WEB - Todos os direitos reservados
+    function updateReactionCounts() {
+        // Atualizar os contadores na interface do usuário
+        const thinkingButton = document.querySelector('.interaction-button:nth-child(1)');
+        const heartButton = document.querySelector('.interaction-button:nth-child(2)');
+        const devilButton = document.querySelector('.interaction-button:nth-child(3)');
+        const smirkButton = document.querySelector('.interaction-button:nth-child(4)');
+
+        thinkingButton.innerHTML = `👍🏻 Like (${reactionCounts.thinking})`;
+        heartButton.innerHTML = `👎🏻 Dislike (${reactionCounts.heart})`;
+        devilButton.innerHTML = `♥️ Amei (${reactionCounts.devil})`;
+        smirkButton.innerHTML = `🤬 Odiei (${reactionCounts.smirk})`;
+    }
+</script>
+
            
 </body>
 </html>
