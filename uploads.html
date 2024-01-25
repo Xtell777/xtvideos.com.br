@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOU WEB - Upload</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Uploads - YOU WEB</title>
     <style>
-        /* Adicione estilos conforme necessário */
-
+        /* Estilos CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -45,57 +43,67 @@
             font-weight: bold;
         }
 
-        main {
-            max-width: 800px;
+        #upload-container {
+            width: 90%;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
         }
 
-        form {
+        #upload-form {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        input {
+        #upload-form label {
             margin-bottom: 10px;
         }
 
-        button {
-            background-color: #0073e6;
-            color: #fff;
-            padding: 10px 20px;
+        #upload-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        #upload-form textarea {
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        #upload-form button {
+            background-color: #ff0000;
             border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #005aa7;
+        #uploaded-files {
+            margin-top: 20px;
         }
 
-        progress {
-            width: 80%;
-            height: 20px;
+        #uploaded-files img {
+            max-width: 100%;
+            margin-bottom: 10px;
         }
 
-        #message {
-            margin-top: 10px;
-            color: green;
-        }
-
-        #error {
-            margin-top: 10px;
-            color: red;
+        /* Responsividade */
+        @media screen and (max-width: 576px) {
+            #upload-form input, #upload-form textarea {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>YOU WEB - Upload</h1>
+        <h1>YOU WEB</h1>
+        <p>O seu site de vídeos favorito</p>
     </header>
-    
     <nav>
         <ul>
             <li><a href="index.html">Início</a></li>
@@ -111,96 +119,65 @@
             <li><a href="library.html">Biblioteca</a></li>
         </ul>
     </nav>
-
-    <main>
-        <h2>Faça o Upload do Seu Vídeo ou Imagem</h2>
-        <form id="uploadForm" method="post" enctype="multipart/form-data" action="upload.php">
-            <label for="mediaFile">Selecione um arquivo de vídeo ou imagem para enviar</label>
-            <input type="file" id="mediaFile" name="mediaFile" accept="image/*, video/*" required alt="Selecione um arquivo de vídeo ou imagem para enviar">
-            <button type="submit">Enviar</button>
-            <progress id="uploadProgress" value="0" max="100"></progress>
-            <p id="message"></p>
-            <p id="error"></p>
-        </form>
-    </main>
-
-    <footer>
-        © 2024 YOU WEB - Todos os direitos reservados
-    </footer>
-
+    <div id="upload-container">
+        <h2>Envie seus arquivos</h2>
+        <div id="upload-form">
+            <label for="file">Escolha um arquivo:</label>
+            <input type="file" id="file" name="file" accept="video/*, image/*">
+            <label for="title">Nome do arquivo:</label>
+            <input type="text" id="title" name="title">
+            <label for="description">Descrição do arquivo:</label>
+            <textarea id="description" name="description"></textarea>
+            <button id="upload-button">Enviar</button>
+        </div>
+        <div id="uploaded-files">
+            <!-- Arquivos enviados serão exibidos aqui -->
+        </div>
+    </div>
     <script>
-        function generateUniqueId() {
-            // Implemente a geração de IDs únicos conforme necessário
-            return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-        }
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('upload-button').addEventListener('click', function () {
+            // Get input values
+            var fileInput = document.getElementById('file');
+            var titleInput = document.getElementById('title');
+            var descriptionInput = document.getElementById('description');
 
-        async function uploadMedia() {
-            // Obtendo o arquivo de mídia do input
-            const fileInput = document.getElementById('mediaFile');
-            const mediaFile = fileInput.files[0];
+            // Generate a unique ID (you can use a more robust method if needed)
+            var uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2);
 
-            // Gerando um ID único para o arquivo
-            const uploadedMediaId = generateUniqueId();
+            // Create a new file object with the unique ID
+            var file = {
+                id: uniqueId,
+                name: titleInput.value,
+                description: descriptionInput.value,
+                // Add more properties if needed
+            };
 
-            // Criando um formulário com o arquivo e o ID
-            const formData = new FormData();
-            formData.append('mediaFile', mediaFile);
-            formData.append('uploadedMediaId', uploadedMediaId);
+            // Append the uploaded file to the uploaded-files section
+            appendFileToUI(file);
 
-            // Criando um objeto XMLHttpRequest para fazer o upload via Ajax
-            const xhr = new XMLHttpRequest();
-
-            // Adicionando um evento de progresso ao objeto xhr
-            xhr.upload.addEventListener("progress", function(e) {
-                // Calculando a porcentagem do upload
-                const percent = Math.round(e.loaded / e.total * 100);
-
-                // Atualizando o elemento progress com o valor da porcentagem
-                const progress = document.getElementById('uploadProgress');
-                progress.value = percent;
-            });
-
-            // Adicionando um evento de load ao objeto xhr
-            xhr.addEventListener("load", function() {
-                // Verificando se o status do upload foi 200 (OK)
-                if (xhr.status == 200) {
-                    // Obtendo a resposta do servidor
-                    const response = xhr.responseText;
-
-                    // Mostrando uma mensagem de sucesso ao usuário
-                    const message = document.getElementById('message');
-                    message.textContent = "Upload concluído com sucesso! O seu ID é " + uploadedMediaId;
-
-                    // Limpando o elemento error
-                    const error = document.getElementById('error');
-                    error.textContent = "";
-                } else {
-                    // Mostrando uma mensagem de erro ao usuário
-                    const error = document.getElementById('error');
-                    error.textContent = "Ocorreu um erro no upload. Por favor, tente novamente.";
-
-                    // Limpando o elemento message
-                    const message = document.getElementById('message');
-                    message.textContent = "";
-                }
-            });
-
-            // Configurando o objeto xhr para fazer um POST para o arquivo upload.php
-            xhr.open("POST", "upload.php");
-
-            // Enviando o formulário para o servidor
-            xhr.send(formData);
-        }
-
-        // Adicionando um evento de submit ao formulário
-        const form = document.getElementById('uploadForm');
-        form.addEventListener("submit", function(e) {
-            // Impedindo o envio padrão do formulário
-            e.preventDefault();
-
-            // Chamando a função uploadMedia
-            uploadMedia();
+            // Clear input fields
+            fileInput.value = '';
+            titleInput.value = '';
+            descriptionInput.value = '';
         });
-    </script>
+
+        function appendFileToUI(file) {
+            var uploadedFilesContainer = document.getElementById('uploaded-files');
+
+            // Create a new div element
+            var fileDiv = document.createElement('div');
+            fileDiv.innerHTML = '<p>ID: ' + file.id + '</p>' +
+                                '<p>Name: ' + file.name + '</p>' +
+                                '<p>Description: ' + file.description + '</p>' +
+                                // Add more properties if needed
+                                '<hr>';
+
+            // Append the new div to the uploaded files container
+            uploadedFilesContainer.appendChild(fileDiv);
+        }
+    });
+</script>
+
 </body>
 </html>
