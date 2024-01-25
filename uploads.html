@@ -178,6 +178,56 @@
         }
     });
 </script>
+ 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const uploadButton = document.getElementById('upload-button');
+    const fileInput = document.getElementById('file');
+    const titleInput = document.getElementById('title');
+    const descriptionInput = document.getElementById('description');
+    const uploadedFilesContainer = document.getElementById('uploaded-files');
+
+    uploadButton.addEventListener('click', function () {
+      const file = fileInput.files[0];
+      const title = titleInput.value;
+      const description = descriptionInput.value;
+
+      if (file && title && description) {
+        const fileId = generateUniqueId(); // Função para gerar ID único
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('title', title);
+        formData.append('description', description);
+
+        axios.post('sua_url_de_upload', formData, {
+          onUploadProgress: function (progressEvent) {
+            const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            console.log(percentCompleted + '%'); // Aqui você pode exibir a porcentagem ou atualizar a barra de progresso
+          },
+        })
+        .then(function (response) {
+          // Lógica para exibir o arquivo enviado, você pode usar response.data para obter informações do servidor
+          const fileLink = 'sua_url_do_arquivo/' + fileId;
+          const imgElement = document.createElement('img');
+          imgElement.src = fileLink;
+          uploadedFilesContainer.appendChild(imgElement);
+        })
+        .catch(function (error) {
+          console.error('Erro ao enviar arquivo', error);
+        });
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    });
+
+    function generateUniqueId() {
+      return 'file_' + Date.now(); // Implementação simples para gerar ID único
+    }
+  });
+</script>
+
 
 </body>
 </html>
