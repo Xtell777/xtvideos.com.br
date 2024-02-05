@@ -3,219 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uploads - YOU WEB</title>
-    <script defer src="ExpressMulterMySQLUploader.js"></script>
-    <script defer src="create_uploaded_files_table.sql"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
-        /* Adicione o seu estilo CSS aqui */
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        nav ul li a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        nav ul li a:hover {
-            color: #999;
-        }
-
-        nav ul li a.vip {
-            color: gold;
-        }
-
-        #upload-container {
-            margin: 20px;
-        }
-
-        #upload-form {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        #upload-form label {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        #upload-form input, #upload-form textarea {
-            width: 400px;
-        }
-
-        #upload-form input[type="file"] {
-            width: auto;
-        }
-
-        #upload-form button {
-            margin-top: 10px;
-            width: 100px;
-            height: 30px;
-            background-color: green;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #upload-form button:hover {
-            background-color: darkgreen;
-        }
-
-        #uploaded-files {
-            margin-top: 20px;
-        }
-
-        #uploaded-files p {
-            margin: 0;
-        }
-
-        #uploaded-files hr {
-            margin: 10px 0;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 20px;
-            background-color: green;
-            text-align: center;
-            line-height: 20px;
-            color: white;
-        }
-
-        .cancel-button {
-            margin-left: 10px;
-            width: 100px;
-            height: 30px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cancel-button:hover {
-            background-color: darkred;
-        }
- /* Estilos CSS */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #ff0000;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #333;
-            color: white;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-
-        #upload-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0px 0px 5px 0px #ccc;
-        }
-
-        #upload-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #upload-form label {
-            margin-bottom: 10px;
-        }
-
-        #upload-form input {
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-
-        #upload-form textarea {
-            margin-bottom: 20px;
-            padding: 10px;
-        }
-
-        #upload-form button {
-            background-color: #ff0000;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        #uploaded-files {
-            margin-top: 20px;
-        }
-
-        #uploaded-files img {
-            max-width: 100%;
-            margin-bottom: 10px;
-        }
-
-        /* Responsividade */
-        @media screen and (max-width: 576px) {
-            #upload-form input, #upload-form textarea {
-                width: 100%;
-            }
-        }
-    </style>
+    <title>YOU WEB - Envio de Arquivos</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>YOU WEB</h1>
         <p>O seu site de vídeos favorito</p>
     </header>
-     <nav>
+    <nav>
         <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="trends.html">Tendências</a></li>
@@ -228,6 +24,7 @@
             <li><a href="notifications.html">Notificações</a></li>
             <li><a class="vip" href="vip.html">VIP</a></li>
             <li><a href="library.html">Biblioteca</a></li>
+            <li><a href="uploaded.html">Arquivos Enviados</a></li> <!-- Novo link -->
         </ul>
     </nav>
     <div id="upload-container">
@@ -235,8 +32,6 @@
         <div id="upload-form">
             <label for="file">Escolha um arquivo:</label>
             <input type="file" id="file" name="file" accept="video/*, image/*">
-            <label for="url">OU insira a URL do vídeo/imagem:</label>
-            <input type="url" id="url" name="url" placeholder="https://example.com/video.mp4">
             <label for="title">Nome do arquivo:</label>
             <input type="text" id="title" name="title">
             <label for="description">Descrição do arquivo:</label>
@@ -247,39 +42,10 @@
             <!-- Arquivos enviados serão exibidos aqui -->
         </div>
     </div>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const uploadButton = document.getElementById('upload-button');
-        const fileInput = document.getElementById('file');
-        const urlInput = document.getElementById('url');
-        const titleInput = document.getElementById('title');
-        const descriptionInput = document.getElementById('description');
-        const uploadedFilesContainer = document.getElementById('uploaded-files');
-
-        uploadButton.addEventListener('click', function () {
-            // Lógica para verificar se é uma URL ou arquivo
-            if (urlInput.value) {
-                // Processamento de upload por URL
-                handleUploadByUrl(urlInput.value);
-            } else if (fileInput.checkValidity()) {
-                // Processamento de upload de arquivo
-                handleUploadByFile();
-            } else {
-                alert('Por favor, selecione um arquivo válido ou insira uma URL.');
-            }
-        });
-
-        function handleUploadByFile() {
-            // Implementação para upload de arquivo
-        }
-
-        function handleUploadByUrl(url) {
-            // Implementação para upload por URL
-        }
-
-        // Outras funções e lógicas necessárias
-
-    });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="ExpressMulterMySQLUploader.js"></script>
+    <script src="create_uploaded_files_table.sql"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
+

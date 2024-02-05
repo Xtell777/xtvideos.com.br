@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#upload-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px #ccc;
+}
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#upload-form label {
+    margin-bottom: 10px;
+}
+
+#upload-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#upload-form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+#upload-form button {
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#uploaded-files {
+    margin-top: 20px;
+}
+
+#uploaded-files img {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 576px) {
+    #upload-form input, #upload-form textarea {
+        width: 100%;
+    }
+}
+
