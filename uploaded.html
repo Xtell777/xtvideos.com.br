@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOU WEB - Envio de Arquivos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+        <p>O seu site de vídeos favorito</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="trends.html">Tendências</a></li>
+            <li><a href="subscriptions.html">Inscrições</a></li>
+            <li><a href="settings.html">Configurações</a></li>
+            <li><a href="uploads.html">Uploads</a></li>
+            <li><a href="history.html">Histórico</a></li>
+            <li><a href="playlists.html">Playlists</a></li>
+            <li><a href="channel.html">Canal</a></li>
+            <li><a href="notifications.html">Notificações</a></li>
+            <li><a class="vip" href="vip.html">VIP</a></li>
+            <li><a href="library.html">Biblioteca</a></li>
+            <li><a href="uploaded.html">Arquivos Enviados</a></li> <!-- Novo link -->
+        </ul>
+    </nav>
+    <div id="upload-container">
+        <h2>Envie seus arquivos</h2>
+        <div id="upload-form">
+            <label for="file">Escolha um arquivo:</label>
+            <input type="file" id="file" name="file" accept="video/*, image/*">
+            <label for="title">Nome do arquivo:</label>
+            <input type="text" id="title" name="title">
+            <label for="description">Descrição do arquivo:</label>
+            <textarea id="description" name="description"></textarea>
+            <button id="upload-button">Enviar</button>
+        </div>
+        <div id="uploaded-files">
+            <!-- Arquivos enviados serão exibidos aqui -->
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="ExpressMulterMySQLUploader.js"></script>
+    <script src="create_uploaded_files_table.sql"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
