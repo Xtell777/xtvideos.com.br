@@ -237,6 +237,34 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Estilos CSS para a paginação */
+.pagination {
+  display: flex; /* usa flexbox para alinhar os elementos */
+  justify-content: center; /* centraliza os elementos horizontalmente */
+  align-items: center; /* centraliza os elementos verticalmente */
+  margin: 20px; /* adiciona uma margem externa */
+}
+
+.pagination-button, .pagination a {
+  font-size: 20px; /* aumenta o tamanho da fonte */
+  color: #333; /* define a cor do texto */
+  background-color: #f0f0f0; /* define a cor de fundo */
+  border: 1px solid #ccc; /* define a borda */
+  padding: 10px; /* adiciona um espaçamento interno */
+  margin: 5px; /* adiciona um espaçamento externo */
+  cursor: pointer; /* muda o cursor para indicar que é clicável */
+}
+
+.pagination-button:hover, .pagination a:hover {
+  color: white; /* muda a cor do texto ao passar o mouse */
+  background-color: #333; /* muda a cor de fundo ao passar o mouse */
+}
+
+.pagination .active {
+  color: white; /* define a cor do texto para o link ativo */
+  background-color: #ff0000; /* define a cor de fundo para o link ativo */
+}
+
     </style>
 </head>
 
@@ -596,7 +624,8 @@ footer a:hover {
         <div class="interaction-button" onclick="handleVideoInteraction('video10', 'devil')">♥️ Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video10', 'smirk')">🤬 Odiei</div>
               
-           
+   
+         
             </div>
 <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
 <script>
@@ -703,6 +732,18 @@ updateVideoStats();
 </head>
 
 <body>
+<div class="pagination">
+  <button class="pagination-button" aria-label="Página anterior"><</button>
+  <!-- Links de página -->
+  <a href="#" class="active" aria-label="Página 1">1</a>
+  <a href="#" aria-label="Página 2">2</a>
+  <a href="#" aria-label="Página 3">3</a>
+  <a href="#" aria-label="Página 4">4</a>
+  <a href="#" aria-label="Página 5">5</a>
+  <a href="#" aria-label="Página 6">6</a>
+  <!-- ... adicione mais links conforme necessário -->
+  <button class="pagination-button" aria-label="Próxima página">></button>
+</div>
     <header>
         <h1>YOU WEB</h1>
     </header>

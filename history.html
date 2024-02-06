@@ -341,24 +341,50 @@ footer a:hover {
                 height: 20px;
             }
         }
+
+/* Estilos CSS para a paginação */
+.pagination {
+  display: flex; /* usa flexbox para alinhar os elementos */
+  justify-content: center; /* centraliza os elementos horizontalmente */
+  align-items: center; /* centraliza os elementos verticalmente */
+  margin: 20px; /* adiciona uma margem externa */
+}
+
+.pagination-button, .pagination a {
+  font-size: 20px; /* aumenta o tamanho da fonte */
+  color: #333; /* define a cor do texto */
+  background-color: #f0f0f0; /* define a cor de fundo */
+  border: 1px solid #ccc; /* define a borda */
+  padding: 10px; /* adiciona um espaçamento interno */
+  margin: 5px; /* adiciona um espaçamento externo */
+  cursor: pointer; /* muda o cursor para indicar que é clicável */
+}
+
+.pagination-button:hover, .pagination a:hover {
+  color: white; /* muda a cor do texto ao passar o mouse */
+  background-color: #333; /* muda a cor de fundo ao passar o mouse */
+}
+
+.pagination .active {
+  color: white; /* define a cor do texto para o link ativo */
+  background-color: #ff0000; /* define a cor de fundo para o link ativo */
+}
     </style>
 </head>
 <body>
     <header>
         <h1>YOU WEB</h1>
-        <p>O seu site de vídeos favorito</p>
     </header>
     <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="settings.html">Configurações</a></li>
-            <li><a href="uploads.html">Uploads</a></li>
-            <a href="uploaded.html">Arquivos Enviados</a>
-            <li><a href="history.html">Histórico</a></li>  
-            <li><a href="channel.html">Canal</a></li>
-            <li><a class="vip" href="vip.html">VIP</a></li>
-            <li><a href="library.html">Biblioteca</a></li>
-        </ul>
+        <a href="index.html">Início</a>
+        <a href="subscriptions.html">Inscrições</a>
+        <a href="settings.html">Configurações</a>
+        <a href="uploads.html">Uploads</a>
+        <a href="uploaded.html">Arquivos Enviados</a>
+        <a href="history.html">Histórico</a>   
+        <a href="channel.html">Canal</a>
+        <a href="notifications.html">Notificações</a>
+        <a class="vip" href="vip.html">VIP</a>
     </nav>
     <div id="history-container">
         <h2>Histórico</h2>
@@ -640,6 +666,20 @@ footer a:hover {
                 </div>
         <!-- Repita o código acima para cada item do histórico -->
     </div>
+
+
+<div class="pagination">
+  <button class="pagination-button" aria-label="Página anterior"><</button>
+  <!-- Links de página -->
+  <a href="#" class="active" aria-label="Página 1">1</a>
+  <a href="#" aria-label="Página 2">2</a>
+  <a href="#" aria-label="Página 3">3</a>
+  <a href="#" aria-label="Página 4">4</a>
+  <a href="#" aria-label="Página 5">5</a>
+  <a href="#" aria-label="Página 6">6</a>
+  <!-- ... adicione mais links conforme necessário -->
+  <button class="pagination-button" aria-label="Próxima página">></button>
+</div>
     <script>
           <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
 <script>
