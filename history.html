@@ -5,6 +5,237 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico - YOU WEB</title>
     <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav {
+            background-color: #000;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+        #search-bar {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #search-bar input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #search-bar button {
+            background-color: #e62117;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .video-section {
+            margin: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            background-color: #000;
+            padding: 10px;
+        }
+
+        .interaction-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .video-info-container {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .video-stats p {
+            flex: 1;
+            text-align: center;
+        }
+
+        .subscribe-button {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .video-description {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .interaction-button {
+            cursor: pointer;
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+
+        }
+
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination button, .pagination a {
+            margin: 0 5px;
+            padding: 8px 12px;
+            border: 1px solid #e62117;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            color: #e62117;
+        }
+
+        .pagination button:hover, .pagination a:hover {
+            background-color: #e62117;
+            color: #fff;
+        }
+
+        #prev-button, #next-button {
+            background-color: #e62117;
+            color: #fff;
+            border: none;
+        }
+.channel-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.channel-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.channel-info p {
+    font-weight: bold;
+}
+
+.subscribe-button {
+    background-color: #e62117;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px; /* Adicione este estilo para ajustar a margem esquerda do botão */
+}
+
+/* Adicione estas regras ao seu arquivo CSS existente */
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Estilo dos links nos Termos de Serviço e Política de Privacidade */
+footer a {
+    color: #e62117;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
         /* Estilos CSS */
         body {
             font-family: Arial, sans-serif;
@@ -120,14 +351,11 @@
     <nav>
         <ul>
             <li><a href="index.html">Início</a></li>
-            <li><a href="trends.html">Tendências</a></li>
-            <li><a href="subscriptions.html">Inscrições</a></li>
             <li><a href="settings.html">Configurações</a></li>
             <li><a href="uploads.html">Uploads</a></li>
-            <li><a href="history.html">Histórico</a></li>
-            <li><a href="playlists.html">Playlists</a></li>
+            <a href="uploaded.html">Arquivos Enviados</a>
+            <li><a href="history.html">Histórico</a></li>  
             <li><a href="channel.html">Canal</a></li>
-            <li><a href="notifications.html">Notificações</a></li>
             <li><a class="vip" href="vip.html">VIP</a></li>
             <li><a href="library.html">Biblioteca</a></li>
         </ul>
@@ -135,22 +363,337 @@
     <div id="history-container">
         <h2>Histórico</h2>
         <div class="history-item">
-            <div class="video-thumbnail"></div>
-            <div class="video-info">
-                <h3 class="video-title">Como fazer um site responsivo</h3>
-                <div class="channel-info">
-                    <img src="channel-image.jpg" alt="Imagem do canal" class="channel-image">
-                    <p class="channel-name">WebDev Tutoriais</p>
-                </div>
-                <p class="views">567.890 visualizações</p>
-                <p class="time-watched">Assistido há 2 dias</p>
+<section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 1❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
             </div>
-        </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                   
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 2❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                    
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 3❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                    
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 4❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                    
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 5❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                   
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 6❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                   
+                </div>
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 7❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                   
+                </div>
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 8❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                   
+                </div>
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 9❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                    
+                </div>
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 10❤️ </h3>
+
+            <div class="video-container">
+                              <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                    
+                </div>
+
+        </section>
+
+            <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+
+ </div>
+                </div>
         <!-- Repita o código acima para cada item do histórico -->
     </div>
     <script>
-        // Seu código JavaScript aqui
-        // ...
+          <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
+<script>
+    // Exemplo de dados
+    const videoData = {
+        subscribers: 510000,
+        views: 1250000,
+        publishDate: 'há 2 dias',
+        comments: 130
+    };
+
+    // Função para atualizar os números
+    function updateVideoStats() {
+        // Atualiza o número de inscritos
+        updateSubscribersCount(videoData.subscribers);
+
+        // Atualiza o número de visualizações
+        updateViewsCount(videoData.views);
+
+        // Atualiza a data de publicação
+        updatePublishDate(videoData.publishDate);
+
+        // Atualiza o número de comentários
+        updateCommentsCount(videoData.comments);
+    }
+
+    // Função para atualizar o número de inscritos
+    function updateSubscribersCount(count) {
+        const subscribersElement = document.getElementById('channel-subscribers');
+        subscribersElement.innerText = count.toLocaleString('pt-BR') + ' inscritos';
+    }
+
+    // Função para atualizar o número de visualizações
+    function updateViewsCount(count) {
+        const viewsElement = document.getElementById('video-views');
+        viewsElement.innerText = count.toLocaleString('pt-BR') + ' views';
+    }
+
+    // Função para atualizar a data de publicação
+    function updatePublishDate(date) {
+        const publishDateElement = document.getElementById('video-publish-date');
+        publishDateElement.innerText = 'Publicado ' + date;
+    }
+
+    // Função para atualizar o número de comentários
+    function updateCommentsCount(count) {
+        const commentsElement = document.getElementById('video-comments');
+        commentsElement.innerText = count.toLocaleString('pt-BR') + ' comentários';
+    }
+
+    // Chama a função para atualizar os números
+    updateVideoStats();
+</script>
+
     </script>
 </body>
 </html>
