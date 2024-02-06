@@ -101,11 +101,11 @@
             transform: scale(1.05);
         }
 
-        .video-thumbnail {
-            width: 100%;
-            height: 180px;
-            background-color: #ddd;
-        }
+        .video-thumbnail video {
+    width: 95%;
+    height: auto;
+}
+
 
         .video-info {
             margin-top: 10px;
@@ -185,12 +185,39 @@
                 margin-right: 10px;
             }
         }
+/* Estilos CSS para a paginação */
+.pagination {
+  display: flex; /* usa flexbox para alinhar os elementos */
+  justify-content: center; /* centraliza os elementos horizontalmente */
+  align-items: center; /* centraliza os elementos verticalmente */
+  margin: 20px; /* adiciona uma margem externa */
+}
+
+.pagination-button, .pagination a {
+  font-size: 20px; /* aumenta o tamanho da fonte */
+  color: #333; /* define a cor do texto */
+  background-color: #f0f0f0; /* define a cor de fundo */
+  border: 1px solid #ccc; /* define a borda */
+  padding: 10px; /* adiciona um espaçamento interno */
+  margin: 5px; /* adiciona um espaçamento externo */
+  cursor: pointer; /* muda o cursor para indicar que é clicável */
+}
+
+.pagination-button:hover, .pagination a:hover {
+  color: white; /* muda a cor do texto ao passar o mouse */
+  background-color: #333; /* muda a cor de fundo ao passar o mouse */
+}
+
+.pagination .active {
+  color: white; /* define a cor do texto para o link ativo */
+  background-color: #ff0000; /* define a cor de fundo para o link ativo */
+}
+
     </style>
 </head>
 <body>
     <header>
         <h1>YOU WEB</h1>
-        <p>O seu site de vídeos favorito</p>
     </header>
     <nav>
         <ul>
@@ -207,36 +234,43 @@
             <li><a href="library.html">Biblioteca</a></li>
         </ul>
     </nav>
-            <div id="channel-header">
-            <div id="channel-thumbnail"></div>
-            <div id="channel-info">
-                <h2>Nome do Canal</h2>
-                <div id="channel-stats">
-                    <div class="stat-item">Inscritos: 100,000</div>
-                    <div class="stat-item">Vídeos: 200</div>
-                    <div class="stat-item">Visualizações: 5,000,000</div>
+    <div id="channel-container">
+        <div id="channel-header">
+            <div class="channel-info">
+                <!-- Adicionei o atributo alt para a imagem do canal -->
+                <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                <div id="channel-info">
+                    <h2>XTELL 777</h2>
+                    <div id="channel-stats">
+                        <div class="stat-item">Inscritos: 500.000</div>
+                        <div class="stat-item">Vídeos: 10</div>
+                        <div class="stat-item">Visualizações: 5.000.000</div>
+                    </div>
                 </div>
             </div>
         </div>
-
         <div id="channel-description">
-            <p>Descrição do canal Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisl nec neque hendrerit, et tincidunt mauris dapibus.</p>
+            <p>canal do xtell777 ceo do YOU WEB um site de streaming de videos e imagens aqui voce encontra conteúdo diversificados de alta qualidade e ótimo gosto.</p>
         </div>
-
         <div id="video-container">
             <!-- Aqui vão os cartões de vídeo -->
             <div class="video-card">
                 <div class="video-thumbnail">
-                    <!-- Aqui vai a imagem do vídeo -->
+                    <!-- Substituí a tag <iframe> pela tag <video> para exibir o vídeo -->
+                    <div class="video-thumbnail">
+    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+</div>
+
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Título do Vídeo</h3>
+                    <h3 class="video-title">Vídeo teste pro site 1❤️</h3>
                     <div class="channel-info">
-                        <img src="channel-image.jpg" alt="Imagem do canal" class="channel-image">
-                        <p class="channel-name">Nome do Canal</p>
+                        <!-- Adicionei o atributo alt para a imagem do canal -->
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
                     </div>
                     <p class="views">1.234.567 visualizações</p>
-                    <p class="time-ago">há 3 dias</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
                     <div class="video-stats">
                         <p><span>98%</span> de aprovação</p>
                         <p><span>123</span> comentários</p>
@@ -244,23 +278,277 @@
                 </div>
             </div>
             <!-- Repita o código acima para cada vídeo -->
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 2❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 3❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 4❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+
+
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 5❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+
+
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 6❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 7❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 8❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 9❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+ <div class="video-card">
+                <div class="video-thumbnail">
+                    <video src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" controls width="100%" height="auto"></video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo teste pro site 10❤️</h3>
+                    <div class="channel-info">
+                        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                        <p class="channel-name">XTELL777</p>
+                    </div>
+                    <p class="views">1.234.567 visualizações</p>
+                    <p class="time-ago">Publicado há 3 dias</p>
+                    <div class="video-stats">
+                        <p><span>98%</span> de aprovação</p>
+                        <p><span>123</span> comentários</p>
+                    </div>
+                </div>
+            </div>
+
     </div>
 
-    <div class="pagination">
-        <button class="pagination-button">⬅️</button>
-        <!-- Links de página -->
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <!-- ... adicione mais links conforme necessário -->
-        <button class="pagination-button">➡️</button>
-    </div>
+   <div class="pagination">
+  <button class="pagination-button" aria-label="Página anterior"><</button>
+  <!-- Links de página -->
+  <a href="#" class="active" aria-label="Página 1">1</a>
+  <a href="#" aria-label="Página 2">2</a>
+  <a href="#" aria-label="Página 3">3</a>
+  <a href="#" aria-label="Página 4">4</a>
+  <a href="#" aria-label="Página 5">5</a>
+  <a href="#" aria-label="Página 6">6</a>
+  <!-- ... adicione mais links conforme necessário -->
+  <button class="pagination-button" aria-label="Próxima página">></button>
+</div>
 
-    <script>
-        // Seu código JavaScript aqui
-        // ...
-    </script>
+<script>
+// Define o tamanho da página de dados e a página atual
+var tamanhoPagina = 6;
+var pagina = 0;
+
+// Cria uma função para preencher os dados da página atual na tabela
+function listItems(items, pageActual, limitItems) {
+  // Calcula o total de páginas disponíveis
+  var totalPage = Math.ceil(items.length / limitItems);
+  // Calcula o contador inicial
+  var count = (pageActual * limitItems) - limitItems;
+  // Calcula o delimitador
+  var delimiter = count + limitItems;
+  // Seleciona o corpo da tabela
+  var tbody = document.querySelector('table tbody');
+  // Limpa o conteúdo da tabela
+  tbody.innerHTML = '';
+
+  // Verifica se a página atual é menor ou igual ao total de páginas
+  if (pageActual <= totalPage) {
+    // Percorre os itens do vetor de dados
+    for (var i = count; i < delimiter; i++) {
+      // Verifica se o item existe
+      if (items[i] != null) {
+        // Cria uma nova linha na tabela
+        var tr = document.createElement('tr');
+        // Cria duas células na linha
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        // Preenche as células com os dados do item
+        td1.textContent = items[i][0];
+        td2.textContent = items[i][1];
+        // Adiciona as células na linha
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        // Adiciona a linha na tabela
+        tbody.appendChild(tr);
+      }
+    }
+  }
+
+  // Atualiza os botões de navegação
+  if (pageActual >= 1) {
+    document.getElementById('anterior').removeAttribute('disabled');
+  } else {
+    document.getElementById('anterior').setAttribute('disabled', 'disabled');
+  }
+
+  if (pageActual < totalPage - 1) {
+    document.getElementById('proximo').removeAttribute('disabled');
+  } else {
+    document.getElementById('proximo').setAttribute('disabled', 'disabled');
+  }
+
+  // Atualiza a numeração
+  document.getElementById('numeracao').textContent = pageActual + 1 + ' de ' + totalPage + ' páginas';
+}
+
+// Chama a função para mostrar os dados da primeira página
+listItems(dados, pagina, tamanhoPagina);
+
+// Adiciona um evento de clique no botão anterior
+document.getElementById('anterior').addEventListener('click', function () {
+  // Diminui o valor da página atual
+  pagina--;
+  // Chama a função para mostrar os dados da página anterior
+  listItems(dados, pagina, tamanhoPagina);
+});
+
+// Adiciona um evento de clique no botão próximo
+document.getElementById('proximo').addEventListener('click', function () {
+  // Aumenta o valor da página atual
+  pagina++;
+  // Chama a função para mostrar os dados da próxima página
+  listItems(dados, pagina, tamanhoPagina);
+});
+
+
+</script>
+
+
+
+    <script src="scripts.js"></script>
 </body>
 </html>
+
 
