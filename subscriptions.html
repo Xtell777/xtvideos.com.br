@@ -44,72 +44,93 @@
         }
 
         #subscriptions-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0px 0px 5px 0px #ccc;
-        }
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px #ccc;
+}
 
-        .subscription-card {
-            background-color: #f9f9f9;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
+.subscription-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
 
-        .subscription-info {
-            display: flex;
-            align-items: center;
-        }
+.subscription-info {
+    display: flex;
+    align-items: center;
+}
 
-        .subscription-info img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
+.subscription-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 
-        .subscription-details {
-            flex-grow: 1;
-        }
+.subscription-details {
+    flex-grow: 1;
+}
 
-        .subscription-details h3 {
-            margin: 0;
-            font-size: 18px;
-        }
+.subscription-details h3 {
+    margin: 0;
+    font-size: 18px;
+}
 
-        .subscription-details p {
-            margin: 5px 0;
-            color: #888;
-        }
+.subscription-details span {
+    margin: 5px 0;
+    color: #888;
+}
 
-        .unsubscribe-button {
-            background-color: #ff0000;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.unsubscribe-button {
+    background-color: #c00; /* Cor ajustada para se assemelhar ao YouTube */
+    border: none;
+    color: #fff;
+    padding: 8px 16px; /* Tamanho do botão ajustado */
+    border-radius: 3px; /* Borda arredondada para uma aparência mais moderna */
+    font-size: 14px; /* Tamanho do texto ajustado */
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+}
 
-        /* Responsividade */
-        @media screen and (max-width: 576px) {
-            .subscription-info img {
-                width: 40px;
-                height: 40px;
-            }
-        }
+.unsubscribe-button:hover {
+    background-color: #a00; /* Cor ajustada para hover */
+}
+
+/* Responsividade */
+@media screen and (max-width: 576px) {
+    .subscription-info img {
+        width: 40px;
+        height: 40px;
+    }
+}
+.unsubscribe-button {
+    background-color: #767676; /* Cor de fundo cinza */
+    border: none;
+    color: #fff; /* Cor do texto branca */
+    padding: 4px 8px; /* Tamanho do botão ajustado */
+    border-radius: 3px; /* Borda arredondada para uma aparência mais moderna */
+    font-size: 14px; /* Tamanho do texto ajustado */
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+}
+
+.unsubscribe-button:hover {
+    background-color: #c00; /* Cor de fundo vermelha para hover */
+}
+
     </style>
 </head>
 <body>
     <header>
         <h1>YOU WEB</h1>
-        <p>O seu site de vídeos favorito</p>
     </header>
     <nav>
         <ul>
@@ -130,20 +151,158 @@
         <h2>Suas Inscrições</h2>
         <div class="subscription-card">
             <div class="subscription-info">
-                <img src="channel-image.jpg" alt="Imagem do canal">
-                <div class="subscription-details">
-                    <h3>Nome do Canal</h3>
-                    <p>1.234.567 inscritos</p>
-                    <p>Último vídeo há 2 dias</p>
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">XTELL777</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
                 </div>
             </div>
-            <button class="unsubscribe-button">Cancelar Inscrição</button>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('XTELL777')">Cancelar Inscrição</button>
+        </div>
+            <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal Paulo Silva" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">Paulos Silva</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('princepe clash')">Cancelar Inscrição</button>
+        </div>
+            <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal debora" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">princepe clash</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('Débora')">Cancelar Inscrição</button>
+        </div>
+            <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">Débora</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('maria da silva')">Cancelar Inscrição</button>
+        </div>
+           <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">maria da silva</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('barbara silva')">Cancelar Inscrição</button>
+        </div>
+            <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">barbara silva</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('paulo santos')">Cancelar Inscrição</button>
+        </div>
+       
+          <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">paulo santos</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('pedro silva')">Cancelar Inscrição</button>
+        </div>
+    <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">pedro silva</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('Mateus')">Cancelar Inscrição</button>
+        </div>
+    <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">Mateus</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('joao')">Cancelar Inscrição</button>
+        </div>
+
+    <h2>Suas Inscrições</h2>
+        <div class="subscription-card">
+            <div class="subscription-info">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL777" class="channel-image">
+                    <div class="subscription-details">
+                        <h3 class="channel-name">joao</h3>
+                        <span>1.234.567 inscritos</span>
+                        <span>Último vídeo há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+            <button class="unsubscribe-button" type="button" onclick="unsubscribe('tubarao')">Cancelar Inscrição</button>
         </div>
         <!-- Repita o código acima para cada inscrição -->
     </div>
     <script>
         // Seu código JavaScript aqui
         // ...
+        // Uma possível função para cancelar a inscrição de um canal
+        function unsubscribe(channelName) {
+            // Enviar uma requisição ao servidor para remover o canal da lista de inscrições do usuário
+            // Mostrar uma mensagem de confirmação ao usuário
+            alert("Você cancelou a inscrição do canal " + channelName);
+            // Atualizar a página para remover o cartão do canal
+            location.reload();
+        }
     </script>
 </body>
 </html>
