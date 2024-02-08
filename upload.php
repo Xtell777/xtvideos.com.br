@@ -1,51 +1,42 @@
 <?php
-// Conectando ao banco de dados MySQL
-$servername = "localhost";
-$username = "root";
-$password = "tubarao777";
-$dbname = "youweb";
+// Verifica se o arquivo foi enviado corretamente
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+    $file = $_FILES['file'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    
+    // Configurações do banco de dados
+    $servername = "localhost";
+    $username = "Root";
+    $password = "tubarao777";
+    $dbname = "streamflix_db";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // Conecta ao banco de dados
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+    // Verifica a conexão
+    if ($conn->connect_error) {
+        die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+    }
 
-// Obtendo os dados do formulário de upload
-$mediaFile = $_FILES["mediaFile"];
-$mediaId = $_POST["mediaId"];
+    // Move o arquivo para o diretório de uploads
+    $uploadDirectory = 'uploads/';
+    $targetFilePath = $uploadDirectory . basename($file['name']);
+    if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
+        // Insere as informações do arquivo no banco de dados
+        $sql = "INSERT INTO uploaded_files (title, description, file_path) VALUES ('$title', '$description', '$targetFilePath')";
+        if ($conn->query($sql) === TRUE) {
+            echo "Arquivo enviado com sucesso!";
+        } else {
+            echo "Erro ao enviar o arquivo para o banco de dados: " . $conn->error;
+        }
+    } else {
+        echo "Erro ao mover o arquivo para o diretório de uploads.";
+    }
 
-// Validando o tipo e o tamanho do arquivo
-$allowedTypes = array("image/jpeg", "image/png", "image/gif", "video/mp4", "video/webm", "video/ogg");
-$maxSize = 10000000; // 10 MB
-
-if (!in_array($mediaFile["type"], $allowedTypes)) {
-  die("Tipo de arquivo não permitido");
-}
-
-if ($mediaFile["size"] > $maxSize) {
-  die("Tamanho de arquivo excedido");
-}
-
-// Salvando o arquivo em uma pasta chamada media
-$targetDir = "media/";
-$targetFile = $targetDir . basename($mediaFile["name"]);
-
-if (move_uploaded_file($mediaFile["tmp_name"], $targetFile)) {
-  echo "Upload bem-sucedido! Media URL: " . $targetFile;
+    // Fecha a conexão com o banco de dados
+    $conn->close();
 } else {
-  die("Erro ao salvar o arquivo");
+    echo "Nenhum arquivo enviado ou método de requisição inválido.";
 }
-
-// Inserindo os dados do arquivo no banco de dados
-$sql = "INSERT INTO media (mediaId, mediaUrl, mediaType, mediaSize) VALUES ('$mediaId', '$targetFile', '$mediaFile[type]', '$mediaFile[size]')";
-
-if ($conn->query($sql) === TRUE) {
-  echo "Dados inseridos no banco de dados";
-} else {
-  die("Erro ao inserir os dados: " . $conn->error);
-}
-
-// Fechando a conexão com o banco de dados
-$conn->close();
 ?>

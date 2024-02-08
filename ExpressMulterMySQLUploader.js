@@ -4,53 +4,39 @@ const mysql = require('mysql');
 const fs = require('fs');
 
 const app = express();
-const port = 3000;
+const upload = multer({ dest: 'uploads/' });
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/'); // Diretório onde os arquivos serão armazenados temporariamente
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Nome do arquivo salvo no servidor
-    }
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'Root',
+  password: 'tubarao777',
+  database: 'streamflix_db'
 });
 
-const upload = multer({ storage: storage });
-
-// Configurações do MySQL
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'tubarao777',
-    database: 'uploaded_files'
+connection.connect(err => {
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err);
+    return;
+  }
+  console.log('Conexão ao banco de dados estabelecida');
 });
 
-db.connect(err => {
-    if (err) {
-        console.error('Erro ao conectar ao MySQL:', err);
-    } else {
-        console.log('Conectado ao MySQL');
-    }
-});
-
-// Rota para lidar com o upload do arquivo
 app.post('/upload', upload.single('file'), (req, res) => {
-    const file = req.file;
+  const { title, description } = req.body;
+  const filePath = req.file.path;
 
-    // Salvar informações do arquivo no MySQL
-    const sql = 'INSERT INTO uploaded_files (name, path) VALUES (?, ?)';
-    db.query(sql, [file.originalname, file.path], (err, result) => {
-        if (err) {
-            console.error('Erro ao salvar informações no MySQL:', err);
-            return res.status(500).json({ error: 'Erro interno no servidor' });
-        }
-
-        console.log('Informações do arquivo salvas no MySQL');
-        return res.status(200).json({ message: 'Upload concluído com sucesso' });
-    });
+  const sql = 'INSERT INTO uploaded_files (title, description, file_path) VALUES (?, ?, ?)';
+  connection.query(sql, [title, description, filePath], (err, result) => {
+    if (err) {
+      console.error('Erro ao inserir arquivo no banco de dados:', err);
+      res.status(500).send('Erro ao enviar o arquivo.');
+      return;
+    }
+    res.send('Arquivo enviado com sucesso!');
+  });
 });
 
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta ${PORT}`);
 });
-
