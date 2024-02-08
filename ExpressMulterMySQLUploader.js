@@ -8,7 +8,7 @@ const upload = multer({ dest: 'uploads/' });
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'Root',
+  user: 'root',
   password: 'tubarao777',
   database: 'streamflix_db'
 });

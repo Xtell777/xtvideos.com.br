@@ -1,8 +1,10 @@
 -- Cria o banco de dados
 CREATE DATABASE IF NOT EXISTS streamflix_db;
 
+
 -- Utiliza o banco de dados criado
-USE adm_user;
+USE streamflix_db;
+
 
 -- Cria a tabela uploaded_files
 CREATE TABLE IF NOT EXISTS uploaded_files (
