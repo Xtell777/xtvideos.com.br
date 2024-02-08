@@ -22,7 +22,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'tubarao777',
-    database: 'suaBaseDeDados'
+    database: 'uploaded_files'
 });
 
 db.connect(err => {
