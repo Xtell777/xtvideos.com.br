@@ -2,8 +2,8 @@
 // Conecta-se ao banco de dados
 $db_host = 'localhost'; // Endereço do servidor
 $db_user = 'root'; // Usuário do banco de dados
-$db_pass = ''; // Senha do banco de dados
-$db_name = 'youweb'; // Nome do banco de dados
+$db_pass = ''tubarao777; // Senha do banco de dados
+$db_name = 'streamflix_db'; // Nome do banco de dados
 $db = new mysqli($db_host, $db_user, $db_pass, $db_name);
 // Verifica se a conexão foi bem sucedida
 if ($db->connect_error) {
