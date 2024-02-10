@@ -1,7 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const mysql = require('mysql');
-const fs = require('fs');
 
 const app = express();
 const upload = multer({ dest: 'uploads/' });
@@ -21,10 +20,12 @@ connection.connect(err => {
   console.log('Conexão ao banco de dados estabelecida');
 });
 
+// Rota para lidar com o upload de arquivos
 app.post('/upload', upload.single('file'), (req, res) => {
   const { title, description } = req.body;
   const filePath = req.file.path;
 
+  // Inserção dos dados na tabela uploaded_files
   const sql = 'INSERT INTO uploaded_files (title, description, file_path) VALUES (?, ?, ?)';
   connection.query(sql, [title, description, filePath], (err, result) => {
     if (err) {
@@ -36,7 +37,9 @@ app.post('/upload', upload.single('file'), (req, res) => {
   });
 });
 
+// Iniciar o servidor na porta 3000
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado na porta ${PORT}`);
 });
+

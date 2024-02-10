@@ -29,13 +29,15 @@
     <div id="upload-container">
         <h2>Envie seus arquivos</h2>
         <div id="upload-form">
-            <label for="file">Escolha um arquivo:</label>
-            <input type="file" id="file" name="file" accept="video/*, image/*" required>
-            <label for="title">Nome do arquivo:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="description">Descrição do arquivo:</label>
-            <textarea id="description" name="description"></textarea>
-            <button id="upload-button">Enviar</button>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <label for="file">Escolha um arquivo:</label>
+                <input type="file" id="file" name="file" accept="video/*, image/*" required>
+                <label for="title">Nome do arquivo:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="description">Descrição do arquivo:</label>
+                <textarea id="description" name="description"></textarea>
+                <button type="button" id="upload-button">Enviar</button>
+            </form>
             <progress id="upload-progress" value="0" max="100" style="display: none;"></progress>
             <p id="upload-message" style="display: none;"></p>
         </div>
@@ -44,58 +46,7 @@
         </div>
     </div>
 
-   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script>
-        document.getElementById('upload-button').addEventListener('click', function() {
-            var fileInput = document.getElementById('file');
-            var titleInput = document.getElementById('title');
-            var descriptionInput = document.getElementById('description');
-            var progressBar = document.getElementById('upload-progress');
-            var message = document.getElementById('upload-message');
-
-            var file = fileInput.files[0];
-            var title = titleInput.value;
-            var description = descriptionInput.value;
-
-            if (!file || !title) {
-                message.textContent = "Por favor, selecione um arquivo e insira um título.";
-                message.style.display = 'block';
-                return;
-            }
-
-            var formData = new FormData();
-            formData.append('file', file);
-            formData.append('title', title);
-            formData.append('description', description);
-
-            axios.post('upload.php', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-                onUploadProgress: function(progressEvent) {
-                    var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                    progressBar.style.display = 'block';
-                    progressBar.value = percentCompleted;
-                }
-            }).then(function(response) {
-                progressBar.style.display = 'none';
-                message.textContent = "Arquivo enviado com sucesso!";
-                message.style.display = 'block';
-                // Aqui você pode fazer algo com a resposta, como mostrar o arquivo enviado na lista de arquivos enviados.
-            }).catch(function(error) {
-                progressBar.style.display = 'none';
-                message.textContent = "Ocorreu um erro ao enviar o arquivo.";
-                message.style.display = 'block';
-                console.error('Erro durante o upload:', error);
-            });
-        });
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts.js"></script>
-    <script src="ExpressMulterMySQLUploader.js"></script>
-    <script src="upload.php"></script>
-    <script src="uploaded_files.sql"></script>
-    <script src="create_database_and_table.sql"></script>
 </body>
 </html>

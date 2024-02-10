@@ -1,26 +1,38 @@
-document.getElementById('upload-button').addEventListener('click', function() {
-    var fileInput = document.getElementById('file');
-    var titleInput = document.getElementById('title');
-    var descriptionInput = document.getElementById('description');
+document.getElementById('upload-button').addEventListener('click', async function() {
+    try {
+        const fileInput = document.getElementById('file');
+        const titleInput = document.getElementById('title');
+        const descriptionInput = document.getElementById('description');
 
-    var file = fileInput.files[0];
-    var title = titleInput.value;
-    var description = descriptionInput.value;
+        const file = fileInput.files[0];
+        const title = titleInput.value;
+        const description = descriptionInput.value;
 
-    var formData = new FormData();
-    formData.append('file', file);
-    formData.append('title', title);
-    formData.append('description', description);
+        if (!file || !title) {
+            throw new Error("Por favor, selecione um arquivo e insira um título.");
+        }
 
-    axios.post('/upload', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
-    }).then(function(response) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('title', title);
+        formData.append('description', description);
+
+        const response = await axios.post('/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            onUploadProgress: function(progressEvent) {
+                const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                // Aqui você pode atualizar a interface do usuário com o progresso do upload, se necessário
+            }
+        });
+
         console.log(response.data);
         // Aqui você pode fazer algo com a resposta, como mostrar uma mensagem de sucesso
-    }).catch(function(error) {
+    } catch (error) {
         console.error('Erro durante o upload:', error);
         // Aqui você pode lidar com o erro, como mostrar uma mensagem de erro ao usuário
-    });
+        alert('Ocorreu um erro ao enviar o arquivo.');
+    }
 });
+
