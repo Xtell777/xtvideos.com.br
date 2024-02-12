@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - YOU WEB</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            border-radius: 5px;
+        }
+
+        .login-option {
+            margin-bottom: 20px;
+        }
+
+        .login-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .login-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="login-container">
+        <h2 style="text-align: center;">Login</h2>
+        <form id="login-form">
+            <div class="login-option">
+                <label for="username" class="login-label">Nome de Usuário:</label>
+                <input type="text" id="username" class="login-input" placeholder="Digite seu nome de usuário">
+            </div>
+            <div class="login-option">
+                <label for="password" class="login-label">Senha:</label>
+                <input type="password" id="password" class="login-input" placeholder="Digite sua senha">
+            </div>
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Enviar solicitação de login para o servidor
+            fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Credenciais inválidas');
+                    }
+                })
+                .then(data => {
+                    alert(data.message); // Exibe mensagem de sucesso ou erro
+                    if (data.success) {
+                        // Redireciona para outra página ou executa ações pós-login
+                        window.location.href = '/dashboard';
+                    }
+                })
+                .catch(error => {
+                    alert(error.message); // Exibe erro se a solicitação falhar
+                });
+        });
+    </script>
+</body>
+
+</html>
+
