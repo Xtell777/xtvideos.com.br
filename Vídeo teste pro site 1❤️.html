@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOU WEB</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav {
+            background-color: #000;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+        #search-bar {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #search-bar input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #search-bar button {
+            background-color: #e62117;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .video-section {
+            margin: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            background-color: #000;
+            padding: 10px;
+        }
+
+        .interaction-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .video-info-container {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .video-stats p {
+            flex: 1;
+            text-align: center;
+        }
+
+        .subscribe-button {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .video-description {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .interaction-button {
+            cursor: pointer;
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+
+        }
+
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination button, .pagination a {
+            margin: 0 5px;
+            padding: 8px 12px;
+            border: 1px solid #e62117;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            color: #e62117;
+        }
+
+        .pagination button:hover, .pagination a:hover {
+            background-color: #e62117;
+            color: #fff;
+        }
+
+        #prev-button, #next-button {
+            background-color: #e62117;
+            color: #fff;
+            border: none;
+        }
+.comments-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #comment-list {
+            /* Estilo da lista de comentários, se necessário */
+        }
+
+        #comment-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #comment-text {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        #comment-form button {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+.channel-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.channel-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.channel-info p {
+    font-weight: bold;
+}
+
+.subscribe-button {
+    background-color: #e62117;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px; /* Adicione este estilo para ajustar a margem esquerda do botão */
+}
+
+/* Adicione este trecho de código ao seu arquivo style.css ou em um arquivo separado */
+.toggle-description {
+    color: #e62117;
+    cursor: pointer;
+}
+
+.toggle-comments {
+    cursor: pointer;
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-comments:hover {
+    background-color: #ddd;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="trends.html">Tendências</a>
+        <a href="subscriptions.html">Inscrições</a>
+        <a href="settings.html">Configurações</a>
+        <a href="uploads.html">Uploads</a>
+        <a href="history.html">Histórico</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="channel.html">Canal</a>
+        <a href="notifications.html">Notificações</a>
+        <a class="vip" href="vip.html">VIP</a>
+        <a href="library.html">Biblioteca</a>
+    </nav>
+
+    
+<!-- Carregar a biblioteca de ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Carregar o script para o reconhecimento de voz -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+
+<!-- A barra de pesquisa -->
+<div id="search-bar">
+  <!-- O campo de texto com o atributo x-webkit-speech para ativar o reconhecimento de voz -->
+  <input type="text" id="search-input" placeholder="🔍Pesquisar vídeos" x-webkit-speech>
+  <!-- O botão de buscar que executa uma função JavaScript -->
+  <button id="search-button" onclick="search()">Buscar</button>
+  <!-- O botão de áudio que toca um som e ativa o reconhecimento de voz -->
+  <button id="audio-button" onclick="playAudio()"><i class="fa fa-microphone"></i></button>
+</div>
+
+<!-- O elemento de áudio que contém o som do botão -->
+<audio id="audio-element" src="button-sound.mp3"></audio>
+
+<!-- O script que define as funções JavaScript -->
+<script>
+  // A função que toca o som do botão e ativa o reconhecimento de voz
+  function playAudio() {
+    // Obter o elemento de áudio pelo id
+    var audio = document.getElementById("audio-element");
+    // Tocar o som
+    audio.play();
+    // Verificar se o reconhecimento de voz está disponível
+    if (annyang) {
+      // Definir a língua para português
+      annyang.setLanguage("pt-BR");
+      // Definir o comando para pesquisar o que o usuário falar
+      var commands = {
+        "*term": function(term) {
+          // Obter o campo de texto pelo id
+          var input = document.getElementById("search-input");
+          // Colocar o termo falado no campo de texto
+          input.value = term;
+          // Executar a função de buscar
+          search();
+        }
+      };
+      // Adicionar o comando ao reconhecimento de voz
+      annyang.addCommands(commands);
+      // Iniciar o reconhecimento de voz
+      annyang.start();
+    }
+  }
+
+  // A função que busca o que o usuário digitar ou falar
+  function search() {
+    // Obter o campo de texto pelo id
+    var input = document.getElementById("search-input");
+    // Obter o valor do campo de texto
+    var query = input.value;
+    // Verificar se o valor não está vazio
+    if (query) {
+      // Redirecionar para a página de resultados de pesquisa com o valor como parâmetro
+      window.location.href = "search.html?q=" + query;
+    }
+  }
+
+// Obter o elemento input da área de pesquisa pelo id e armazenar em uma variável
+var input = document.getElementById("myInput");
+// Adicionar um evento de keyup ao elemento input para executar uma função sempre que o usuário digitar algo
+input.addEventListener("keyup", function() {
+  // Obter o valor do elemento input e converter para letras maiúsculas para uma comparação sem distinção entre maiúsculas e minúsculas
+  var filter = input.value.toUpperCase();
+  // Obter o elemento ul que contém os itens da lista pelo id e armazenar em uma variável
+  var ul = document.getElementById("myUL");
+  // Obter todos os elementos li da lista e armazenar em uma variável
+  var li = ul.getElementsByTagName("li");
+  // Percorrer todos os elementos li
+  for (var i = 0; i < li.length; i++) {
+    // Obter o elemento a de cada elemento li
+    var a = li[i].getElementsByTagName("a")[0];
+    // Obter o texto do elemento a
+    var txtValue = a.textContent || a.innerText;
+    // Verificar se o texto contém o valor do elemento input
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      // Se sim, mostrar o elemento li
+      li[i].style.display = "";
+    } else {
+      // Se não, esconder o elemento li
+      li[i].style.display = "none";
+    }
+  }
+});
+// Na página da área de pesquisa
+// Obter o elemento input da área de pesquisa pelo id e armazenar em uma variável
+var input = document.getElementById("search-bar");
+// Adicionar um evento de keypress ao elemento input para executar uma função quando o usuário pressionar a tecla Enter
+input.addEventListener("keypress", function(event) {
+  // Verificar se a tecla pressionada é Enter
+  if (event.keyCode === 13) {
+    // Obter o valor do elemento input e verificar se não está vazio
+    var query = input.value;
+    if (query) {
+      // Redirecionar para a página de resultados de pesquisa com o valor como parâmetro
+      window.location.href = "search.html?q=" + query;
+    }
+  }
+});
+
+// Na página de resultados de pesquisa
+// Obter o parâmetro da URL e armazenar em uma variável
+var urlParams = new URLSearchParams(window.location.search);
+var query = urlParams.get("q");
+// Cria um array de objetos que representam os vídeos, com as propriedades title, src, img, channel, subscribers, views, date, comments e id
+var videos = [
+  {
+    title: "Vídeo teste pro site 1❤️",
+    src: "https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3",
+    img: "https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a",
+    channel: "XTELL777",
+    subscribers: "500.000",
+    views: "1.234.567",
+    date: "Publicado há 3 dias",
+    comments: "123",
+    id: "video1"
+  },
+  // Adicione mais objetos de vídeo aqui
+];
+// Obter o elemento div que contém os resultados de pesquisa pelo id e armazenar em uma variável
+var results = document.getElementById("results");
+// Percorrer o array de vídeos
+for (var i = 0; i < videos.length; i++) {
+  // Obter o objeto de vídeo atual
+  var video = videos[i];
+  // Verificar se o título do vídeo contém o parâmetro da URL
+  if (video.title.toUpperCase().indexOf(query.toUpperCase()) > -1) {
+    // Criar um elemento section para o vídeo e armazenar em uma variável
+    var section = document.createElement("section");
+    // Adicionar a classe video-section ao elemento section
+    section.classList.add("video-section");
+    // Adicionar o id do vídeo ao elemento section
+    section.id = video.id;
+    // Criar o HTML com as informações do vídeo e armazenar em uma variável
+    var html = `
+      <h3 class="video-title">${video.title}</h3>
+      <div class="video-container">
+        <iframe src="${video.src}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-info-container">
+        <div class="channel-info">
+          <img src="${video.img}" alt="Imagem do canal" class="channel-image">
+          <p class="channel-name">${video.channel}</p>
+        </div>
+      </div>
+      <div class="video-stats">
+        <p class="channel-subscribers" id="channel-subscribers-${video.id}">${video.subscribers} inscritos</p>
+        <p class="video-views" id="video-views-${video.id}">${video.views} views</p>
+        <p class="video-publish-date" id="video-publish-date-${video.id}">${video.date}</p>
+        <p class="video-comments" id="video-comments-${video.id}">${video.comments} comentários</p>
+      </div>
+      <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'like')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'dislike')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'love')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'hate')">🤬 Odiei</div>
+      </div>
+    `;
+    // Colocar o HTML dentro do elemento section
+    section.innerHTML = html;
+    // Adicionar o elemento section ao elemento div dos resultados de pesquisa
+    results.appendChild(section);
+  }
+}
+
+// A função que atualiza as estatísticas do vídeo de acordo com a interação do usuário
+function handleVideoInteraction(videoId, interaction) {
+  // Obter os elementos que mostram as estatísticas do vídeo pelo id e armazenar em variáveis
+  var subscribers = document.getElementById("channel-subscribers-" + videoId);
+  var views = document.getElementById("video-views-" + videoId);
+  var comments = document.getElementById("video-comments-" + videoId);
+  // Converter os textos dos elementos em números e armazenar em variáveis
+  var subscribersCount = parseInt(subscribers.textContent.replace(".", ""));
+  var viewsCount = parseInt(views.textContent.replace(".", ""));
+  var commentsCount = parseInt(comments.textContent);
+  // Verificar qual foi a interação do usuário e atualizar as estatísticas de acordo
+  switch (interaction) {
+    case "like":
+      // Aumentar o número de inscritos em 1
+      subscribersCount++;
+      // Aumentar o número de views em 10
+      viewsCount += 10;
+      // Aumentar o número de comentários em 1
+      commentsCount++;
+      break;
+    case "dislike":
+      // Diminuir o número de inscritos em 1
+      subscribersCount--;
+      // Diminuir o número de views em 10
+      viewsCount -= 10;
+      // Diminuir o número de comentários em 1
+      commentsCount--;
+      break;
+    case "love":
+      // Aumentar o número de inscritos em 10
+      subscribersCount += 10;
+      // Aumentar o número de views em 100
+      viewsCount += 100;
+      // Aumentar o número de comentários em 10
+      commentsCount += 10;
+      break;
+    case "hate":
+      // Diminuir o número de inscritos em 10
+      subscribersCount -= 10;
+      // Diminuir o número de views em 100
+      viewsCount -= 100;
+      // Diminuir o número de comentários em 10
+      commentsCount -= 10;
+      break;
+  }
+  // Formatar os números com pontos para separar os milhares e armazenar em variáveis
+  var subscribersFormatted = subscribersCount.toLocaleString("pt-BR");
+  var viewsFormatted = viewsCount.toLocaleString("pt-BR");
+  var commentsFormatted = commentsCount.toLocaleString("pt-BR");
+  // Colocar os números formatados nos elementos que mostram as estatísticas do vídeo
+  subscribers.textContent = subscribersFormatted + " inscritos";
+  views.textContent = viewsFormatted + " views";
+  comments.textContent = commentsFormatted + " comentários";
+}
+
+</script>
+
+
+    <main>
+        
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 1❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+             </div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+                </div>
+                    <div class="subscribe-button" onclick="subscribeChannel()">Inscreva-se</div>
+                </div>
+
+
+        </section>
+
+       
+             <div class="video-stats">
+                 <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+
+               <p class="video-views" id="video-views">1.234.567 views</p>
+              <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+              <p class="video-comments" id="video-comments">123 comentários</p>
+            </div>
+
+             <div class="interaction-bar">
+                    <div class="interaction-buttons">
+                        <div class="toggle-description" onclick="showDescription()">Mostrar Descrição</div>
+                    </div>
+                </div>
+
+                <div class="video-description">
+                    <p>Video 1 do nosso site que esta em estado de desenvolvimento ainda falta muito coisa a ser feito...</p>
+                </div>
+            </div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video3" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+<div class="interaction-bar">
+    <div class="interaction-buttons">
+        <div class="toggle-comments" onclick="toggleComments()">Mostrar Comentários</div>
+    </div>
+</div>
+
+      
+ </div>
+                </div>
+<!-- Seção de comentários movida para após a interação -->
+        <div class="comments-section">
+            <h3>Comentários</h3>
+            <div id="comment-list">
+                <!-- Lista de comentários será exibida aqui -->
+            </div>
+            <div id="comment-form">
+                <textarea id="comment-text" placeholder="Adicione um comentário"></textarea>
+                <button onclick="addComment()">Comentar</button>
+            </div>
+        </div>
+
+<section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 2❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+       </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video2" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 3❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+        </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video3" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+ <main>
+        
+</section>
+
+
+ <main>
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 4❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+        </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video4" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+ <main>
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 5❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+        </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video5" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video5', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video5', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video5', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video5', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+ <main>
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 6❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+        </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video6" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video6', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video6', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video6', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video6', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+ <main>
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 7❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+        </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video7" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video7', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video7', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video7', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video7', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+ <main>
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 8❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+
+        </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video8" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video8', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video8', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video8', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video8', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+ <main>
+        <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 9❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+
+        </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+             <!-- Exemplo para o primeiro vídeo -->
+<section id="video9" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video9', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video9', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video9', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video9', 'smirk')">🤬 Odiei</div>
+    </div>
+</section>
+
+<!-- Adicione mais seções de vídeo conforme necessário, ajustando os IDs e chamadas de função -->
+
+         <section class="video-section">
+            <h3 class="video-title">Vídeo teste pro site 10❤️ </h3>
+
+            <div class="video-container">
+                <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
+            </div>
+</div>
+            <div class="video-info-container">
+                <div class="channel-info">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                    <p class="channel-name">XTELL777</p>
+                </div>
+
+       </section>
+
+<div class="video-stats">
+    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
+    <p class="video-views" id="video-views-1">1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date">Publicado há 3 dias</p>
+    <p class="video-comments" id="video-comments">123 comentários</p>
+</div>
+            
+              <!-- Exemplo para o primeiro vídeo -->
+<section id="video10" class="video-section">
+    <!-- ... (conteúdo do vídeo) ... -->
+    <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('video10', 'thinking')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video10', 'heart')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video10', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video10', 'smirk')">🤬 Odiei</div>
+              
+   
+<!-- Adicione mais seções de vídeo conforme necessário, ajustando os IDs e chamadas de função -->
+
+        
+           
+            </div>
+<!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
+<script>
+    let videoReactionCounts = {};
+    let videoInteractionAllowed = {};
+
+    // Número de vídeos desejado
+    const numberOfVideos = 100;
+
+    for (let i = 1; i <= numberOfVideos; i++) {
+        const videoId = `video${i}`;
+        videoReactionCounts[videoId] = {
+            thinking: 999,
+            heart: 999,
+            devil: 999,
+            smirk: 999
+        };
+        videoInteractionAllowed[videoId] = true;
+    }
+
+    function handleVideoInteraction(videoId, type) {
+        if (videoInteractionAllowed[videoId]) {
+            videoReactionCounts[videoId][type]++;
+            updateReactionCounts(videoId);
+            videoInteractionAllowed[videoId] = false;
+        }
+    }
+
+    function updateReactionCounts(videoId) {
+        const thinkingButton = document.querySelector(`#${videoId} .interaction-button:nth-child(1)`);
+        const heartButton = document.querySelector(`#${videoId} .interaction-button:nth-child(2)`);
+        const devilButton = document.querySelector(`#${videoId} .interaction-button:nth-child(3)`);
+        const smirkButton = document.querySelector(`#${videoId} .interaction-button:nth-child(4)`);
+
+        thinkingButton.innerHTML = `👍🏻 Like (${videoReactionCounts[videoId].thinking})`;
+        heartButton.innerHTML = `👎🏻 Dislike (${videoReactionCounts[videoId].heart})`;
+        devilButton.innerHTML = `♥️ Amei (${videoReactionCounts[videoId].devil})`;
+        smirkButton.innerHTML = `🤬 Odiei (${videoReactionCounts[videoId].smirk})`;
+    }
+</script>
+
+<script>
+    function addComment() {
+        var newComment = document.getElementById("comment-text").value;
+        if (newComment !== "") {
+            var commentDiv = document.createElement("div");
+            commentDiv.className = "comment";
+            commentDiv.innerHTML = '<h3>Novo Usuário</h3><p>' + newComment + '</p>';
+            var commentList = document.getElementById("comment-list");
+            commentList.appendChild(commentDiv);
+            document.getElementById("comment-text").value = "";
+        }
+    }
+</script>
+<script>
+    // Função para verificar e atualizar as visualizações
+    function checkAndUpdateViews(videoId) {
+        const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
+
+        if (!viewedVideos[videoId]) {
+            // Se o vídeo não foi visualizado, incrementa o número de visualizações
+            const videoStatsElement = document.querySelector(`#${videoId} .video-stats p:first-child span`);
+            const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
+            const newViews = currentViews + 1;
+
+            // Atualiza a exibição no elemento HTML
+            videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
+
+            // Marca o vídeo como visualizado no Local Storage
+            viewedVideos[videoId] = true;
+            localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
+        }
+    }
+</script>
+<script>
+    // Chama a função para verificar e atualizar as visualizações do vídeo3
+    checkAndUpdateViews('video3');
+</script>
+<script>
+        function subscribeChannel() {
+            console.log("Você se inscreveu no canal!");
+        }
+
+        function showDescription() {
+            const description = document.querySelector('.video-description');
+            description.style.display = (description.style.display === 'none' || description.style.display === '') ? 'block' : 'none';
+        }
+
+        function shareVideo() {
+            console.log("Vídeo compartilhado!");
+        }
+    </script>
+<script>
+    let videoReactionCounts = {};
+    let videoInteractionAllowed = {};
+
+    // Número de vídeos desejado
+    const numberOfVideos = 100;
+
+    for (let i = 1; i <= numberOfVideos; i++) {
+        const videoId = `video${i}`;
+        videoReactionCounts[videoId] = {
+            thinking: 999,
+            heart: 999,
+            devil: 999,
+            smirk: 999
+        };
+        videoInteractionAllowed[videoId] = true;
+    }
+
+    function handleVideoInteraction(videoId, type) {
+        if (videoInteractionAllowed[videoId]) {
+            videoReactionCounts[videoId][type]++;
+            updateReactionCounts(videoId);
+            videoInteractionAllowed[videoId] = false;
+        }
+    }
+
+    function updateReactionCounts(videoId) {
+        const thinkingButton = document.querySelector(`#${videoId} .interaction-button:nth-child(1)`);
+        const heartButton = document.querySelector(`#${videoId} .interaction-button:nth-child(2)`);
+        const devilButton = document.querySelector(`#${videoId} .interaction-button:nth-child(3)`);
+        const smirkButton = document.querySelector(`#${videoId} .interaction-button:nth-child(4)`);
+
+        thinkingButton.innerHTML = `👍🏻 Like (${videoReactionCounts[videoId].thinking})`;
+        heartButton.innerHTML = `👎🏻 Dislike (${videoReactionCounts[videoId].heart})`;
+        devilButton.innerHTML = `♥️ Amei (${videoReactionCounts[videoId].devil})`;
+        smirkButton.innerHTML = `🤬 Odiei (${videoReactionCounts[videoId].smirk})`;
+    }
+</script>
+
+<script>
+    function addComment() {
+        var newComment = document.getElementById("comment-text").value;
+        if (newComment !== "") {
+            var commentDiv = document.createElement("div");
+            commentDiv.className = "comment";
+            commentDiv.innerHTML = '<h3>Novo Usuário</h3><p>' + newComment + '</p>';
+            var commentList = document.getElementById("comment-list");
+            commentList.appendChild(commentDiv);
+            document.getElementById("comment-text").value = "";
+        }
+    }
+</script>
+<script>
+    // Função para verificar e atualizar as visualizações
+    function checkAndUpdateViews(videoId) {
+        const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
+
+        if (!viewedVideos[videoId]) {
+            // Se o vídeo não foi visualizado, incrementa o número de visualizações
+            const videoStatsElement = document.querySelector(`#${videoId} .video-stats p:first-child span`);
+            const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
+            const newViews = currentViews + 1;
+
+            // Atualiza a exibição no elemento HTML
+            videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
+
+            // Marca o vídeo como visualizado no Local Storage
+            viewedVideos[videoId] = true;
+            localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
+        }
+    }
+</script>
+<script>
+    // Chama a função para verificar e atualizar as visualizações do vídeo3
+    checkAndUpdateViews('video3');
+</script>
+<script>
+        function subscribeChannel() {
+            console.log("Você se inscreveu no canal!");
+        }
+
+        function showDescription() {
+            const description = document.querySelector('.video-description');
+            description.style.display = (description.style.display === 'none' || description.style.display === '') ? 'block' : 'none';
+        }
+
+        function shareVideo() {
+            console.log("Vídeo compartilhado!");
+        }
+    
+
+
+    <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
+
+function updateSubscribersCount(count) {
+    const subscribersElement = document.getElementById('channel-subscribers');
+    subscribersElement.innerText = count.toLocaleString('pt-BR') + ' inscritos';
+}
+
+// Chame esta função quando precisar atualizar o número de subscrições
+// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
+updateSubscribersCount(500000);  // Substitua 500000 pelo número real de subscrições
+function subscribeChannel() {
+    // Simula um aumento no número de inscritos
+    const currentSubscribersCount = 500000;  // Substitua pelo número real de inscritos
+    const newSubscribersCount = currentSubscribersCount + 1;
+
+    // Atualiza o número de inscritos exibido
+    updateSubscribersCount(newSubscribersCount);
+
+    console.log("Você se inscreveu no canal!");
+}
+
+
+    function updateViewsCount(count) {
+    const viewsElement = document.getElementById('video-views');
+    viewsElement.innerText = count.toLocaleString('pt-BR') + ' views';
+}
+
+// Chame esta função quando precisar atualizar o número de visualizações
+// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
+updateViewsCount(1234568);  // Substitua 1234568 pelo número real de visualizações
+      
+
+function checkAndUpdateViews(videoId) {
+    const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
+
+    if (!viewedVideos[videoId]) {
+        // Se o vídeo não foi visualizado, incrementa o número de visualizações
+        const videoStatsElement = document.querySelector(`#${videoId} .video-stats p:first-child span`);
+        const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
+        const newViews = currentViews + 1;
+
+        // Atualiza a exibição no elemento HTML
+        videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
+
+        // Atualiza o número total de visualizações
+        updateViewsCount(newViews);
+
+        // Marca o vídeo como visualizado no Local Storage
+        viewedVideos[videoId] = true;
+        localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
+    }
+}
+
+// Chama a função para verificar e atualizar as visualizações do vídeo3
+checkAndUpdateViews('video3');
+
+
+function updateCommentsCount(count) {
+    const commentsElement = document.getElementById('video-comments');
+    commentsElement.innerText = count.toLocaleString('pt-BR') + ' comentários';
+}
+
+// Chame esta função quando precisar atualizar o número de comentários
+// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
+updateCommentsCount(124);  // Substitua 124 pelo número real de comentários
+
+
+function addComment() {
+    var newComment = document.getElementById("comment-text").value;
+    if (newComment !== "") {
+        // Se o novo comentário for adicionado com sucesso
+        // Simule um aumento no número de comentários
+        const currentCommentsCount = 124;  // Substitua pelo número real de comentários
+        const newCommentsCount = currentCommentsCount + 1;
+
+        // Atualiza o número de comentários exibido
+        updateCommentsCount(newCommentsCount);
+
+        // ... restante do código para adicionar o comentário
+    }
+}
+
+function updatePublishDate(date) {
+    const publishDateElement = document.getElementById('video-publish-date');
+    publishDateElement.innerText = 'Publicado ' + date;
+}
+
+function updateCommentsCount(count) {
+    const commentsCountElement = document.getElementById('video-comments-count');
+    commentsCountElement.innerText = count.toLocaleString('pt-BR') + ' comentários';
+}
+
+// Chame estas funções quando precisar atualizar as informações
+// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
+
+// Substitua 'há 3 dias' pela data real de publicação do vídeo
+updatePublishDate('há 3 dias');
+
+// Substitua 123 pelo número real de comentários
+updateCommentsCount(123);
+
+function subscribeChannel() {
+    // Simula um novo vídeo sendo publicado
+    const newPublishDate = 'há 1 dia';  // Substitua pela data real
+    const newCommentsCount = 124;  // Substitua pelo número real de comentários
+
+    // Atualiza as informações de data de publicação e contagem de comentários
+    updatePublishDate(newPublishDate);
+    updateCommentsCount(newCommentsCount);
+
+    // Simula um aumento no número de inscritos
+    const currentSubscribersCount = 500000;  // Substitua pelo número real de inscritos
+    const newSubscribersCount = currentSubscribersCount + 1;
+
+    // Atualiza o número de inscritos exibido
+    updateSubscribersCount(newSubscribersCount);
+
+    console.log("Você se inscreveu no canal!");
+}
+
+
+</script>
+
+<script>
+    function addComment() {
+        var newComment = document.getElementById("comment-text").value;
+        if (newComment !== "") {
+            var commentDiv = document.createElement("div");
+            commentDiv.className = "comment";
+            commentDiv.innerHTML = '<h3>Novo Usuário</h3><p>' + newComment + '</p>';
+            var commentList = document.getElementById("comment-list");
+            commentList.appendChild(commentDiv);
+            document.getElementById("comment-text").value = "";
+        }
+    }
+</script>
+
+<script>
+    function toggleComments() {
+        const commentsSection = document.querySelector('.comments-section');
+        commentsSection.style.display = (commentsSection.style.display === 'none' || commentsSection.style.display === '') ? 'block' : 'none';
+    }
+</script>
+
+    <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
+
+
+
+           
+</body>
+</html>
