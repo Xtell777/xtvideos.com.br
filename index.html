@@ -287,10 +287,232 @@ footer a:hover {
         <a class="vip" href="vip.html">VIP</a>
     </nav>
 
-    <div id="search-bar">
-        <input type="text" placeholder="🔍Pesquisar vídeos">
-        <button>Buscar</button>
-    </div>
+    <!-- Carregar a biblioteca de ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Carregar o script para o reconhecimento de voz -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+
+<!-- A barra de pesquisa -->
+<div id="search-bar">
+  <!-- O campo de texto com o atributo x-webkit-speech para ativar o reconhecimento de voz -->
+  <input type="text" id="search-input" placeholder="🔍Pesquisar vídeos" x-webkit-speech>
+  <!-- O botão de buscar que executa uma função JavaScript -->
+  <button id="search-button" onclick="search()">Buscar</button>
+  <!-- O botão de áudio que toca um som e ativa o reconhecimento de voz -->
+  <button id="audio-button" onclick="playAudio()"><i class="fa fa-microphone"></i></button>
+</div>
+
+<!-- O elemento de áudio que contém o som do botão -->
+<audio id="audio-element" src="button-sound.mp3"></audio>
+
+<!-- O script que define as funções JavaScript -->
+<script>
+  // A função que toca o som do botão e ativa o reconhecimento de voz
+  function playAudio() {
+    // Obter o elemento de áudio pelo id
+    var audio = document.getElementById("audio-element");
+    // Tocar o som
+    audio.play();
+    // Verificar se o reconhecimento de voz está disponível
+    if (annyang) {
+      // Definir a língua para português
+      annyang.setLanguage("pt-BR");
+      // Definir o comando para pesquisar o que o usuário falar
+      var commands = {
+        "*term": function(term) {
+          // Obter o campo de texto pelo id
+          var input = document.getElementById("search-input");
+          // Colocar o termo falado no campo de texto
+          input.value = term;
+          // Executar a função de buscar
+          search();
+        }
+      };
+      // Adicionar o comando ao reconhecimento de voz
+      annyang.addCommands(commands);
+      // Iniciar o reconhecimento de voz
+      annyang.start();
+    }
+  }
+
+  // A função que busca o que o usuário digitar ou falar
+  function search() {
+    // Obter o campo de texto pelo id
+    var input = document.getElementById("search-input");
+    // Obter o valor do campo de texto
+    var query = input.value;
+    // Verificar se o valor não está vazio
+    if (query) {
+      // Redirecionar para a página de resultados de pesquisa com o valor como parâmetro
+      window.location.href = "search.html?q=" + query;
+    }
+  }
+
+// Obter o elemento input da área de pesquisa pelo id e armazenar em uma variável
+var input = document.getElementById("myInput");
+// Adicionar um evento de keyup ao elemento input para executar uma função sempre que o usuário digitar algo
+input.addEventListener("keyup", function() {
+  // Obter o valor do elemento input e converter para letras maiúsculas para uma comparação sem distinção entre maiúsculas e minúsculas
+  var filter = input.value.toUpperCase();
+  // Obter o elemento ul que contém os itens da lista pelo id e armazenar em uma variável
+  var ul = document.getElementById("myUL");
+  // Obter todos os elementos li da lista e armazenar em uma variável
+  var li = ul.getElementsByTagName("li");
+  // Percorrer todos os elementos li
+  for (var i = 0; i < li.length; i++) {
+    // Obter o elemento a de cada elemento li
+    var a = li[i].getElementsByTagName("a")[0];
+    // Obter o texto do elemento a
+    var txtValue = a.textContent || a.innerText;
+    // Verificar se o texto contém o valor do elemento input
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      // Se sim, mostrar o elemento li
+      li[i].style.display = "";
+    } else {
+      // Se não, esconder o elemento li
+      li[i].style.display = "none";
+    }
+  }
+});
+// Na página da área de pesquisa
+// Obter o elemento input da área de pesquisa pelo id e armazenar em uma variável
+var input = document.getElementById("search-bar");
+// Adicionar um evento de keypress ao elemento input para executar uma função quando o usuário pressionar a tecla Enter
+input.addEventListener("keypress", function(event) {
+  // Verificar se a tecla pressionada é Enter
+  if (event.keyCode === 13) {
+    // Obter o valor do elemento input e verificar se não está vazio
+    var query = input.value;
+    if (query) {
+      // Redirecionar para a página de resultados de pesquisa com o valor como parâmetro
+      window.location.href = "search.html?q=" + query;
+    }
+  }
+});
+
+// Na página de resultados de pesquisa
+// Obter o parâmetro da URL e armazenar em uma variável
+var urlParams = new URLSearchParams(window.location.search);
+var query = urlParams.get("q");
+// Cria um array de objetos que representam os vídeos, com as propriedades title, src, img, channel, subscribers, views, date, comments e id
+var videos = [
+  {
+    title: "Vídeo teste pro site 1❤️",
+    src: "https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3",
+    img: "https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a",
+    channel: "XTELL777",
+    subscribers: "500.000",
+    views: "1.234.567",
+    date: "Publicado há 3 dias",
+    comments: "123",
+    id: "video1"
+  },
+  // Adicione mais objetos de vídeo aqui
+];
+// Obter o elemento div que contém os resultados de pesquisa pelo id e armazenar em uma variável
+var results = document.getElementById("results");
+// Percorrer o array de vídeos
+for (var i = 0; i < videos.length; i++) {
+  // Obter o objeto de vídeo atual
+  var video = videos[i];
+  // Verificar se o título do vídeo contém o parâmetro da URL
+  if (video.title.toUpperCase().indexOf(query.toUpperCase()) > -1) {
+    // Criar um elemento section para o vídeo e armazenar em uma variável
+    var section = document.createElement("section");
+    // Adicionar a classe video-section ao elemento section
+    section.classList.add("video-section");
+    // Adicionar o id do vídeo ao elemento section
+    section.id = video.id;
+    // Criar o HTML com as informações do vídeo e armazenar em uma variável
+    var html = `
+      <h3 class="video-title">${video.title}</h3>
+      <div class="video-container">
+        <iframe src="${video.src}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-info-container">
+        <div class="channel-info">
+          <img src="${video.img}" alt="Imagem do canal" class="channel-image">
+          <p class="channel-name">${video.channel}</p>
+        </div>
+      </div>
+      <div class="video-stats">
+        <p class="channel-subscribers" id="channel-subscribers-${video.id}">${video.subscribers} inscritos</p>
+        <p class="video-views" id="video-views-${video.id}">${video.views} views</p>
+        <p class="video-publish-date" id="video-publish-date-${video.id}">${video.date}</p>
+        <p class="video-comments" id="video-comments-${video.id}">${video.comments} comentários</p>
+      </div>
+      <div class="interaction-bar">
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'like')">👍🏻 Like</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'dislike')">👎🏻 Dislike</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'love')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('${video.id}', 'hate')">🤬 Odiei</div>
+      </div>
+    `;
+    // Colocar o HTML dentro do elemento section
+    section.innerHTML = html;
+    // Adicionar o elemento section ao elemento div dos resultados de pesquisa
+    results.appendChild(section);
+  }
+}
+
+// A função que atualiza as estatísticas do vídeo de acordo com a interação do usuário
+function handleVideoInteraction(videoId, interaction) {
+  // Obter os elementos que mostram as estatísticas do vídeo pelo id e armazenar em variáveis
+  var subscribers = document.getElementById("channel-subscribers-" + videoId);
+  var views = document.getElementById("video-views-" + videoId);
+  var comments = document.getElementById("video-comments-" + videoId);
+  // Converter os textos dos elementos em números e armazenar em variáveis
+  var subscribersCount = parseInt(subscribers.textContent.replace(".", ""));
+  var viewsCount = parseInt(views.textContent.replace(".", ""));
+  var commentsCount = parseInt(comments.textContent);
+  // Verificar qual foi a interação do usuário e atualizar as estatísticas de acordo
+  switch (interaction) {
+    case "like":
+      // Aumentar o número de inscritos em 1
+      subscribersCount++;
+      // Aumentar o número de views em 10
+      viewsCount += 10;
+      // Aumentar o número de comentários em 1
+      commentsCount++;
+      break;
+    case "dislike":
+      // Diminuir o número de inscritos em 1
+      subscribersCount--;
+      // Diminuir o número de views em 10
+      viewsCount -= 10;
+      // Diminuir o número de comentários em 1
+      commentsCount--;
+      break;
+    case "love":
+      // Aumentar o número de inscritos em 10
+      subscribersCount += 10;
+      // Aumentar o número de views em 100
+      viewsCount += 100;
+      // Aumentar o número de comentários em 10
+      commentsCount += 10;
+      break;
+    case "hate":
+      // Diminuir o número de inscritos em 10
+      subscribersCount -= 10;
+      // Diminuir o número de views em 100
+      viewsCount -= 100;
+      // Diminuir o número de comentários em 10
+      commentsCount -= 10;
+      break;
+  }
+  // Formatar os números com pontos para separar os milhares e armazenar em variáveis
+  var subscribersFormatted = subscribersCount.toLocaleString("pt-BR");
+  var viewsFormatted = viewsCount.toLocaleString("pt-BR");
+  var commentsFormatted = commentsCount.toLocaleString("pt-BR");
+  // Colocar os números formatados nos elementos que mostram as estatísticas do vídeo
+  subscribers.textContent = subscribersFormatted + " inscritos";
+  views.textContent = viewsFormatted + " views";
+  comments.textContent = commentsFormatted + " comentários";
+}
+
+</script>
+
 
     <main>
         <section class="video-section">
