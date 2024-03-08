@@ -265,6 +265,122 @@ footer a:hover {
   background-color: #ff0000; /* define a cor de fundo para o link ativo */
 }
 
+/* Estilo para a seção de comentários */
+.comments-section {
+    display: none; /* Por padrão, a seção de comentários está oculta */
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    color: #ff0000;
+}
+
+.comment-list {
+    margin-top: 10px;
+}
+
+.comment {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-content {
+    margin-left: 50px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #000000;
+}
+
+.comment-text {
+    color: #333333;
+}
+
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-input {
+    width: calc(100% - 100px);
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.comment-button {
+    width: 80px;
+    padding: 8px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-button:hover {
+    background-color: #cc0000;
+}
+
+
+/* Estilo para a barra de interação */
+.interaction-bar {
+    margin-top: 10px;
+}
+
+/* Estilo para os botões de interação */
+.interaction-button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-right: 10px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.interaction-button:hover {
+    background-color: #cc0000;
+}
+
+/* Estilo para o cabeçalho */
+header {
+    background-color: #ff0000; /* Vermelho */
+    color: #ffffff; /* Branco */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #000000; /* Preto */
+    color: #ffffff; /* Branco */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo para os links do rodapé */
+footer a {
+    color: #ffffff; /* Branco */
+    text-decoration: none;
+}
+
+/* Estilo para os links do rodapé quando hover */
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
     </style>
 </head>
 
@@ -511,8 +627,7 @@ function handleVideoInteraction(videoId, interaction) {
   comments.textContent = commentsFormatted + " comentários";
 }
 
-</script>
-
+</script> 
 
     <main>
         <section class="video-section">
@@ -526,7 +641,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
         </section>
 
 <div class="video-stats">
@@ -542,7 +660,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video1', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video1', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video1', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video1', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video1', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -558,7 +676,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
        </section>
 
 <div class="video-stats">
@@ -574,7 +695,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video2', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video2', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video2', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -590,7 +711,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
         </section>
 
 <div class="video-stats">
@@ -606,7 +730,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video3', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video3', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video3', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -624,11 +748,14 @@ function handleVideoInteraction(videoId, interaction) {
                 <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
             </div>
 </div>
-            <div class="video-info-container">
+            <<div class="video-info-container">
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
         </section>
 
 <div class="video-stats">
@@ -644,7 +771,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video4', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video4', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video4', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -657,11 +784,14 @@ function handleVideoInteraction(videoId, interaction) {
                 <iframe src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/285598f2-2920-4475-b7db-3df06d0fcff3" frameborder="0" allowfullscreen></iframe>
             </div>
 </div>
-            <div class="video-info-container">
+           <div class="video-info-container">
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
         </section>
 
 <div class="video-stats">
@@ -677,7 +807,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video5', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video5', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video5', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video5', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video5', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -693,7 +823,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
         </section>
 
 <div class="video-stats">
@@ -709,7 +842,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video6', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video6', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video6', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video6', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video6', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -726,7 +859,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
         </section>
 
 <div class="video-stats">
@@ -742,7 +878,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video7', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video7', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video7', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video7', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video7', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -759,7 +895,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
 
         </section>
 
@@ -776,7 +915,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video8', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video8', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video8', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video8', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video8', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -793,7 +932,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
 
         </section>
 
@@ -810,7 +952,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video9', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video9', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video9', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video9', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video9', 'smirk')">🤬 Odiei</div>
     </div>
 </section>
@@ -828,7 +970,10 @@ function handleVideoInteraction(videoId, interaction) {
                 <div class="channel-info">
                     <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
                     <p class="channel-name">XTELL777</p>
-                </div>
+                <div class="subscribe-button" onclick="subscribeChannel()">
+    <span>Inscreva-se</span>
+    <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+</div>
 
        </section>
 
@@ -845,7 +990,7 @@ function handleVideoInteraction(videoId, interaction) {
     <div class="interaction-bar">
         <div class="interaction-button" onclick="handleVideoInteraction('video10', 'thinking')">👍🏻 Like</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video10', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video10', 'devil')">♥️ Amei</div>
+        <div class="interaction-button" onclick="handleVideoInteraction('video10', 'devil')">😍 Amei</div>
         <div class="interaction-button" onclick="handleVideoInteraction('video10', 'smirk')">🤬 Odiei</div>
               
    
@@ -886,7 +1031,7 @@ function handleVideoInteraction(videoId, interaction) {
 
         thinkingButton.innerHTML = `👍🏻 Like (${videoReactionCounts[videoId].thinking})`;
         heartButton.innerHTML = `👎🏻 Dislike (${videoReactionCounts[videoId].heart})`;
-        devilButton.innerHTML = `♥️ Amei (${videoReactionCounts[videoId].devil})`;
+        devilButton.innerHTML = `😍 Amei (${videoReactionCounts[videoId].devil})`;
         smirkButton.innerHTML = `🤬 Odiei (${videoReactionCounts[videoId].smirk})`;
     }
 
@@ -977,5 +1122,6 @@ updateVideoStats();
     </footer>
 
     <!-- Seu código JavaScript existente ... -->
+    
 </body>
 </html>
