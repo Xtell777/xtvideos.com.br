@@ -36,6 +36,8 @@
                 <input type="text" id="title" name="title" required>
                 <label for="description">Descrição do arquivo:</label>
                 <textarea id="description" name="description"></textarea>
+                <label for="video_url">URL do vídeo (caso já hospedado):</label>
+                <input type="url" id="video_url" name="video_url">
                 <button type="button" id="upload-button">Enviar</button>
             </form>
             <progress id="upload-progress" value="0" max="100" style="display: none;"></progress>
@@ -50,3 +52,4 @@
     <script src="scripts.js"></script>
 </body>
 </html>
+
