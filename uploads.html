@@ -48,8 +48,28 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="scripts.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  // Função para enviar o formulário via AJAX
+  function enviarFormulario() {
+    // Recolher os dados do formulário
+    var formData = new FormData();
+    var fileInput = document.getElementById('file');
+    formData.append('file', fileInput.files[0]);
+
+    // Fazer a requisição AJAX
+    axios.post('arquivo.php', formData)
+      .then(function (response) {
+        // Manipular a resposta do servidor
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // Manipular erros
+        console.error('Erro ao enviar arquivo:', error);
+      });
+  }
+</script>
+<script src="scripts.js"></script>
 </body>
 </html>
 
