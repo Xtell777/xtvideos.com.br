@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOU WEB</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       /* Reset padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #fff;
+    color: #606060;
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav {
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: #606060;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+#search-bar {
+    background-color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+#search-bar input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+#search-bar button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
+}
+
+.video-section {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.video-title {
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.channel-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.channel-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.channel-name {
+    margin: 0;
+    font-weight: bold;
+}
+
+.video-stats {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.interaction-bar {
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+}
+
+.interaction-button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: #fff;
+    color: #606060;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.interaction-button:hover {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+footer {
+    background-color: #fff;
+    color: #606060;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+}
+/* Estilos para os vídeos */
+.video-section {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.video-title {
+    font-size: 18px;
+    color: #333;
+    padding: 15px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.video-rating {
+    font-size: 14px;
+    color: #666;
+    padding: 15px;
+    margin: 0;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Proporção de 16:9 (para vídeos do YouTube) */
+}
+
+.video-container iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* Estilos para estatísticas do vídeo */
+.video-stats,
+.interaction-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.video-stats p,
+.interaction-buttons button {
+    margin: 5px;
+    padding: 8px 8px;
+    border-radius: 20px;
+}
+
+.interaction-buttons button {
+    cursor: pointer;
+}
+
+.interaction-buttons button:hover {
+    background-color: #ddd;
+}
+
+.interaction-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.interaction-button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.interaction-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o cabeçalho */
+header {
+    background-color: #ff0000; /* Vermelho */
+    color: #ffffff; /* Branco */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #000000; /* Preto */
+    color: #ffffff; /* Branco */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo para os links do rodapé */
+footer a {
+    color: #ffffff; /* Branco */
+    text-decoration: none;
+}
+
+/* Estilo para os links do rodapé quando hover */
+footer a:hover {
+    text-decoration: underline;
+}
+/* Estilo para os botões adicionais */
+.interaction-bar .interaction-button.small {
+    font-size: 18px; /* Tamanho do emoji */
+    padding: 6px 10px; /* Espaçamento interno dos botões */
+    background-color: #ffcc00; /* Cor de fundo dos botões */
+    color: #333; /* Cor do texto dos botões */
+    border: none; /* Remover borda */
+    border-radius: 4px; /* Borda arredondada */
+    cursor: pointer; /* Cursor ao passar por cima */
+    transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+.interaction-bar .interaction-button.small:hover {
+    background-color: #ffd633; /* Cor de fundo dos botões ao passar por cima */
+}
+
+.interaction-bar {
+  background-color: #f2f2f2; /* Cor de fundo da barra */
+  padding: 10px; /* Espaçamento interno */
+  border-bottom: 1px solid #e1e1e1; /* Borda inferior */
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>YOU WEB</h1>
+    </header>
+
+    
+
+     
+<!-- Carregar a biblioteca de ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Carregar o script para o reconhecimento de voz -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+
+<!-- A barra de pesquisa -->
+<div id="search-bar">
+  <!-- O campo de texto com o atributo x-webkit-speech para ativar o reconhecimento de voz -->
+  <input type="text" id="search-input" placeholder="🔍Pesquisar vídeos" x-webkit-speech>
+  <!-- O botão de buscar que executa uma função JavaScript -->
+  <button id="search-button" onclick="search()">Buscar</button>
+  <!-- O botão de áudio que toca um som e ativa o reconhecimento de voz -->
+  <button id="audio-button" onclick="playAudio()"><i class="fa fa-microphone"></i></button>
+</div>
+
+<!-- O elemento de áudio que contém o som do botão -->
+<audio id="audio-element" src="button-sound.mp3"></audio>
+
+<!-- O script que define as funções JavaScript -->
+<script>
+  // A função que toca o som do botão e ativa o reconhecimento de voz
+  function playAudio() {
+    var audio = document.getElementById("audio-element");
+    audio.play();
+    if (annyang) {
+      annyang.setLanguage("pt-BR");
+      var commands = {
+        "*term": function(term) {
+          document.getElementById("search-input").value = term;
+          search();
+        }
+      };
+      annyang.addCommands(commands);
+      annyang.start();
+    }
+  }
+
+  // A função que busca o que o usuário digitar ou falar
+  function search() {
+    var input = document.getElementById("search-input");
+    var query = input.value;
+    if (query) {
+      window.location.href = "search.html?q=" + encodeURIComponent(query);
+    }
+  }
+</script>
+
+<!-- O script para filtrar os resultados de pesquisa -->
+<script>
+  // Adicionar um evento de keyup ao elemento input para filtrar os resultados
+  document.getElementById("search-input").addEventListener("keyup", function() {
+    var filter = this.value.toUpperCase();
+    var ul = document.getElementById("myUL");
+    var li = ul.getElementsByTagName("li");
+    for (var i = 0; i < li.length; i++) {
+      var a = li[i].getElementsByTagName("a")[0];
+      var txtValue = a.textContent || a.innerText;
+      li[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+    }
+  });
+</script>
+
+    <!-- Aqui vão os vídeos e suas informações -->
+    <main>
+    <!-- Vídeo 1 -->
+    
+</main>
+
+<!-- JavaScript para interagir com os vídeos -->
+<script>
+    // Funções JavaScript para interagir com os vídeos
+    // Implemente conforme necessário
+    function handleVideoInteraction(videoId, type) {
+        // Lógica para interagir com o vídeo (like, dislike, etc.)
+    }
+
+    // Mais funções JavaScript, se necessário
+</script>
+
+
+
+        <!-- Você pode adicionar mais vídeos seguindo a mesma estrutura -->
+
+    </main>
+
+    <!-- Rodapé -->
+    
+
+    
