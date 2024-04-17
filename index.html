@@ -859,6 +859,11 @@ body {
   font-weight: bold; /* Negrito para destacar */
 }
 
+.interaction-button {
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+}
+
+
     </style>
 </head>
 
@@ -984,11 +989,13 @@ body {
 
 <div class="interaction-bar">
     <div class="interaction-buttons">
-        <button class="interaction-button small" onclick="reportVideo('video1')">🚫 Denunciar</button>
+        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
+        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
         <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
         <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
     </div>
 </div>
+
 
 <div class="interaction-bar">
     <div class="interaction-buttons">
@@ -1122,14 +1129,15 @@ https://www.youtube.com/@XTELL777
         <div class="interaction-button" onclick="handleVideoInteraction('video2', 'smirk')">🤬 Odiei</div>
     </div>
 </section>  
-
 <div class="interaction-bar">
     <div class="interaction-buttons">
-        <button class="interaction-button small" onclick="reportVideo('video2')">🚫 Denunciar</button>
-        <button class="interaction-button small" onclick="shareVideo('video2')">📤 Compartilhar</button>
-        <button class="interaction-button small" onclick="downloadVideo('video2')">⬇️ Download</button>
+        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
+        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
+        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
+        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
     </div>
 </div>
+
 
 
 
@@ -1176,11 +1184,13 @@ https://www.youtube.com/@XTELL777
 
 <div class="interaction-bar">
     <div class="interaction-buttons">
-        <button class="interaction-button small" onclick="reportVideo('video3')">🚫 Denunciar</button>
-        <button class="interaction-button small" onclick="shareVideo('video3')">📤 Compartilhar</button>
-        <button class="interaction-button small" onclick="downloadVideo('video3')">⬇️ Download</button>
+        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
+        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
+        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
+        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
     </div>
 </div>
+
 
 
  <section class="video-section">
@@ -1225,6 +1235,14 @@ https://www.youtube.com/@XTELL777
 </section>  
 
 
+<div class="interaction-bar">
+    <div class="interaction-buttons">
+        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
+        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
+        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
+        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
+    </div>
+</div>
 
  
 <!-- Adicione mais seções de vídeo conforme necessário, ajustando os IDs e chamadas de função -->
@@ -1807,7 +1825,7 @@ function subscribeChannel() {
         const commentsElement = document.querySelector(`#${videoId} .video-comments`);
 
         // Atualiza os números com base nos IDs
-        subscribersElement.innerText = "600.000 inscritos"; // Exemplo: atualiza o número de inscritos
+        subscribersElement.innerText = "500.000 inscritos"; // Exemplo: atualiza o número de inscritos
         viewsElement.innerText = "1.345.678 views"; // Exemplo: atualiza o número de visualizações
         publishDateElement.innerText = "Publicado há 4 dias"; // Exemplo: atualiza a data de publicação
         commentsElement.innerText = "234 comentários"; // Exemplo: atualiza o número de comentários
@@ -1844,7 +1862,7 @@ function subscribeChannel() {
         const commentsElement = document.querySelector(`#${videoId} .video-comments`);
 
         // Atualiza os números com base nos IDs
-        subscribersElement.innerText = "600.000 inscritos"; // Exemplo: atualiza o número de inscritos
+        subscribersElement.innerText = "500.000 inscritos"; // Exemplo: atualiza o número de inscritos
         viewsElement.innerText = "1.345.678 views"; // Exemplo: atualiza o número de visualizações
         publishDateElement.innerText = "Publicado há 4 dias"; // Exemplo: atualiza a data de publicação
         commentsElement.innerText = "234 comentários"; // Exemplo: atualiza o número de comentários
@@ -1963,6 +1981,74 @@ function toggleMenu() {
 
      
       </script>
+
+
+      <script>
+function shareVideo() {
+    // Capturar o URL do vídeo da página
+    var videoUrl = window.location.href;
+
+    // Verificar se o navegador suporta a API de compartilhamento
+    if (navigator.share) {
+        // Compartilhar usando a API de compartilhamento
+        navigator.share({
+            title: document.title,
+            text: "Confira este vídeo!",
+            url: videoUrl,
+        })
+        .then(() => console.log('Vídeo compartilhado com sucesso.'))
+        .catch((error) => console.error('Erro ao compartilhar vídeo:', error));
+    } else {
+        // Abrir uma janela para compartilhar manualmente
+        var shareUrl = "mailto:?subject=" + encodeURIComponent(document.title) + "&body=Confira este vídeo: " + videoUrl;
+        window.open(shareUrl, '_blank');
+    }
+}
+
+
+
+      </script>
+
+
+
+      <script>
+
+function downloadVideoFromPage() {
+    // Encontra todos os elementos de vídeo na página
+    var videoElements = document.querySelectorAll('video');
+
+    // Verifica se há pelo menos um elemento de vídeo na página
+    if (videoElements.length > 0) {
+        // Obtém o URL do primeiro vídeo encontrado
+        var videoUrl = videoElements[0].src;
+
+        // Chama a função para iniciar o download do vídeo
+        downloadVideo(videoUrl);
+    } else {
+        console.error('Nenhum elemento de vídeo encontrado na página.');
+    }
+}
+
+// Função para iniciar o download do vídeo a partir de uma URL específica
+function downloadVideo(videoUrl) {
+    var a = document.createElement('a');
+    a.href = videoUrl;
+    a.download = 'video.mp4';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+// Exemplo de uso da função para capturar dinamicamente o URL do vídeo da página e iniciar o download
+downloadVideoFromPage();
+
+
+
+      </script>
+
+
+
+
 <header>
         <h1>YOU WEB</h1>
     </header>

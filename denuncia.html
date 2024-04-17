@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denúncia de Conteúdo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        label, textarea, input[type="text"], input[type="email"] {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Denúncia de Conteúdo</h2>
+        <form id="reportForm" action="/submit_report" method="post">
+            <label for="username">Nome do Usuário:</label>
+            <input type="text" id="username" name="username">
+
+            <label for="email">E-mail de Contato:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="emailError"></span>
+
+            <label for="video_url">Link do Vídeo ou Conteúdo:</label>
+            <input type="url" id="video_url" name="video_url" required>
+            <span class="error" id="videoUrlError"></span>
+
+            <label for="problem_description">Descrição do Problema:</label>
+            <textarea id="problem_description" name="problem_description" required></textarea>
+            <span class="error" id="problemDescriptionError"></span>
+
+            <h3>Natureza da Denúncia:</h3>
+            <input type="checkbox" id="inappropriate_content" name="nature" value="inappropriate_content">
+            <label for="inappropriate_content">Conteúdo Inapropriado</label><br>
+            <input type="checkbox" id="copyright_violation" name="nature" value="copyright_violation">
+            <label for="copyright_violation">Violação de Direitos Autorais</label><br>
+            <input type="checkbox" id="hate_speech" name="nature" value="hate_speech">
+            <label for="hate_speech">Discurso de Ódio</label><br>
+            <input type="checkbox" id="harassment_bullying" name="nature" value="harassment_bullying">
+            <label for="harassment_bullying">Assédio ou Bullying</label><br>
+            <input type="checkbox" id="spam_deceptive" name="nature" value="spam_deceptive">
+            <label for="spam_deceptive">Spam ou Enganoso</label><br>
+            <input type="checkbox" id="other" name="nature" value="other">
+            <label for="other">Outro</label><br>
+
+            <label for="additional_details">Detalhes Adicionais:</label>
+            <textarea id="additional_details" name="additional_details"></textarea>
+
+            <p><input type="checkbox" id="confirmation" name="confirmation" required>
+            <label for="confirmation">Ao enviar este formulário, você confirma que as informações fornecidas são precisas e que a denúncia é feita de boa fé.</label></p>
+
+            <button type="button" onclick="submitForm()">Enviar Denúncia</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Limpar mensagens de erro
+            document.getElementById('emailError').innerText = '';
+            document.getElementById('videoUrlError').innerText = '';
+            document.getElementById('problemDescriptionError').innerText = '';
+
+            // Validar campos
+            var email = document.getElementById('email').value.trim();
+            var videoUrl = document.getElementById('video_url').value.trim();
+            var problemDescription = document.getElementById('problem_description').value.trim();
+            var confirmation = document.getElementById('confirmation').checked;
+            var isValid = true;
+
+            if (!email) {
+                isValid = false;
+                document.getElementById('emailError').innerText = 'Por favor, insira seu e-mail de contato.';
+            }
+
+            if (!videoUrl) {
+                isValid = false;
+                document.getElementById('videoUrlError').innerText = 'Por favor, insira a URL do vídeo ou conteúdo.';
+            }
+
+            if (!problemDescription) {
+                isValid = false;
+                document.getElementById('problemDescriptionError').innerText = 'Por favor, descreva o problema.';
+            }
+
+            if (!confirmation) {
+                isValid = false;
+                alert('Você deve confirmar que as informações fornecidas são precisas e que a denúncia é feita de boa fé.');
+            }
+
+            // Enviar formulário se válido
+            if (isValid) {
+                document.getElementById('reportForm').submit();
+            }
+        }
+    </script>
+</body>
+</html>
