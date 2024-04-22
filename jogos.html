@@ -885,71 +885,22 @@ body {
     </nav>
 
     
+<div style="text-align: center;">
+    <!-- Seção de arquivos enviados -->
+    <div id="uploaded-container">
+        <h2>Jogos</h2>
+        <div id="uploaded-files">
+            <!-- Arquivos enviados serão exibidos aqui -->
+        </div>
+    </div>
 
+    <!-- Seção de vídeos -->
+    <div id="videos-container">
+        <!-- Vídeos serão exibidos aqui -->
+    </div>
+</div>
     
 
-<!-- Carregar a biblioteca de ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Carregar o script para o reconhecimento de voz -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
-
-<!-- A barra de pesquisa -->
-<div id="search-bar">
-  <!-- O campo de texto com o atributo x-webkit-speech para ativar o reconhecimento de voz -->
-  <input type="text" id="search-input" placeholder="🔍Pesquisar vídeos" x-webkit-speech>
-  <!-- O botão de buscar que executa uma função JavaScript -->
-  <button id="search-button" onclick="search()">Buscar</button>
-  <!-- O botão de áudio que toca um som e ativa o reconhecimento de voz -->
-  <button id="audio-button" onclick="playAudio()"><i class="fa fa-microphone"></i></button>
-</div>
-
-<!-- O elemento de áudio que contém o som do botão -->
-<audio id="audio-element" src="button-sound.mp3"></audio>
-
-<!-- O script que define as funções JavaScript -->
-<script>
-  // A função que toca o som do botão e ativa o reconhecimento de voz
-  function playAudio() {
-    var audio = document.getElementById("audio-element");
-    audio.play();
-    if (annyang) {
-      annyang.setLanguage("pt-BR");
-      var commands = {
-        "*term": function(term) {
-          document.getElementById("search-input").value = term;
-          search();
-        }
-      };
-      annyang.addCommands(commands);
-      annyang.start();
-    }
-  }
-
-  // A função que busca o que o usuário digitar ou falar
-  function search() {
-    var input = document.getElementById("search-input");
-    var query = input.value;
-    if (query) {
-      window.location.href = "search.html?q=" + encodeURIComponent(query);
-    }
-  }
-</script>
-
-<!-- O script para filtrar os resultados de pesquisa -->
-<script>
-  // Adicionar um evento de keyup ao elemento input para filtrar os resultados
-  document.getElementById("search-input").addEventListener("keyup", function() {
-    var filter = this.value.toUpperCase();
-    var ul = document.getElementById("myUL");
-    var li = ul.getElementsByTagName("li");
-    for (var i = 0; i < li.length; i++) {
-      var a = li[i].getElementsByTagName("a")[0];
-      var txtValue = a.textContent || a.innerText;
-      li[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-    }
-  });
-</script>
 
 
    
