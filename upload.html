@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net You Stream - Envio de Arquivos</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Adicione a biblioteca de ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#upload-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px #ccc;
+}
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#upload-form label {
+    margin-bottom: 10px;
+}
+
+#upload-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#upload-form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+#upload-form button {
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#uploaded-files {
+    margin-top: 20px;
+}
+
+#uploaded-files img {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 576px) {
+    #upload-form input, #upload-form textarea {
+        width: 100%;
+    }
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0 20px;
+}
+
+#upload-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#upload-container h2 {
+    margin-top: 0;
+}
+
+#upload-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#upload-form input[type="file"],
+#upload-form input[type="text"],
+#upload-form textarea,
+#upload-form input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+#upload-form button {
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#upload-form button:hover {
+    background-color: #cc0000;
+}
+
+#upload-progress {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#upload-message {
+    margin-top: 10px;
+}
+
+#uploaded-files {
+    margin-top: 20px;
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo para os links do rodapé */
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Estilo para os links do rodapé quando hover */
+footer a:hover {
+    text-decoration: underline;
+}
+ </style>.  <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav {
+            background-color: #000;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+        #search-bar {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #search-bar input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #search-bar button {
+            background-color: #e62117;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .video-section {
+            margin: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            background-color: #000;
+            padding: 10px;
+        }
+
+        .interaction-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .video-info-container {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .video-stats p {
+            flex: 1;
+            text-align: center;
+        }
+
+        .subscribe-button {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .video-description {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .interaction-button {
+            cursor: pointer;
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+
+        }
+
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination button, .pagination a {
+            margin: 0 5px;
+            padding: 8px 12px;
+            border: 1px solid #e62117;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            color: #e62117;
+        }
+
+        .pagination button:hover, .pagination a:hover {
+            background-color: #e62117;
+            color: #fff;
+        }
+
+        #prev-button, #next-button {
+            background-color: #e62117;
+            color: #fff;
+            border: none;
+        }
+.comments-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #comment-list {
+            /* Estilo da lista de comentários, se necessário */
+        }
+
+        #comment-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #comment-text {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        #comment-form button {
+            background-color: #e62117;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+.channel-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.channel-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.channel-info p {
+    font-weight: bold;
+}
+
+.subscribe-button {
+    background-color: #e62117;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px; /* Adicione este estilo para ajustar a margem esquerda do botão */
+}
+
+/* Adicione este trecho de código ao seu arquivo style.css ou em um arquivo separado */
+.toggle-description {
+    color: #e62117;
+    cursor: pointer;
+}
+
+.toggle-comments {
+    cursor: pointer;
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-comments:hover {
+    background-color: #ddd;
+}
+
+/* Estilo para a descrição do vídeo */
+.video-description {
+    display: none; /* Por padrão, a descrição fica oculta */
+    margin-top: 20px; /* Espaçamento superior */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #f5f5f5; /* Cor de fundo */
+    border: 1px solid #ddd; /* Borda */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+.video-description p {
+    margin: 0; /* Remover margem padrão do parágrafo */
+}
+
+.comments-section {
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    margin-bottom: 10px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin: 0;
+}
+
+.comment-text {
+    margin: 5px 0;
+}
+
+.comment-input {
+    width: calc(100% - 20px);
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+.comment-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.comment-button:hover {
+    background-color: #0056b3;
+}
+.comment-avatar {
+    width: 40px; /* Largura desejada para a imagem */
+    height: 40px; /* Altura desejada para a imagem */
+    border-radius: 50%; /* Transforma a imagem em um círculo */
+    overflow: hidden; /* Garante que a imagem não ultrapasse os limites do círculo */
+    margin-right: 10px; /* Espaçamento à direita da imagem */
+}
+
+.comment-avatar img {
+    width: 100%; /* Garante que a imagem preencha todo o espaço do círculo */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove qualquer espaço extra ao redor da imagem */
+}
+
+
+/* Estilo para o botão "Mostrar Comentários" */
+.toggle-comments {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toggle-comments:hover {
+    background-color: #cc0000;
+}
+
+/* Estilo para a seção de comentários */
+.comments-section {
+    display: none; /* Por padrão, a seção de comentários está oculta */
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    color: #ff0000;
+}
+
+.comment-list {
+    margin-top: 10px;
+}
+
+.comment {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-content {
+    margin-left: 50px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #000000;
+}
+
+.comment-text {
+    color: #333333;
+}
+
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-input {
+    width: calc(100% - 100px);
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.comment-button {
+    width: 80px;
+    padding: 8px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-button:hover {
+    background-color: #cc0000;
+}
+
+
+/* Estilo para a barra de interação */
+.interaction-bar {
+    margin-top: 10px;
+}
+
+/* Estilo para os botões de interação */
+.interaction-button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-right: 10px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.interaction-button:hover {
+    background-color: #cc0000;
+}
+
+/* Estilo para o cabeçalho */
+header {
+    background-color: #ff0000; /* Vermelho */
+    color: #ffffff; /* Branco */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #000000; /* Preto */
+    color: #ffffff; /* Branco */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo para os links do rodapé */
+footer a {
+    color: #ffffff; /* Branco */
+    text-decoration: none;
+}
+
+/* Estilo para os links do rodapé quando hover */
+footer a:hover {
+    text-decoration: underline;
+}
+ 
+
+nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Net You Stream</h1>
+    </header>
+
+    <nav>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
+    </nav>
+
+    <div id="upload-container">
+        <h2>Envie seus arquivos</h2>
+        <div id="upload-form">
+            <form id="uploadForm" action="processa_upload.php" method="post" enctype="multipart/form-data">
+                <label for="file"><i class="fas fa-file"></i> Escolha um arquivo:</label>
+                <input type="file" id="file" name="file" accept="video/*, image/*" required>
+                <label for="title"><i class="fas fa-font"></i> Nome do arquivo:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="description"><i class="fas fa-comment"></i> Descrição do arquivo:</label>
+                <textarea id="description" name="description"></textarea>
+                <label for="category"><i class="fas fa-list-alt"></i> Categoria:</label>
+                <select id="category" name="category">
+                    <option value="vip"><i class="fas fa-crown"></i> VIP</option>
+                    <option value="jogos"><i class="fas fa-gamepad"></i> Jogos</option>
+                    <option value="musica"><i class="fas fa-music"></i> Música</option>
+                    <option value="filmes"><i class="fas fa-film"></i> Filmes</option>
+                    <option value="live"><i class="fas fa-video"></i> Live</option>
+                    <option value="esporte"><i class="fas fa-futbol"></i> Esporte</option>
+                    <option value="podcast"><i class="fas fa-podcast"></i> Podcast</option>
+                    <option value="noticias"><i class="fas fa-newspaper"></i> Notícias</option>
+                </select>
+                <label for="rating">Classificação:</label>
+                <select name="rating" id="rating">
+                    <option value="Livre">Livre</option>
+                    <option value="10 anos">10 anos</option>
+                    <option value="12 anos">12 anos</option>
+                    <option value="14 anos">14 anos</option>
+                    <option value="16 anos">16 anos</option>
+                    <option value="18 anos">18 anos</option>
+                </select><br><br>
+
+                <input type="submit" value="Enviar">
+         
+          </div>
+        </div>
+        <progress id="upload-progress" value="0" max="100" style="display: none;"></progress>
+        <p id="upload-message" style="display: none;"></p>
+    </div>
+
+    <div id="uploaded-files">
+        <!-- Arquivos enviados serão exibidos aqui -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Função para enviar o formulário via AJAX
+        function enviarArquivo() {
+            // Recolher os dados do formulário
+            var formData = new FormData();
+            var fileInput = document.getElementById('file');
+            formData.append('file', fileInput.files[0]);
+
+            // Fazer a requisição AJAX
+            axios.post('processa_upload.php', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: function(progressEvent) {
+                        var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                        document.getElementById('upload-progress').style.display = 'block';
+                        document.getElementById('upload-progress').value = percentCompleted;
+                    }
+                })
+                .then(function (response) {
+                    // Manipular a resposta do servidor
+                    console.log(response.data);
+                    document.getElementById('upload-message').innerHTML = response.data;
+                    document.getElementById('upload-message').style.display = 'block';
+                    document.getElementById('upload-progress').style.display = 'none';
+                })
+                .catch(function (error) {
+                    // Manipular erros
+                    console.error('Erro ao enviar arquivo:', error);
+                    document.getElementById('upload-message').innerHTML = 'Erro ao enviar arquivo.';
+                    document.getElementById('upload-message').style.display = 'block';
+                    document.getElementById('upload-progress').style.display = 'none';
+                });
+        }
+
+        // Função para enviar a URL via AJAX
+        function enviarURL() {
+            // Recolher a URL do vídeo
+            var videoURL = document.getElementById('video_url').value;
+
+            // Fazer a requisição AJAX
+            axios.post('processa_upload.php', { video_url: videoURL })
+                .then(function (response) {
+                    // Manipular a resposta do servidor
+                    console.log(response.data);
+                })
+                .catch(function (error) {
+                    // Manipular erros
+                    console.error('Erro ao enviar URL:', error);                    console.error('Erro ao enviar URL:', error);
+                });
+        }
+
+        // Adicionar listeners aos botões
+        document.getElementById('upload-file-button').addEventListener('click', enviarArquivo);
+        document.getElementById('upload-url-button').addEventListener('click', enviarURL);
+    </script>
+    <script src="scripts.js"></script>
+</header>
+    <footer>
+      <!-- Rodapé do site -->
+        <p>&copy; 2024 Net You Stream. Todos os direitos reservados.</p>
+        <p><a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
+    </footer>
+</body>
+</html>
+
