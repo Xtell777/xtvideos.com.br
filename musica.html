@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOU WEB</title>
-    <link rel="stylesheet" href="style.css">
-<!-- HTML -->
+    <title>Pro Vip</title>
+    <!-- Vincular a biblioteca Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- HTML -->
 <div class="menu-container">
   <div class="menu-icon" onclick="toggleMenu()">
     <div class="bar"></div>
@@ -15,21 +15,20 @@
   </div>
   <div class="menu-content" id="menuContent">
     <!-- Conteúdo do menu aqui -->
-        <a href="index.html">Início</a>   
-        <a href="login.html">login</a>
-        <a href="CriacaoDeConta.html">conta</a>
-        <a href="subscriptions.html">Inscrições</a>
-        <a href="settings.html">Configurações</a>
-        <a href="uploads.html">Uploads</a>
-        <a href="uploaded.html">Arquivos Enviados</a>
-        <a href="history.html">Histórico</a>   
-        <a href="channel.html">Canal</a>
-        <a href="notifications.html">Notificações</a>
-        <a class="vip" href="vip.html">VIP</a>
+    <a href="index.html"><i class="fas fa-home"></i> Início</a>
+    <a href="login.html"><i class="fas fa-sign-in-alt"></i> login</a>
+    <a href="CriacaoDeConta.html"><i class="fas fa-user-plus"></i> conta</a>
+    <a href="subscriptions.html"><i class="fas fa-bell"></i> Inscrições</a>
+    <a href="settings.html"><i class="fas fa-cog"></i> Configurações</a>
+    <a href="uploads.html"><i class="fas fa-upload"></i> Uploads</a>
+    <a href="uploaded.html"><i class="fas fa-file-upload"></i> Arquivos Enviados</a>
+    <a href="history.html"><i class="fas fa-history"></i> Histórico</a>
+    <a href="channel.html"><i class="fas fa-tv"></i> Canal</a>
+    <a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a>
+    <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
   </div>
 </div>
 
-  
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -863,32 +862,79 @@ body {
     text-decoration: none; /* Remove o sublinhado padrão dos links */
 }
 
+.video-stats {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-top: 20px;
+        }
 
+        .video-stats p {
+            font-size: 12px;
+            color: #666;
+            margin: 5px 0;
+        }
+    </style>
+    <style>
+
+        /* Estilo para o menu de navegação */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Estilo para os ícones */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+        }
+
+   
+     
+        
     </style>
 </head>
-
 <body>
     <header>
-        <h1>YOU WEB</h1>
+        <!-- Cabeçalho do site -->
+        <h1>Pro Vip</h1>
     </header>
 
-
-<nav>
-        <a href="index.html">Início</a>
-        <a href="jogos.html">jogos</a>
-        <a href="musica.html">Música</a>
-        <a href="filmes.html">Filmes</a>
-        <a href="live.html">Live</a>
-        <a href="esporte.html">Esporte</a>
-        <a href="podcast.html">Podcast</a>
-        <a href="noticias.html">Notícias</a>   
+    <nav>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
     </nav>
+    <!-- Carregar a biblioteca de ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    
+<!-- Carregar a biblioteca de ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
 <div style="text-align: center;">
     <!-- Seção de arquivos enviados -->
     <div id="uploaded-container">
-        <h2>Música</h2>
+        <h2><i class="fa fa-music"></i> Música</h2>
         <div id="uploaded-files">
             <!-- Arquivos enviados serão exibidos aqui -->
         </div>
@@ -899,16 +945,14 @@ body {
         <!-- Vídeos serão exibidos aqui -->
     </div>
 </div>
-    
 
 
-
-   
-
-    
 </section>
- 
-<section class="video-section">
+
+    <main>
+    
+        <!-- Conteúdo principal do site -->
+       <section class="video-section">
     <h3 class="video-title">XTELL777 - " I Love Money" (Official Áudio)</h3>
     
     <!-- Classificação etária -->
@@ -919,135 +963,18 @@ body {
     </div>
 </section>
         
-<div class="video-info-container">
-    <div class="channel-info">
-        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
-        <p class="channel-name">XTELL777</p>
-        <div class="subscribe-button" onclick="subscribeChannel()">
-            <span>Inscreva-se</span>
-            <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
-        </div>
-    </div>
-</div>
+
 
 <div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
-    <p class="video-views" id="video-views">1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date">Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments">123 comentários</p>
-</div>
-
-<section id="video1" class="video-section">
-    <!-- ... (conteúdo do vídeo) ... -->
-    <div class="interaction-bar">
-        <div class="interaction-button" onclick="handleVideoInteraction('video1', 'thinking')">👍🏻 Like</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video1', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video1', 'devil')">😍 Amei</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video1', 'smirk')">🤬 Odiei</div>
-    </div>
-</section>  
-
-<div class="interaction-bar">
-    <div class="interaction-buttons">
-        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
-        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
-        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
-        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
-    </div>
-</div>
-
-
-<div class="interaction-bar">
-    <div class="interaction-buttons">
-        <div class="toggle-description" onclick="showDescription()">Mostrar Descrição</div>
-        <div class="toggle-comments" onclick="toggleComments('comment-section-1')">Mostrar Comentários</div>
-    </div>
-</div>
-
-<div class="video-description">
-    <p>#XTELL777  #XTELLNEW #TROPADOXTELL
-
-Prod by. "Wilkinson Gabriel"
-
- Siga XTELL777 nas redes sociais: 
-
-✅ Facebook:
-https://www.facebook.com/profile.php?id=100094206888864&mibextid=ZbWKwL
-
-
-✅Instagram:
-https://instagram.com/xtell777?igshid=MzNlNGNkZWQ4Mg==
-
-
-✅Twitter: 
-https://twitter.com/XTELL777?t=QD7KRdNnknM9az-7TeKofg&s=09
-
- Ouça Xtell em outras plataformas: 
-
-
-✅Spotify:
- https://spotify.link/bLgSEetUaBb... 
-
-
-✅SoundCloud:
-..........................................................................................
-
-
- ✅YouTube:
-https://www.youtube.com/@XTELL777
-
-@XTELL777   #Xtell777 #xtellgang #762Xtell #Xtell #XTELL #XTELL777...</p>
+    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
+    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
+    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
 </div>
 
 
 
 
-<!-- HTML para a seção de comentários -->
-<div class="comments-section">
-    <h3>Comentários</h3>
-    <div id="comment-list" class="comment-list">
-        <!-- Lista de comentários será exibida aqui -->
-        <!-- Exemplo de um comentário existente -->
-        <div class="comment">
-            <div class="comment-avatar">
-                <!-- Substitua 'avatar_url_aqui' pela URL do seu avatar -->
-                <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Avatar" class="channel-avatar">
-            </div>
-            <div class="comment-content">
-                <!-- 'Nome do Autor' deve ser substituído pelo seu nome de usuário -->
-                <p class="comment-author">XTELL777</p>
-                <p class="comment-text">Texto do comentário...</p>
-            </div>
-        </div>
-        <!-- Outros comentários aqui -->
-    </div>
-    <div id="comment-form" class="comment-form">
-        <!-- O usuário pode adicionar um novo comentário aqui -->
-        <textarea id="comment-text" placeholder="Adicione um comentário..." class="comment-input"></textarea>
-        <button onclick="addComment()" class="comment-button">Comentar</button>
-    </div>
-</div>
-
-<div class="comments-section">
-    <h3>Comentários</h3>
-    <div id="comment-list" class="comment-list">
-        <!-- Lista de comentários será exibida aqui -->
-        <div class="comment">
-            <div class="comment-avatar">
-                <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Avatar" class="channel-avatar">
-            </div>
-            <div class="comment-content">
-                <p class="comment-author">XTELL777</p>
-                <p class="comment-text">primeiro comentário do vídeo teste pro site 1 do ceo xtell77...</p>
-            </div>
-        </div>
-        <!-- Outros comentários aqui -->
-    </div>
-    <div id="comment-form" class="comment-form">
-        <textarea id="comment-text" placeholder="Adicione um comentário" class="comment-input"></textarea>
-        <button onclick="addComment()" class="comment-button">Comentar</button>
-    </div>
-</div>
 
 
 <section class="video-section">
@@ -1062,41 +989,18 @@ https://www.youtube.com/@XTELL777
 </section>
 
         
-<div class="video-info-container">
-    <div class="channel-info">
-        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
-        <p class="channel-name">XTELL777</p>
-        <div class="subscribe-button" onclick="subscribeChannel()">
-            <span>Inscreva-se</span>
-            <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+
         </div>
     </div>
 </div>
 
 <div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
-    <p class="video-views" id="video-views">1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date">Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments">123 comentários</p>
+    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
+    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
+    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
 </div>
 
-<section id="video2" class="video-section">
-    <!-- ... (conteúdo do vídeo) ... -->
-    <div class="interaction-bar">
-        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'thinking')">👍🏻 Like</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video2, 'devil')">😍 Amei</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video2', 'smirk')">🤬 Odiei</div>
-    </div>
-</section>  
-<div class="interaction-bar">
-    <div class="interaction-buttons">
-        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
-        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
-        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
-        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
-    </div>
-</div>
 
 
 
@@ -1114,42 +1018,19 @@ https://www.youtube.com/@XTELL777
 </section>
 
         
-<div class="video-info-container">
-    <div class="channel-info">
-        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
-        <p class="channel-name">XTELL777</p>
-        <div class="subscribe-button" onclick="subscribeChannel()">
-            <span>Inscreva-se</span>
-            <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+
         </div>
     </div>
 </div>
 
 <div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
-    <p class="video-views" id="video-views">1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date">Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments">123 comentários</p>
+    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
+    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
+    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
 </div>
 
-<section id="video3" class="video-section">
-    <!-- ... (conteúdo do vídeo) ... -->
-    <div class="interaction-bar">
-        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'thinking')">👍🏻 Like</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'devil')">😍 Amei</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video3', 'smirk')">🤬 Odiei</div>
-    </div>
-</section>  
 
-<div class="interaction-bar">
-    <div class="interaction-buttons">
-        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
-        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
-        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
-        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
-    </div>
-</div>
 
 
 
@@ -1166,204 +1047,85 @@ https://www.youtube.com/@XTELL777
 
 
         
-<div class="video-info-container">
-    <div class="channel-info">
-        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
-        <p class="channel-name">XTELL777</p>
-        <div class="subscribe-button" onclick="subscribeChannel()">
-            <span>Inscreva-se</span>
-            <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+
         </div>
     </div>
 </div>
 
 <div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers">500.000 inscritos</p>
-    <p class="video-views" id="video-views">1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date">Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments">123 comentários</p>
+    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
+    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
+    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
+    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
 </div>
 
-<section id="video4" class="video-section">
-    <!-- ... (conteúdo do vídeo) ... -->
-    <div class="interaction-bar">
-        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'thinking')">👍🏻 Like</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'heart')">👎🏻 Dislike</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'devil')">😍 Amei</div>
-        <div class="interaction-button" onclick="handleVideoInteraction('video4', 'smirk')">🤬 Odiei</div>
-    </div>
-</section>  
 
 
-<div class="interaction-bar">
-    <div class="interaction-buttons">
-        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
-        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
-        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
-        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
-    </div>
-</div>
 
- 
-<!-- Adicione mais seções de vídeo conforme necessário, ajustando os IDs e chamadas de função -->
 
-         
-           
-       
-            
 
+
+    </main>
 <script>
-    // Função para se inscrever no canal
-    function subscribeChannel() {
-        // Aqui você pode adicionar a lógica para se inscrever no canal
-        // Por exemplo, você pode fazer uma solicitação para uma API de inscrição
-        // e exibir uma mensagem de confirmação
-        alert("Você se inscreveu neste canal!");
+    // Função para verificar e atualizar os números dos vídeos
+    function updateVideoStats(videoId) {
+        const subscribersElement = document.querySelector(`#${videoId} .channel-subscribers`);
+        const viewsElement = document.querySelector(`#${videoId} .video-views`);
+        const publishDateElement = document.querySelector(`#${videoId} .video-publish-date`);
+        const commentsElement = document.querySelector(`#${videoId} .video-comments`);
+
+        // Atualiza os números com base nos IDs
+        subscribersElement.innerHTML = '<i class="fa fa-users"></i> 500.000 inscritos'; // Exemplo: atualiza o número de inscritos
+        viewsElement.innerHTML = '<i class="fa fa-eye"></i> 1.345.678 views'; // Exemplo: atualiza o número de visualizações
+        publishDateElement.innerHTML = '<i class="fa fa-calendar"></i> Publicado há 4 dias'; // Exemplo: atualiza a data de publicação
+        commentsElement.innerHTML = '<i class="fa fa-comments"></i> 234 comentários'; // Exemplo: atualiza o número de comentários
     }
 
-    // Função para lidar com interações de vídeo (like, dislike, love, hate)
-    function handleVideoInteraction(videoId, interaction) {
-        // Aqui você pode adicionar a lógica para lidar com as interações do vídeo
-        // Por exemplo, atualizar contadores de likes, dislikes, visualizações, etc.
-        // Você pode fazer solicitações para uma API para registrar essas interações
-        // e atualizar as informações do vídeo conforme necessário
-        console.log("Interacton:", interaction, "on video:", videoId);
-    }
-
-    // Função para mostrar a descrição do vídeo
-    function showDescription() {
-        // Aqui você pode adicionar a lógica para mostrar a descrição do vídeo
-        // Por exemplo, você pode expandir ou mostrar um elemento de descrição oculto
-        alert("Mostrar descrição do vídeo");
-    }
-
-    // Função para mostrar ou ocultar os comentários
-    function toggleComments() {
-        // Aqui você pode adicionar a lógica para mostrar ou ocultar os comentários
-        // Por exemplo, você pode alternar a visibilidade de um elemento de comentários
-        var commentsSection = document.querySelector('.comments-section');
-        commentsSection.style.display = (commentsSection.style.display === 'none' || commentsSection.style.display === '') ? 'block' : 'none';
-    }
-
-    // Função para exibir a caixa de pesquisa por voz
-    function playAudio() {
-        // Aqui você pode adicionar a lógica para tocar um som de áudio e ativar o reconhecimento de voz
-        // Por exemplo, você pode reproduzir um som de clique e iniciar o reconhecimento de voz
-        alert("Tocar som de áudio e ativar reconhecimento de voz");
-    }
-
-    // Função para realizar uma pesquisa
-    function search() {
-        // Aqui você pode adicionar a lógica para realizar uma pesquisa
-        // Por exemplo, você pode obter o termo de pesquisa do campo de entrada e redirecionar para a página de resultados de pesquisa
-        alert("Realizar pesquisa com o termo digitado");
-    }
-    // Supondo que você tenha uma função que busca e retorna o número atual de inscritos do canal
-// Essa função pode ser uma chamada para uma API ou um valor armazenado localmente
-function getSubscribersCount() {
-    // Aqui você retornaria o número atual de inscritos
-    // Por exemplo, você pode retornar um valor fixo para testar a funcionalidade:
-    return 550000;
-}
-
-// Função para atualizar o número de inscritos exibido na página
-function updateSubscribersCount() {
-    // Obtenha o elemento que mostra o número de inscritos pelo ID
-    var subscribersElement = document.getElementById("channel-subscribers");
-    
-    // Obtenha o número atual de inscritos
-    var currentSubscribersCount = getSubscribersCount();
-    
-    // Atualize o conteúdo do elemento com o novo número de inscritos
-    subscribersElement.textContent = currentSubscribersCount.toLocaleString("pt-BR") + " inscritos";
-}
-
-// Chame a função para atualizar o número de inscritos quando necessário
-// Por exemplo, após uma ação bem-sucedida de inscrição
-updateSubscribersCount();
-
+    // Chamada de exemplo para atualizar os números do vídeo com ID "video9"
+    updateVideoStats("video9");
 </script>
 
-</section>
-
-<!-- Script JavaScript -->
+<!-- Adicione este trecho de script no final do seu arquivo HTML, antes da tag de fechamento </body> -->
 <script>
-    function showDescription(videoId) {
-        const description = document.querySelector(`#${videoId} .video-description`);
-        if (description) {
-            description.classList.toggle('show');
+    document.addEventListener('DOMContentLoaded', function () {
+        const viewsElement = document.getElementById('video-views');
+
+        function atualizarVisualizacoes() {
+            // Simula um aumento de visualizações
+            const visualizacoesAtuais = parseInt(viewsElement.innerText.replace(/\D/g, ''), 10); // Remove não dígitos
+            const novoNumeroVisualizacoes = visualizacoesAtuais + Math.floor(Math.random() * 1000); // Adiciona visualizações aleatórias
+
+            // Atualiza o elemento HTML
+            viewsElement.innerHTML = '<i class="fa fa-eye"></i> ' + novoNumeroVisualizacoes.toLocaleString() + ' views';
         }
-    }
 
-    function toggleComments(videoId) {
-        const commentsSection = document.querySelector(`#${videoId} .comments-section`);
-        if (commentsSection) {
-            commentsSection.classList.toggle('show');
-        }
-    }
-    
-</script>
-
-
-<script>
-// Supondo que temos um servidor com uma API RESTful
-
-// Função para denunciar um vídeo
-function reportVideo(videoId) {
-  // Aqui, usamos a função fetch para enviar uma solicitação POST para a API
-  fetch('https://api.seusite.com/report', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      // Adicione aqui o token de autenticação se necessário
-    },
-    body: JSON.stringify({ videoId: videoId })
-  })
-  .then(response => {
-    if (response.ok) {
-      console.log('Vídeo ' + videoId + ' denunciado com sucesso.');
-    } else {
-      console.error('Falha ao denunciar o vídeo.');
-    }
-  })
-  .catch(error => {
-    console.error('Erro na rede: ', error);
-  });
-}
-
-// Função para compartilhar um vídeo
-function shareVideo(videoId) {
-  // Para compartilhar, vamos apenas copiar o link do vídeo para a área de transferência
-  const videoUrl = 'https://seusite.com/video/' + videoId;
-  navigator.clipboard.writeText(videoUrl)
-    .then(() => {
-      console.log('Link do vídeo copiado para a área de transferência.');
-    })
-    .catch(err => {
-      console.error('Erro ao copiar o link: ', err);
+        // Chama a função para atualizar visualizações a cada 5 segundos (altere conforme necessário)
+        setInterval(atualizarVisualizacoes, 5000);
     });
+</script>
+
+
+<script>
+// JavaScript para alternar o menu
+function toggleMenu() {
+  var menuContent = document.getElementById('menuContent');
+  if (menuContent.style.display === 'block') {
+    menuContent.style.display = 'none';
+  } else {
+    menuContent.style.display = 'block';
+  }
 }
 
-// Função para baixar um vídeo
-function downloadVideo(videoId) {
-  // Para baixar, criamos um link temporário e simulamos um clique
-  const tempLink = document.createElement('a');
-  tempLink.href = 'https://api.seusite.com/download?videoId=' + videoId;
-  tempLink.setAttribute('download', '');
-  document.body.appendChild(tempLink);
-  tempLink.click();
-  document.body.removeChild(tempLink);
+// Adiciona um ouvinte de evento para fechar o menu quando clicar fora dele
+window.onclick = function(event) {
+  var menuContent = document.getElementById('menuContent');
+  if (event.target == menuContent) {
+    menuContent.style.display = 'none';
+  }
 }
 
-</script> 
 
-
-      
- </div>
-
-
-
-
+</script>
 <!-- Adicione mais seções de vídeo conforme necessário, ajustando os IDs e chamadas de função -->
 
         
@@ -1526,330 +1288,23 @@ function downloadVideo(videoId) {
 </script>
 
 
-<script>
-    // Função para verificar e atualizar as visualizações
-    function checkAndUpdateViews(videoId) {
-        const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
-
-        if (!viewedVideos[videoId]) {
-            // Se o vídeo não foi visualizado, incrementa o número de visualizações
-            const videoStatsElement = document.querySelector(`#${videoId} .video-stats p:first-child span`);
-            const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
-            const newViews = currentViews + 1;
-
-            // Atualiza a exibição no elemento HTML
-            videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
-
-            // Marca o vídeo como visualizado no Local Storage
-            viewedVideos[videoId] = true;
-            localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
-        }
-    }
-</script>
-<script>
-    // Chama a função para verificar e atualizar as visualizações do vídeo1
-    checkAndUpdateViews('video1');
-</script>
-<script>
-        function subscribeChannel() {
-            console.log("Você se inscreveu no canal!");
-        }
-
-        function showDescription() {
-            const description = document.querySelector('.video-description');
-            description.style.display = (description.style.display === 'none' || description.style.display === '') ? 'block' : 'none';
-        }
-
-        function shareVideo() {
-            console.log("Vídeo compartilhado!");
-        }
-    
-
-
-    <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
-
-function updateSubscribersCount(count) {
-    const subscribersElement = document.getElementById('channel-subscribers');
-    subscribersElement.innerText = count.toLocaleString('pt-BR') + ' inscritos';
-}
-
-// Chame esta função quando precisar atualizar o número de subscrições
-// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
-updateSubscribersCount(500000);  // Substitua 500000 pelo número real de subscrições
-function subscribeChannel() {
-    // Simula um aumento no número de inscritos
-    const currentSubscribersCount = 500000;  // Substitua pelo número real de inscritos
-    const newSubscribersCount = currentSubscribersCount + 1;
-
-    // Atualiza o número de inscritos exibido
-    updateSubscribersCount(newSubscribersCount);
-
-    console.log("Você se inscreveu no canal!");
-}
-
-
-    function updateViewsCount(count) {
-    const viewsElement = document.getElementById('video-views');
-    viewsElement.innerText = count.toLocaleString('pt-BR') + ' views';
-}
-
-// Chame esta função quando precisar atualizar o número de visualizações
-// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
-updateViewsCount(1234568);  // Substitua 1234568 pelo número real de visualizações
-      
-
-function checkAndUpdateViews(videoId) {
-    const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
-
-    if (!viewedVideos[videoId]) {
-        // Se o vídeo não foi visualizado, incrementa o número de visualizações
-        const videoStatsElement = document.querySelector(`#${videoId} .video-stats p:first-child span`);
-        const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
-        const newViews = currentViews + 1;
-
-        // Atualiza a exibição no elemento HTML
-        videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
-
-        // Atualiza o número total de visualizações
-        updateViewsCount(newViews);
-
-        // Marca o vídeo como visualizado no Local Storage
-        viewedVideos[videoId] = true;
-        localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
-    }
-}
-
-// Chama a função para verificar e atualizar as visualizações do vídeo3
-checkAndUpdateViews('video3');
-
-
-function updateCommentsCount(count) {
-    const commentsElement = document.getElementById('video-comments');
-    commentsElement.innerText = count.toLocaleString('pt-BR') + ' comentários';
-}
-
-// Chame esta função quando precisar atualizar o número de comentários
-// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
-updateCommentsCount(124);  // Substitua 124 pelo número real de comentários
-
-
-function addComment() {
-    var newComment = document.getElementById("comment-text").value;
-    if (newComment !== "") {
-        // Se o novo comentário for adicionado com sucesso
-        // Simule um aumento no número de comentários
-        const currentCommentsCount = 124;  // Substitua pelo número real de comentários
-        const newCommentsCount = currentCommentsCount + 1;
-
-        // Atualiza o número de comentários exibido
-        updateCommentsCount(newCommentsCount);
-
-        // ... restante do código para adicionar o comentário
-    }
-}
-
-function updatePublishDate(date) {
-    const publishDateElement = document.getElementById('video-publish-date');
-    publishDateElement.innerText = 'Publicado ' + date;
-}
-
-function updateCommentsCount(count) {
-    const commentsCountElement = document.getElementById('video-comments-count');
-    commentsCountElement.innerText = count.toLocaleString('pt-BR') + ' comentários';
-}
-
-// Chame estas funções quando precisar atualizar as informações
-// Aqui está um exemplo de chamada (você pode ajustar conforme necessário)
-
-// Substitua 'há 3 dias' pela data real de publicação do vídeo
-updatePublishDate('há 3 dias');
-
-// Substitua 123 pelo número real de comentários
-updateCommentsCount(123);
-
-function subscribeChannel() {
-    // Simula um novo vídeo sendo publicado
-    const newPublishDate = 'há 1 dia';  // Substitua pela data real
-    const newCommentsCount = 124;  // Substitua pelo número real de comentários
-
-    // Atualiza as informações de data de publicação e contagem de comentários
-    updatePublishDate(newPublishDate);
-    updateCommentsCount(newCommentsCount);
-
-    // Simula um aumento no número de inscritos
-    const currentSubscribersCount = 500000;  // Substitua pelo número real de inscritos
-    const newSubscribersCount = currentSubscribersCount + 1;
-
-    // Atualiza o número de inscritos exibido
-    updateSubscribersCount(newSubscribersCount);
-
-    console.log("Você se inscreveu no canal!");
-}
-
-
-</script>
-
-<script>
-    // Função para verificar e atualizar as visualizações
-    function checkAndUpdateViews(videoId) {
-        const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
-
-        if (!viewedVideos[videoId]) {
-            // Se o vídeo não foi visualizado, incrementa o número de visualizações
-            const videoStatsElement = document.querySelector(`#${videoId} .video-views`);
-            const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
-            const newViews = currentViews + 1;
-
-            // Atualiza a exibição no elemento HTML
-            videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
-
-            // Marca o vídeo como visualizado no Local Storage
-            viewedVideos[videoId] = true;
-            localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
-        }
-    }
-</script>
-
-
-<script>
-    function addComment() {
-        var newComment = document.getElementById("comment-text").value;
-        if (newComment !== "") {
-            var commentDiv = document.createElement("div");
-            commentDiv.className = "comment";
-            commentDiv.innerHTML = '<h3>Novo Usuário</h3><p>' + newComment + '</p>';
-            var commentList = document.getElementById("comment-list");
-            commentList.appendChild(commentDiv);
-            document.getElementById("comment-text").value = "";
-        }
-    }
-    
-    function addComment() {
-        var newComment = document.getElementById("comment-text").value;
-        if (newComment !== "") {
-            var commentDiv = document.createElement("div");
-            commentDiv.className = "comment";
-            
-            // Avatar
-            var avatarDiv = document.createElement("div");
-            avatarDiv.className = "comment-avatar";
-            var avatarImg = document.createElement("img");
-            avatarImg.src = "https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a";
-            avatarImg.alt = "Avatar";
-            avatarImg.className = "channel-avatar";
-            avatarDiv.appendChild(avatarImg);
-            commentDiv.appendChild(avatarDiv);
-            
-            // Conteúdo do comentário
-            var contentDiv = document.createElement("div");
-            contentDiv.className = "comment-content";
-            var authorP = document.createElement("p");
-            authorP.className = "comment-author";
-            authorP.textContent = "Nome do Usuário"; // Aqui você pode adicionar o nome do usuário dinamicamente se tiver essa informação disponível
-            var textP = document.createElement("p");
-            textP.className = "comment-text";
-            textP.textContent = newComment;
-            contentDiv.appendChild(authorP);
-            contentDiv.appendChild(textP);
-            commentDiv.appendChild(contentDiv);
-
-            var commentList = document.getElementById("comment-list");
-            commentList.appendChild(commentDiv);
-            document.getElementById("comment-text").value = "";
-        }
-    }
-
-</script>
 
 
 
 
-<script>
-    function toggleComments() {
-        const commentsSection = document.querySelector('.comments-section');
-        if (commentsSection) {
-            if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
-                commentsSection.style.display = 'block';
-            } else {
-                commentsSection.style.display = 'none';
-            }
-        }
-    }
-</script>
-<script>
-    // Função para verificar e atualizar os números dos vídeos
-    function updateVideoStats(videoId) {
-        const subscribersElement = document.querySelector('.channel-subscribers');
-        const viewsElement = document.querySelector(`#${videoId} .video-views`);
-        const publishDateElement = document.querySelector(`#${videoId} .video-publish-date`);
-        const commentsElement = document.querySelector(`#${videoId} .video-comments`);
 
-        // Atualiza os números com base nos IDs
-        subscribersElement.innerText = "500.000 inscritos"; // Exemplo: atualiza o número de inscritos
-        viewsElement.innerText = "1.345.678 views"; // Exemplo: atualiza o número de visualizações
-        publishDateElement.innerText = "Publicado há 4 dias"; // Exemplo: atualiza a data de publicação
-        commentsElement.innerText = "234 comentários"; // Exemplo: atualiza o número de comentários
-    }
 
-    // Chamada de exemplo para atualizar os números do vídeo com ID "video9"
-    updateVideoStats("video9");
-</script>
+
+
+
+
+
+
+
 
 <!-- Adicione este trecho de script no final do seu arquivo HTML, antes da tag de fechamento </body> -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const viewsElement = document.getElementById('video-views');
 
-        function atualizarVisualizacoes() {
-            // Simula um aumento de visualizações
-            const visualizacoesAtuais = parseInt(viewsElement.innerText.replace(/\D/g, ''), 10); // Remove não dígitos
-            const novoNumeroVisualizacoes = visualizacoesAtuais + Math.floor(Math.random() * 1000); // Adiciona visualizações aleatórias
 
-            // Atualiza o elemento HTML
-            viewsElement.innerText = novoNumeroVisualizacoes.toLocaleString() + ' views';
-        }
-
-        // Chama a função para atualizar visualizações a cada 5 segundos (altere conforme necessário)
-        setInterval(atualizarVisualizacoes, 5000);
-    });
-</script>
-<script>
-    // Função para verificar e atualizar os números dos vídeos
-    function updateVideoStats(videoId) {
-        const subscribersElement = document.querySelector('.channel-subscribers');
-        const viewsElement = document.querySelector(`#${videoId} .video-views`);
-        const publishDateElement = document.querySelector(`#${videoId} .video-publish-date`);
-        const commentsElement = document.querySelector(`#${videoId} .video-comments`);
-
-        // Atualiza os números com base nos IDs
-        subscribersElement.innerText = "500.000 inscritos"; // Exemplo: atualiza o número de inscritos
-        viewsElement.innerText = "1.345.678 views"; // Exemplo: atualiza o número de visualizações
-        publishDateElement.innerText = "Publicado há 4 dias"; // Exemplo: atualiza a data de publicação
-        commentsElement.innerText = "234 comentários"; // Exemplo: atualiza o número de comentários
-    }
-
-    // Chamada de exemplo para atualizar os números do vídeo com ID "video9"
-    updateVideoStats("video9");
-</script>
-
-<!-- Adicione este trecho de script no final do seu arquivo HTML, antes da tag de fechamento </body> -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const viewsElement = document.getElementById('video-views');
-
-        function atualizarVisualizacoes() {
-            // Simula um aumento de visualizações
-            const visualizacoesAtuais = parseInt(viewsElement.innerText.replace(/\D/g, ''), 10); // Remove não dígitos
-            const novoNumeroVisualizacoes = visualizacoesAtuais + Math.floor(Math.random() * 1000); // Adiciona visualizações aleatórias
-
-            // Atualiza o elemento HTML
-            viewsElement.innerText = novoNumeroVisualizacoes.toLocaleString() + ' views';
-        }
-
-        // Chama a função para atualizar visualizações a cada 5 segundos (altere conforme necessário)
-        setInterval(atualizarVisualizacoes, 5000);
-    });
-</script>
  
 <script>
 
@@ -2010,9 +1465,10 @@ downloadVideoFromPage();
 
 
 <header>
-        <h1>YOU WEB</h1>
+        <h1>Pro Vip</h1>
     </header>
     <footer>
+      <!-- Rodapé do site -->
         <p>&copy; 2024 YOU WEB. Todos os direitos reservados.</p>
         <p><a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
     </footer>
@@ -2023,3 +1479,4 @@ downloadVideoFromPage();
            
 </body>
 </html>
+   
