@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Vip</title>
+    <title>Net You Stream</title>
     <!-- Vincular a biblioteca Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- Adicione o link para o ícone do Chromecast -->
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    <!-- Estilos para o botão Chromecast -->
+    <style>
+        .chromecast-button {
+            background-color: #4285F4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .chromecast-button:hover {
+            background-color: #357ae8;
+        }
+
+        .chromecast-icon {
+            margin-right: 5px;
+        }
+    </style>
+<!-- Botão Chromecast -->
+<div style="position: relative;">
+  <button class="chromecast-button" onclick="castToChromecast()" style="position: absolute; top: 0; left: -5px; width: 100px; height: 57px; font-size: 35px; background-color: red;">
+    <i class="mdi mdi-cast chromecast-icon"></i> 
+  </button>
+</div>
+
     <!-- HTML -->
 <div class="menu-container">
   <div class="menu-icon" onclick="toggleMenu()">
@@ -26,6 +57,7 @@
     <a href="channel.html"><i class="fas fa-tv"></i> Canal</a>
     <a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a>
     <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+
   </div>
 </div>
 
@@ -909,7 +941,7 @@ body {
 <body>
     <header>
         <!-- Cabeçalho do site -->
-        <h1>Pro Vip</h1>
+        <h1>Net You Stream</h1>
     </header>
 
     <nav>
@@ -1502,15 +1534,23 @@ downloadVideoFromPage();
 
       </script>
 
+<script>
+        function castToChromecast() {
+            // Adicione o código aqui para iniciar o cast para o Chromecast
+            // Por exemplo:
+            alert("Cast iniciado para o Chromecast!");
+        }
+    </script>
+
 
 
 
 <header>
-        <h1>Pro Vip</h1>
+        <h1>Net You Stream</h1>
     </header>
     <footer>
       <!-- Rodapé do site -->
-        <p>&copy; 2024 YOU WEB. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Net You Stream. Todos os direitos reservados.</p>
         <p><a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
     </footer>
     <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
