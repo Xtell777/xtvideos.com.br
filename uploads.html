@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOU WEB - Envio de Arquivos</title>
+    <title>Net You Stream - Envio de Arquivos</title>
     <link rel="stylesheet" href="styles.css">
-</head>
+    <!-- Adicione a biblioteca de ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
  <style>
 body {
     font-family: Arial, sans-serif;
@@ -673,72 +674,151 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+ 
+
+nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
 
     </style>
+</head>
 <body>
     <header>
-        <h1>YOU WEB</h1>
+        <h1>Net You Stream</h1>
     </header>
+
     <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="trends.html">Tendências</a></li>
-            <li><a href="subscriptions.html">Inscrições</a></li>
-            <li><a href="settings.html">Configurações</a></li>
-            <li><a href="uploads.html">Uploads</a></li>
-            <li><a href="history.html">Histórico</a></li>
-            <li><a href="playlists.html">Playlists</a></li>
-            <li><a href="channel.html">Canal</a></li>
-            <li><a href="notifications.html">Notificações</a></li>
-            <li><a class="vip" href="vip.html">VIP</a></li>
-            <li><a href="library.html">Biblioteca</a></li>
-            <li><a href="uploaded.html">Arquivos Enviados</a></li>
-        </ul>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
     </nav>
+
     <div id="upload-container">
         <h2>Envie seus arquivos</h2>
         <div id="upload-form">
-            <form id="uploadForm" enctype="multipart/form-data">
-                <label for="file">Escolha um arquivo:</label>
+            <form id="uploadForm" action="processa_upload.php" method="post" enctype="multipart/form-data">
+                <label for="file"><i class="fas fa-file"></i> Escolha um arquivo:</label>
                 <input type="file" id="file" name="file" accept="video/*, image/*" required>
-                <label for="title">Nome do arquivo:</label>
+                <label for="title"><i class="fas fa-font"></i> Nome do arquivo:</label>
                 <input type="text" id="title" name="title" required>
-                <label for="description">Descrição do arquivo:</label>
+                <label for="description"><i class="fas fa-comment"></i> Descrição do arquivo:</label>
                 <textarea id="description" name="description"></textarea>
-                <label for="video_url">URL do vídeo (caso já hospedado):</label>
-                <input type="url" id="video_url" name="video_url">
-                <button type="button" id="upload-button">Enviar</button>
-            </form>
-            <progress id="upload-progress" value="0" max="100" style="display: none;"></progress>
-            <p id="upload-message" style="display: none;"></p>
+                <label for="category"><i class="fas fa-list-alt"></i> Categoria:</label>
+                <select id="category" name="category">
+                    <option value="vip"><i class="fas fa-crown"></i> VIP</option>
+                    <option value="jogos"><i class="fas fa-gamepad"></i> Jogos</option>
+                    <option value="musica"><i class="fas fa-music"></i> Música</option>
+                    <option value="filmes"><i class="fas fa-film"></i> Filmes</option>
+                    <option value="live"><i class="fas fa-video"></i> Live</option>
+                    <option value="esporte"><i class="fas fa-futbol"></i> Esporte</option>
+                    <option value="podcast"><i class="fas fa-podcast"></i> Podcast</option>
+                    <option value="noticias"><i class="fas fa-newspaper"></i> Notícias</option>
+                </select>
+                <label for="rating">Classificação:</label>
+                <select name="rating" id="rating">
+                    <option value="Livre">Livre</option>
+                    <option value="10 anos">10 anos</option>
+                    <option value="12 anos">12 anos</option>
+                    <option value="14 anos">14 anos</option>
+                    <option value="16 anos">16 anos</option>
+                    <option value="18 anos">18 anos</option>
+                </select><br><br>
+
+                <input type="submit" value="Enviar">
+         
+          </div>
         </div>
-        <div id="uploaded-files">
-            <!-- Arquivos enviados serão exibidos aqui -->
-        </div>
+        <progress id="upload-progress" value="0" max="100" style="display: none;"></progress>
+        <p id="upload-message" style="display: none;"></p>
     </div>
 
-   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-  // Função para enviar o formulário via AJAX
-  function enviarFormulario() {
-    // Recolher os dados do formulário
-    var formData = new FormData();
-    var fileInput = document.getElementById('file');
-    formData.append('file', fileInput.files[0]);
+    <div id="uploaded-files">
+        <!-- Arquivos enviados serão exibidos aqui -->
+    </div>
 
-    // Fazer a requisição AJAX
-    axios.post('upload_process.php', formData)
-      .then(function (response) {
-        // Manipular a resposta do servidor
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // Manipular erros
-        console.error('Erro ao enviar arquivo:', error);
-      });
-  }
-</script>
-<script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Função para enviar o formulário via AJAX
+        function enviarArquivo() {
+            // Recolher os dados do formulário
+            var formData = new FormData();
+            var fileInput = document.getElementById('file');
+            formData.append('file', fileInput.files[0]);
+
+            // Fazer a requisição AJAX
+            axios.post('processa_upload.php', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: function(progressEvent) {
+                        var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                        document.getElementById('upload-progress').style.display = 'block';
+                        document.getElementById('upload-progress').value = percentCompleted;
+                    }
+                })
+                .then(function (response) {
+                    // Manipular a resposta do servidor
+                    console.log(response.data);
+                    document.getElementById('upload-message').innerHTML = response.data;
+                    document.getElementById('upload-message').style.display = 'block';
+                    document.getElementById('upload-progress').style.display = 'none';
+                })
+                .catch(function (error) {
+                    // Manipular erros
+                    console.error('Erro ao enviar arquivo:', error);
+                    document.getElementById('upload-message').innerHTML = 'Erro ao enviar arquivo.';
+                    document.getElementById('upload-message').style.display = 'block';
+                    document.getElementById('upload-progress').style.display = 'none';
+                });
+        }
+
+        // Função para enviar a URL via AJAX
+        function enviarURL() {
+            // Recolher a URL do vídeo
+            var videoURL = document.getElementById('video_url').value;
+
+            // Fazer a requisição AJAX
+            axios.post('processa_upload.php', { video_url: videoURL })
+                .then(function (response) {
+                    // Manipular a resposta do servidor
+                    console.log(response.data);
+                })
+                .catch(function (error) {
+                    // Manipular erros
+                    console.error('Erro ao enviar URL:', error);                    console.error('Erro ao enviar URL:', error);
+                });
+        }
+
+        // Adicionar listeners aos botões
+        document.getElementById('upload-file-button').addEventListener('click', enviarArquivo);
+        document.getElementById('upload-url-button').addEventListener('click', enviarURL);
+    </script>
+    <script src="scripts.js"></script>
+</header>
+    <footer>
+      <!-- Rodapé do site -->
+        <p>&copy; 2024 Net You Stream. Todos os direitos reservados.</p>
+        <p><a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
+    </footer>
 </body>
 </html>
 
