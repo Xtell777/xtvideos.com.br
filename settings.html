@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurações - YOU WEB</title>
+    <title>Configurações - Net You Stream</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Estilos CSS */
         body {
@@ -84,47 +85,130 @@
                 width: calc(100% - 20px);
             }
         }
+
+
+        /* Estilo para o menu de navegação */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Estilo para os ícones */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+        }
+
+   
+     nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+        
     </style>
 </head>
 <body>
     <header>
-        <h1>YOU WEB</h1>
-        <p>O seu site de vídeos favorito</p>
+        <h1>Net You Stream</h1>
     </header>
+   
+
     <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="trends.html">Tendências</a></li>
-            <li><a href="subscriptions.html">Inscrições</a></li>
-            <li><a href="settings.html">Configurações</a></li>
-            <li><a href="uploads.html">Uploads</a></li>
-            <li><a href="history.html">Histórico</a></li>
-            <li><a href="playlists.html">Playlists</a></li>
-            <li><a href="channel.html">Canal</a></li>
-            <li><a href="notifications.html">Notificações</a></li>
-            <li><a class="vip" href="vip.html">VIP</a></li>
-            <li><a href="library.html">Biblioteca</a></li>
-        </ul>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
     </nav>
+
+
     <div id="settings-container">
-        <h2>Configurações</h2>
+        <h2><i class="fas fa-cogs"></i> Configurações</h2>
         <div class="setting-option">
-            <label for="username" class="setting-label">Nome de Usuário:</label>
+            <label for="username" class="setting-label"><i class="fas fa-user"></i> Nome de Usuário:</label>
             <input type="text" id="username" class="setting-input" placeholder="Digite seu nome de usuário">
         </div>
         <div class="setting-option">
-            <label for="email" class="setting-label">E-mail:</label>
+            <label for="email" class="setting-label"><i class="fas fa-envelope"></i> E-mail:</label>
             <input type="email" id="email" class="setting-input" placeholder="Digite seu e-mail">
         </div>
         <div class="setting-option">
-            <label for="password" class="setting-label">Nova Senha:</label>
+            <label for="password" class="setting-label"><i class="fas fa-lock"></i> Nova Senha:</label>
             <input type="password" id="password" class="setting-input" placeholder="Digite sua nova senha">
         </div>
-        <button class="save-button">Salvar Configurações</button>
+        <button id="save-button" class="save-button"><i class="fas fa-save"></i> Salvar Configurações</button>
     </div>
     <script>
-        // Seu código JavaScript aqui
-        // ...
+        // Event listener para o botão de salvar configurações
+        document.getElementById("save-button").addEventListener("click", function() {
+            // Obter os valores dos campos de entrada
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Validar os campos de entrada
+            if (username.trim() === "") {
+                alert("Por favor, insira seu nome de usuário.");
+                return;
+            }
+
+            if (email.trim() === "") {
+                alert("Por favor, insira seu e-mail.");
+                return;            // Validar os campos de entrada
+            if (username.trim() === "") {
+                alert("Por favor, insira seu nome de usuário.");
+                return;
+            }
+
+            if (email.trim() === "") {
+                alert("Por favor, insira seu e-mail.");
+                return;
+            }
+
+            if (password.trim() === "") {
+                alert("Por favor, insira sua nova senha.");
+                return;
+            }
+
+            // Simular o envio dos dados para o servidor (aqui você faria a requisição AJAX)
+            // Neste exemplo, apenas exibimos os dados no console
+            console.log("Nome de Usuário:", username);
+            console.log("E-mail:", email);
+            console.log("Nova Senha:", password);
+
+            // Exibir mensagem de sucesso
+            alert("Configurações salvas com sucesso!");
+        });
     </script>
 </body>
 </html>
+
+           
