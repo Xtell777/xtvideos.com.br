@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notificações - YOU WEB</title>
+    <title>Notificações - Net You Stream</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* Estilos CSS */
         body {
@@ -54,10 +55,9 @@
 
         .notification {
             border-bottom: 1px solid #ddd;
-            padding: 10px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
         }
 
         .notification-info {
@@ -65,16 +65,22 @@
             align-items: center;
         }
 
-        .notification-thumbnail {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-            background-color: #ddd;
-        }
+       
 
         .notification-text {
-            max-width: 80%;
+            flex-grow: 1;
+            padding-right: 15px;
+        }
+
+        .notification-text p {
+            margin: 0;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .notification-text span {
+            color: #777;
+            font-size: 14px;
         }
 
         .notification-actions {
@@ -84,12 +90,17 @@
 
         .mark-as-read {
             margin-left: 10px;
-            padding: 5px 10px;
-            background-color: #ff0000;
-            color: white;
-            border: none;
+            padding: 8px 16px;
+            background-color: #eee;
+            color: #777;
+            border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .mark-as-read:hover {
+            background-color: #ddd;
         }
 
         .pagination {
@@ -99,63 +110,185 @@
 
         .pagination a {
             text-decoration: none;
-            color: #fff;
-            background-color: #ff8009;
+            color: #555;
+            background-color: #f9f9f9;
             padding: 8px 12px;
-            border: 2px solid #ff8009;
+            border: 1px solid #ccc;
             margin: 0 5px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        .pagination a.active {
+            background-color: #ff0000;
+            color: white;
+        }
+
         .pagination a:hover {
-            background-color: #fff;
-            color: #ff8009;
+            background-color: #ddd;
         }
 
         /* Estilos para os botões de página anterior/próxima */
         .pagination-button {
-            background-color: #ff9997;
+            background-color: #ff0000;
             border: none;
             color: white;
-            padding: 20px 25px;
+            padding: 15px 20px;
             border-radius: 15px;
-            font-size: 56px;
+            font-size: 24px;
             cursor: pointer;
-            transition: background-color 0.9s ease;
+            transition: background-color 0.3s ease;
         }
 
         .pagination-button:hover {
             background-color: #cc0000;
         }
-    </style>
+
+
+        /* Estilo para o menu de navegação */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Estilo para os ícones */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+        }
+
+   
+     nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+ .channel-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .channel-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .channel-name {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+        }.channel-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.channel-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.channel-info p {
+    font-weight: bold;
+}
+
+            </style>
 </head>
 <body>
     <header>
-        <h1>YOU WEB</h1>
-        <p>O seu site de vídeos favorito</p>
+        <h1>Net You Stream</h1>
     </header>
+
     <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="trends.html">Tendências</a></li>
-            <li><a href="subscriptions.html">Inscrições</a></li>
-            <li><a href="settings.html">Configurações</a></li>
-            <li><a href="uploads.html">Uploads</a></li>
-            <li><a href="history.html">Histórico</a></li>
-            <li><a href="playlists.html">Playlists</a></li>
-            <li><a href="channel.html">Canal</a></li>
-            <li><a class="vip" href="vip.html">VIP</a></li>
-            <li><a href="library.html">Biblioteca</a></li>
-            <li><a href="notifications.html">Notificações</a></li>
-        </ul>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
     </nav>
-    <div id="notification-container">
-        <!-- Notificações serão adicionadas dinamicamente aqui -->
-                        <div class="notification-thumbnail"></div>
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
                 <div class="notification-text">
-                    <p><strong>Nome do Usuário:</strong> mencionou você em um comentário.</p>
+                    <p><i class="fas fa-video fa-lg"></i> Novo vídeo: "Como Fazer uma Torta de Maçã" foi adicionado por "CozinhaMaster"</p>
+                    <span class="time-ago">há 1 hora</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+        
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
+                <div class="notification-text">
+                    <p><i class="fas fa-comment fa-lg"></i> Novo comentário: "Ótima receita, vou tentar fazer em casa!" de "Usuario123" em "Como Fazer uma Torta de Maçã"</p>
+                    <span class="time-ago">há 30 minutos</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+        
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
+                <div class="notification-text">
+                    <p><i class="fas fa-reply fa-lg"></i> Resposta em comentário: "Obrigado pelo feedback!" de "CozinhaMaster" para "Usuario123"</p>
+                    <span class="time-ago">há 10 minutos</span>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="mark-as-read">Marcar como lida</button>
+            </div>
+        </div>
+        
+        <div class="notification">
+            <div class="notification-info">
+                <div class="notification-thumbnail">
+                    <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+                </div>
+                <div class="notification-text">
+                    <p><i class="fas fa-exclamation-triangle fa-lg"></i> Alerta: O sistema de comentários estará em manutenção hoje às 20:00.</p>
                     <span class="time-ago">há 2 horas</span>
                 </div>
             </div>
@@ -163,23 +296,94 @@
                 <button class="mark-as-read">Marcar como lida</button>
             </div>
         </div>
-        <!-- Repita o bloco acima para cada notificação -->
-    </div>
 
-    <!-- Paginação -->
-    <div class="pagination" id="pagination">
-        <button class="pagination-button">⬅️</button>
-        <!-- Links de página serão adicionados dinamicamente aqui -->
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <!-- ... adicione mais links conforme necessário -->
-        <button class="pagination-button">➡️</button>
+        
+        <!-- Adicione mais notificações conforme necessário -->
+        
     </div>
 
     <script>
-        // Seu código JavaScript para manipulação de notificações aqui
-        // ...
+        <script>
+    // Função para marcar uma notificação como lida
+    function markAsRead(button) {
+        // Encontrar o elemento pai da notificação
+        var notification = button.closest('.notification');
+        
+        // Adicionar a classe 'read' à notificação
+        notification.classList.add('read');
+    }
+
+    // Adicionar evento de clique aos botões de "Marcar como lida"
+    var markButtons = document.querySelectorAll('.mark-as-read');
+    markButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            markAsRead(this);
+        });
+    });
+
+    // Função para exibir a hora de forma legível
+    function timeAgo(date) {
+        var seconds = Math.floor((new Date() - date) / 1000);
+
+        var interval = Math.floor(seconds / 31536000);
+
+        if (interval > 1) {
+            return interval + " anos atrás";
+        }
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+            return interval + " meses atrás";
+        }
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+            return interval + " dias atrás";
+        }
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+            return interval + " horas atrás";
+        }
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+            return interval + " minutos atrás";
+        }
+        return Math.floor(seconds) + " segundos atrás";
+    }
+
+    // Converter os timestamps em strings legíveis
+    var timeAgoElements = document.querySelectorAll('.time-ago');
+    timeAgoElements.forEach(function(element) {
+        var timestamp = new Date(element.getAttribute('data-timestamp'));
+        element.innerText = timeAgo(timestamp);
+    });
+
+    // Função para inscrever-se em um canal
+    function subscribeChannel(button) {
+        // Encontrar o elemento pai da notificação
+        var channelInfo = button.closest('.channel-info');
+        
+        // Alterar o texto do botão
+        var buttonText = channelInfo.querySelector('.subscribe-button span');
+        if (buttonText.innerText === 'Inscreva-se') {
+            buttonText.innerText = 'Inscrito';
+        } else {
+            buttonText.innerText = 'Inscreva-se';
+        }
+
+        // Adicionar ou remover a classe 'subscribed' ao elemento pai da notificação
+        channelInfo.classList.toggle('subscribed');
+    }
+
+    // Adicionar evento de clique aos botões de inscrição
+    var subscribeButtons = document.querySelectorAll('.subscribe-button');
+    subscribeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            subscribeChannel(this);
+        });
+    });
+</script>
+
     </script>
 </body>
 </html>
+
+
