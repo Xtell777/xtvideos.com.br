@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net You Stream</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+      
+     background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        nav {
+            background-color: #005aa7;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        main h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        main p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .comments-section {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .comment h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .comment p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .comment-form {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #0073e6; /* Azul */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005aa7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Estilo para a barra de interação */
+        .interaction-bar {
+            background-color: #f2f2f2; /* Cor de fundo da barra */
+            padding: 5px; /* Espaçamento interno */
+            border-bottom: 1px solid #e1e1e1; /* Borda inferior */
+            display: flex; /* Disposição flexível dos botões */
+            justify-content: space-around; /* Espaçamento entre os botões */
+            margin-top: 20px; /* Margem superior */
+        }
+
+        /* Estilo para os botões de interação */
+        .interaction-button {
+            padding: 8px 16px;
+            background-color: #0073e6; /* Azul */
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1; /* Faz com que os botões ocupem o mesmo espaço */
+            margin: 0 5px; /* Margem lateral entre os botões */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        .interaction-button:hover {
+            background-color: #005aa7; /* Azul escuro ao passar o mouse */
+        }
+
+        /* Estilos para a classificação e tema */
+        .tema-card {
+            background-color: #fff;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tema-info {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .tema-classificacao {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .video-stats {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .video-stats p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .video-stats i {
+            margin-right: 5px;
+            color: #0073e6; /* Cor dos ícones */
+        }
+/* Estilo para o contêiner das estatísticas do vídeo - 50% menor */
+.video-stats {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #fff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 4px; /* Bordas reduzidas pela metade */
+    padding: 5px 10px; /* Espaçamento interno reduzido pela metade */
+    margin: 10px 0; /* Margem reduzida pela metade */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra reduzida pela metade */
+}
+
+/* Estilo para os parágrafos dentro das estatísticas do vídeo - 50% menor */
+.video-stats p {
+    display: flex; 
+    align-items: center; 
+    font-size: 7px; /* Tamanho da fonte reduzido pela metade */
+    color: #606060; 
+    margin: 0 7.5px; /* Margem reduzida pela metade */
+}
+
+/* Estilo para os ícones dentro das estatísticas - 50% menor */
+.video-stats i {
+    margin-right: 4px; /* Espaço entre o ícone e o texto reduzido pela metade */
+    color: #0073e6; 
+}
+
+/* Estilo para os números em destaque - 50% menor */
+.video-stats span {
+    font-weight: bold; 
+    color: #333; 
+    font-size: 7px; /* Tamanho do texto reduzido pela metade */
+}
+    
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .channel-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .channel-name {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+        }
+
+        .subscribe-button {
+            background-color: #c4302b;
+            color: #fff;
+            font-size: 14px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-button:hover {
+            background-color: #a32924;
+        }
+/* Estilo para o contêiner do menu hambúrguer */
+.menu-hamburger-container {
+    display: flex; /* Usar Flexbox para alinhar os elementos */
+    justify-content: flex-end; /* Alinhar o menu à direita */
+    align-items: center; /* Alinhar verticalmente */
+    margin-top: 10px; /* Margem acima do menu hambúrguer */
+}
+
+/* Estilo para o menu hambúrguer */
+.menu-hamburger {
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    font-size: 20px; /* Tamanho do ícone */
+    color: #333; /* Cor do ícone */
+    padding: 10px; /* Espaçamento interno */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+/* Estilo para o efeito ao passar o mouse sobre o menu hambúrguer */
+.menu-hamburger:hover {
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+}
+
+..hamburger-menu {
+    display: none; /* Inicialmente escondido */
+    position: absolute; /* Pode ser ajustado conforme a necessidade */
+    top: 60px; /* Ajuste conforme a altura do cabeçalho */
+    right: 20px; /* Alinhado à direita */
+    background-color: #fff; /* Cor de fundo do menu */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para o menu */
+    border-radius: 5px; /* Bordas arredondadas */
+    z-index: 1000; /* Certifique-se de que o menu fique acima de outros elementos */
+}
+
+.hamburger-menu ul {
+    list-style-type: none; /* Remove os marcadores da lista */
+    padding: 0; /* Remove o preenchimento */
+    margin: 0; /* Remove a margem */
+}
+
+.hamburger-menu li {
+    padding: 10px; /* Espaçamento interno dos itens do menu */
+}
+
+.hamburger-menu a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #333; /* Cor do texto */
+    display: block; /* Faz com que o link ocupe todo o espaço do item */
+}
+
+/* Efeito de hover */
+.hamburger-menu li:hover {
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+}
+/* Estilo para os botões adicionais */
+.interaction-bar .interaction-button.small {
+    font-size: 18px; /* Tamanho do emoji */
+    padding: 6px 10px; /* Espaçamento interno dos botões */
+    background-color: #ffcc00; /* Cor de fundo dos botões */
+    color: #333; /* Cor do texto dos botões */
+    border: none; /* Remover borda */
+    border-radius: 4px; /* Borda arredondada */
+    cursor: pointer; /* Cursor ao passar por cima */
+    transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+.interaction-bar .interaction-button.small:hover {
+    background-color: #ffd633; /* Cor de fundo dos botões ao passar por cima */
+}
+
+.interaction-bar {
+  background-color: #f2f2f2; /* Cor de fundo da barra */
+  padding: 10px; /* Espaçamento interno */
+  border-bottom: 1px solid #e1e1e1; /* Borda inferior */
+}
+
+.interaction-buttons {
+  display: flex; /* Disposição flexível dos botões */
+  justify-content: space-between; /* Espaçamento entre os botões */
+}
+
+
+.interaction-bar {
+    background-color: #f9f9f9; /* Cor de fundo da barra */
+    padding: 10px 15px; /* Espaçamento interno da barra */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para a barra */
+    display: flex; /* Flexbox para alinhar itens horizontalmente */
+    justify-content: space-between; /* Espaço igual entre os botões */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    margin-top: 10px; /* Margem superior para espaçamento */
+}
+
+.interaction-buttons {
+    display: flex; /* Flexbox para alinhar botões lado a lado */
+    gap: 15px; /* Espaço entre os botões */
+}
+
+.toggle-description,
+.toggle-comments {
+    background-color: #c4302b; /* Cor de fundo dos botões */
+    color: #fff; /* Cor do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    padding: 8px 12px; /* Espaçamento interno dos botões */
+    border: none; /* Sem borda */
+    border-radius: 20px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transição suave */
+}
+
+/* Efeito de hover nos botões */
+.toggle-description:hover,
+.toggle-comments:hover {
+    background-color: #a52a2a; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+/* Efeito de foco nos botões */
+.toggle-description:focus,
+.toggle-comments:focus {
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Efeito de foco */
+}
+.interaction-buttons {
+  display: flex; /* Disposição flexível dos botões */
+  justify-content: space-between; /* Espaçamento entre os botões */
+}
+
+.toggle-description,
+.toggle-comments {
+  cursor: pointer; /* Muda o cursor para indicar clicabilidade */
+  padding: 5px 10px; /* Espaçamento interno */
+  background-color: #4CAF50; /* Cor de fundo dos botões */
+  color: white; /* Cor do texto */
+  border-radius: 5px; /* Bordas arredondadas */
+  margin: 0 5px; /* Margem externa */
+}
+
+.toggle-description:hover,
+.toggle-comments:hover {
+  background-color: #45a049; /* Cor de fundo ao passar o mouse */
+}
+
+/* CSS */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Estilo para a descrição do vídeo similar ao YouTube */
+.video-description {
+  background-color: #181818; /* Fundo escuro para o tema padrão do YouTube */
+  color: #fff; /* Texto claro para melhor legibilidade */
+  font-family: 'Roboto', sans-serif; /* Fonte padrão do YouTube */
+  font-size: 14px; /* Tamanho de fonte similar ao do YouTube */
+  line-height: 1.5; /* Espaçamento entre linhas */
+  padding: 16px; /* Espaçamento interno */
+  border-top: 1px solid #303030; /* Linha divisória no topo */
+  max-width: 640px; /* Largura máxima para a descrição */
+  margin: 0 auto; /* Centraliza a descrição */
+}
+
+/* Links dentro da descrição */
+.video-description a {
+  color: #3ea6ff; /* Cor azul para links, similar ao YouTube */
+  text-decoration: none; /* Sem sublinhado nos links */
+}
+
+.video-description a:hover {
+  text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+/* Parágrafos dentro da descrição */
+.video-description p {
+  margin-bottom: 12px; /* Espaçamento entre parágrafos */
+}
+
+/* Hashtags e menções */
+.video-description .hashtag,
+.video-description .mention {
+  color: #bbb; /* Cor cinza para hashtags e menções */
+  font-weight: bold; /* Negrito para destacar */
+}
+
+.interaction-button {
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+}
+
+
+        /* Estilos para os comentários */
+        .comments-section {
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .comments-section h3 {
+            font-size: 18px;
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+
+        .comment-list {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .comment {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .comment-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comment-content {
+            flex-grow: 1;
+        }
+
+        .comment-author {
+            font-size: 16px;
+            color: #333;
+            margin: 0 0 5px 0;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: none;
+        }
+
+        .comment-button {
+            background-color: #c4302b;
+            color: #fff;
+            font-size: 14px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comment-button:hover {
+            background-color: #a32924;
+        }
+/* Estilos gerais para o container de informações do canal */
+.video-info-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.channel-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre a imagem e o nome do canal */
+}
+
+.channel-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.channel-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Estilos do botão de inscrição */
+.subscribe-button {
+    background-color: #c4302b; /* Cor do YouTube */
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre o texto e o ícone */
+}
+
+.subscribe-button i {
+    font-size: 16px;
+}
+
+/* Estilo quando o usuário já está inscrito */
+.subscribe-button.subscribed {
+    background-color: #cccccc; /* Cor para o estado "Inscrito" */
+    color: #333; /* Cor do texto para o estado "Inscrito" */
+}
+
+/* Efeito hover para melhorar a interação */
+.subscribe-button:hover {
+    background-color: #b02522;
+}
+
+#description {
+    display: block; /* Torna o elemento visível */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+#description h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#description p {
+    margin: 10px 0;
+}
+
+#description a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+#description a:hover {
+    text-decoration: underline;
+}
+
+#description .social-links,
+#description .platform-links {
+    list-style: none;
+    padding: 0;
+}
+
+#description .social-links li,
+#description .platform-links li {
+    margin: 5px 0;
+}
+
+#description .social-links li a,
+#description .platform-links li a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #0073e6;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+#description .social-links li a:hover,
+#description .platform-links li a:hover {
+    background-color: #005bb5;
+}
+
+.reaction-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .like {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .dislike {
+            background-color: #f44336;
+            color: white;
+        }
+        .love {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .hate {
+            background-color: #000000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Net You Stream</h1>
+    </header>
+
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
+    </nav>
+
+    <!-- Carregar a biblioteca de ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+
+    <main>
+        <section>
+            <h2>BEM-VINDO AO NET YOU STREAM!😏</h2>
+            <p>O Melhor Site Para Produtores De conteúdo profissional e amadores.</p>
+        </section>
+
+        <h3 class="video-title">XTELL 777 - " GANG DE PONTE" (Official Áudio)</h3>
+
+        <!-- Classificação etária -->
+        <div class="content">
+            <div class="tema-card">
+                <div>
+                    <div class="tema-info">Música | 0h 1:37min</div>
+                </div>
+                <div class="tema-classificacao">Classificação: 18+</div>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/atLVRfmh9Ps" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal" class="channel-image">
+        <p class="channel-name">XTELL777</p>
+        <div class="subscribe-button" id="subscribe-btn" onclick="subscribeChannel()">
+            <span>Inscreva-se</span>
+            <i class="fa fa-bell"></i> <!-- Ícone de notificação -->
+        </div>
+    </div>
+</div>
+
+
+
+        <!-- Estatísticas do vídeo -->
+        <div class="video-stats" id="stats-1">
+            <p><i class="fa fa-users"></i> <span id="subscribers-1">500.000</span> inscritos</p>
+
+            <p class="video-views" id="video-views">
+            <i class="fas fa-eye"></i> 1.241.714 views
+        </p>
+            <p><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-1">1</span> dias</p>
+            <p><i class="fa fa-comments"></i> <span id="comments-1">123</span> comentários</p>
+        </div>
+
+      
+<div class="reaction-buttons">
+        <button class="button like" onclick="react('like')">👍🏻Like <span class="count" id="like-count">10</span></button>
+        <button class="button dislike" onclick="react('dislike')">👎🏻Dislike <span class="count" id="dislike-count">5</span></button>
+        <button class="button love" onclick="react('love')">🥰Amei <span class="count" id="love-count">3</span></button>
+        <button class="button hate" onclick="react('hate')">🤬Odeio <span class="count" id="hate-count">2</span></button>
+    </div>
+    <p id="message"></p>
+
+
+<!-- Interação com o vídeo -->
+    <div class="interaction-buttons">
+        <!-- Substitua 'denuncia.html' pelo caminho correto para a página de denúncia -->
+        <a href="denuncia.html" target="_blank" class="interaction-button small">🚫 Denunciar</a>
+        <button class="interaction-button small" onclick="shareVideo('video1')">📤 Compartilhar</button>
+        <button class="interaction-button small" onclick="downloadVideo('video1')">⬇️ Download</button>
+    </div>
+</div>
+
+<div id="description">
+    <h1>#XTELL777  #XTELLNEW #TROPADOXTELL</h1>
+    <p>Prod by. "Wilkinson Gabriel"</p>
+    <p>Siga XTELL777 nas redes sociais:</p>
+    <ul class="social-links">
+        <li><a href="https://www.facebook.com/profile.php?id=100094206888864&mibextid=ZbWKwL">Facebook</a></li>
+        <li><a href="https://instagram.com/xtell777?igshid=MzNlNGNkZWQ4Mg==">Instagram</a></li>
+        <li><a href="https://twitter.com/XTELL777?t=QD7KRdNnknM9az-7TeKofg&s=09">Twitter</a></li>
+    </ul>
+    <p>Ouça Xtell em outras plataformas:</p>
+    <ul class="platform-links">
+        <li><a href="https://open.spotify.com/artist/7iLo1QAuJpdgHpoO1CST0e?si=RCuNob22TtCzL-iqncAjzw">Spotify</a></li>
+        <li><a href="https://on.soundcloud.com/HM47m">SoundCloud</a></li>
+        <li><a href="https://www.youtube.com/@XTELL777">YouTube</a></li>
+    </ul>
+    <p>@XTELL777 #xtellgang #XTELL777...</p>
+</div>
+
+
+<div id="comment-section-1" style="display: none;">
+    <!-- Conteúdo dos comentários -->
+    Aqui estão os comentários do vídeo.
+</div>
+
+
+
+<div class="interaction-bar">
+    <div class="interaction-buttons">
+        <div class="toggle-description" onclick="showDescription()">Mostrar Descrição</div>
+        <div class="toggle-comments" onclick="toggleComments('comment-section-1')">Mostrar Comentários</div>
+    </div>
+</div>
+
+<div class="video-description">
+    <p>
+
+
+<!-- HTML para a seção de comentários -->
+<div class="comments-section">
+    <h3>Comentários</h3>
+    <div id="comment-list" class="comment-list">
+        <!-- Lista de comentários será exibida aqui -->
+        <!-- Exemplo de um comentário existente -->
+        <div class="comment">
+            <div class="comment-avatar">
+                <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Avatar" class="channel-avatar">
+            </div>
+            <div class="comment-content">
+                <p class="comment-author">XTELL777</p>
+                <p class="comment-text">PRIMEIRO COMENTÁRIO DO CEO XTELL 777...</p>
+                <div class="comment-actions">
+                    <button onclick="likeComment(this)" class="like-button">Curtir (<span class="like-count">0</span>)</button>
+                    <button onclick="toggleReplyForm(this)" class="reply-button">Responder</button>
+                </div>
+                <div class="reply-form" style="display: none;">
+                    <textarea placeholder="Adicione uma resposta..." class="reply-input"></textarea>
+                    <button onclick="addReply(this)" class="reply-submit-button">Enviar Resposta</button>
+                </div>
+                <div class="replies"></div>
+            </div>
+        </div>
+        <!-- Outros comentários aqui -->
+    </div>
+    <div id="comment-form" class="comment-form">
+        <textarea id="comment-text" placeholder="Adicione um comentário..." class="comment-input"></textarea>
+        <button onclick="addComment()" class="comment-button">Enviar Comentário</button>
+    </div>
+</div>
+
+<script>
+    // Função para adicionar um novo comentário
+    function addComment() {
+        const commentText = document.getElementById('comment-text').value;
+        if (commentText.trim() === '') {
+            alert('Por favor, adicione um comentário.');
+            return;
+        }
+
+        const commentList = document.getElementById('comment-list');
+
+        // Cria um novo elemento de comentário
+        const newComment = document.createElement('div');
+        newComment.classList.add('comment');
+
+        const avatar = document.createElement('div');
+        avatar.classList.add('comment-avatar');
+        const img = document.createElement('img');
+        img.src = 'https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a'; // URL do avatar
+        img.alt = 'Avatar';
+        img.classList.add('channel-avatar');
+        avatar.appendChild(img);
+
+        const content = document.createElement('div');
+        content.classList.add('comment-content');
+        const author = document.createElement('p');
+        author.classList.add('comment-author');
+        author.textContent = 'XTELL 777'; // Substitua pelo nome do usuário
+        const text = document.createElement('p');
+        text.classList.add('comment-text');
+        text.textContent = commentText;
+
+        const actions = document.createElement('div');
+        actions.classList.add('comment-actions');
+        const likeButton = document.createElement('button');
+        likeButton.classList.add('like-button');
+        likeButton.textContent = 'Curtir (0)';
+        likeButton.onclick = function() { likeComment(likeButton); };
+        const replyButton = document.createElement('button');
+        replyButton.classList.add('reply-button');
+        replyButton.textContent = 'Responder';
+        replyButton.onclick = function() { toggleReplyForm(replyButton); };
+
+        actions.appendChild(likeButton);
+        actions.appendChild(replyButton);
+
+        const replyForm = document.createElement('div');
+        replyForm.classList.add('reply-form');
+        replyForm.style.display = 'none';
+        const replyInput = document.createElement('textarea');
+        replyInput.classList.add('reply-input');
+        replyInput.placeholder = 'Adicione uma resposta...';
+        const replySubmitButton = document.createElement('button');
+        replySubmitButton.classList.add('reply-submit-button');
+        replySubmitButton.textContent = 'Enviar Resposta';
+        replySubmitButton.onclick = function() { addReply(replySubmitButton); };
+
+        replyForm.appendChild(replyInput);
+        replyForm.appendChild(replySubmitButton);
+
+        const replies = document.createElement('div');
+        replies.classList.add('replies');
+
+        content.appendChild(author);
+        content.appendChild(text);
+        content.appendChild(actions);
+        content.appendChild(replyForm);
+        content.appendChild(replies);
+
+        newComment.appendChild(avatar);
+        newComment.appendChild(content);
+
+        // Adiciona o novo comentário à lista de comentários
+        commentList.appendChild(newComment);
+
+        // Limpa o campo de texto
+        document.getElementById('comment-text').value = '';
+    }
+
+    // Função para curtir um comentário
+    function likeComment(button) {
+        const likeCountSpan = button.querySelector('.like-count');
+        let likeCount = parseInt(likeCountSpan.textContent);
+        likeCount++;
+        likeCountSpan.textContent = likeCount;
+        button.textContent = `Curtir (${likeCount})`;
+    }
+
+    // Função para alternar o formulário de resposta
+    function toggleReplyForm(button) {
+        const replyForm = button.parentElement.nextElementSibling;
+        replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Função para adicionar uma resposta a um comentário
+    function addReply(button) {
+        const replyInput = button.previousElementSibling;
+        const replyText = replyInput.value;
+        if (replyText.trim() === '') {
+            alert('Por favor, adicione uma resposta.');
+            return;
+        }
+
+        const repliesDiv = button.parentElement.nextElementSibling;
+
+        // Cria um novo elemento de resposta
+        const newReply = document.createElement('div');
+        newReply.classList.add('comment');
+
+        const avatar = document.createElement('div');
+        avatar.classList.add('comment-avatar');
+        const img = document.createElement('img');
+        img.src = 'https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a'; // URL do avatar
+        img.alt = 'Avatar';
+        img.classList.add('channel-avatar');
+        avatar.appendChild(img);
+
+        const content = document.createElement('div');
+        content.classList.add('comment-content');
+        const author = document.createElement('p');
+        author.classList.add('comment-author');
+        author.textContent = 'XTELL 777'; // Substitua pelo nome do usuário
+        const text = document.createElement('p');
+        text.classList.add('comment-text');
+        text.textContent = replyText;
+
+        content.appendChild(author);
+        content.appendChild(text);
+
+        newReply.appendChild(avatar);
+        newReply.appendChild(content);
+
+        // Adiciona a nova resposta à lista de respostas
+        repliesDiv.appendChild(newReply);
+
+        // Limpa o campo de texto
+        replyInput.value = '';
+    }
+</script>
+
+
+
+
+
+      
+    </main>
+<script>
+        const reactions = {
+            like: 10,
+            dislike: 5,
+            love: 3,
+            hate: 2
+        };
+
+        const userReactions = {
+            like: false,
+            dislike: false,
+            love: false,
+            hate: false
+        };
+
+        function updateCounts() {
+            document.getElementById('like-count').textContent = reactions.like;
+            document.getElementById('dislike-count').textContent = reactions.dislike;
+            document.getElementById('love-count').textContent = reactions.love;
+            document.getElementById('hate-count').textContent = reactions.hate;
+        }
+
+        function react(reaction) {
+            if (!userReactions[reaction]) {
+                reactions[reaction]++;
+                userReactions[reaction] = true;
+                const message = document.getElementById('message');
+                switch (reaction) {
+                    case 'like':
+                        message.textContent = 'Você gostou disso!';
+                        break;
+                    case 'dislike':
+                        message.textContent = 'Você não gostou disso!';
+                        break;
+                    case 'love':
+                        message.textContent = 'Você amou isso!';
+                        break;
+                    case 'hate':
+                        message.textContent = 'Você odiou isso!';
+                        break;
+                    default:
+                        message.textContent = '';
+                }
+                updateCounts();
+            } else {
+                alert('Você já reagiu com essa opção!');
+            }
+        }
+
+        updateCounts();
+    </script>
+
+
+<script>
+        const reactions = {
+            like: 10,
+            dislike: 5,
+            love: 3,
+            hate: 2
+        };
+
+        const userReactions = {
+            like: false,
+            dislike: false,
+            love: false,
+            hate: false
+        };
+
+        function updateCounts() {
+            const counts = document.getElementById('counts');
+            counts.textContent = `Likes: ${reactions.like}, Dislikes: ${reactions.dislike}, Ameis: ${reactions.love}, Odeios: ${reactions.hate}`;
+        }
+
+        function react(reaction) {
+            if (!userReactions[reaction]) {
+                reactions[reaction]++;
+                userReactions[reaction] = true;
+                const message = document.getElementById('message');
+                switch (reaction) {
+                    case 'like':
+                        message.textContent = 'Você gostou disso!';
+                        break;
+                    case 'dislike':
+                        message.textContent = 'Você não gostou disso!';
+                        break;
+                    case 'love':
+                        message.textContent = 'Você amou isso!';
+                        break;
+                    case 'hate':
+                        message.textContent = 'Você odiou isso!';
+                        break;
+                    default:
+                        message.textContent = '';
+                }
+                updateCounts();
+            } else {
+                alert('Você já reagiu com essa opção!');
+            }
+        }
+
+        updateCounts();
+    </script>
+
+
+</script>
+
+<sc// Função para tratar interações de vídeo
+function handleVideoInteraction(videoId, interactionType) {
+    // Exibe no console a interação do usuário (pode ser modificado para realizar ações reais)
+    console.log(`Interação com o vídeo ${videoId}: ${interactionType}`);
+
+    // Opções de tratamento com base no tipo de interação
+    switch (interactionType) {
+        case 'thinking': // Like
+            alert("Você curtiu este vídeo!");
+            break;
+        case 'heart': // Dislike
+            alert("Você não gostou deste vídeo.");
+            break;
+        case 'devil': // Amei
+            alert("Você amou este vídeo!");
+            break;
+        case 'smirk': // Odiei
+            alert("Você odiou este vídeo.");
+            break;
+        default:
+            alert("Interação desconhecida.");
+    }
+
+    // Aqui você pode adicionar código adicional para registrar a interação no servidor
+    // ou atualizar o botão para refletir a ação, como mudar a cor após o clique
+}
+
+</script>
+
+
+
+
+
+
+
+<script>
+
+function toggleMenu() {
+    // Adicione aqui a lógica para mostrar ou esconder o menu
+    const menu = document.getElementById('your-menu-id'); // Substitua 'your-menu-id' pelo ID real do seu menu
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+}
+
+
+</script>
+
+
+
+
+<script>
+
+// Função para alternar o menu
+function toggleMenu() {
+    const menu = document.getElementById('hamburger-menu');
+    
+    // Verifica se o menu está atualmente visível
+    if (menu.style.display === 'block') {
+        // Se estiver visível, esconde o menu
+        menu.style.display = 'none';
+    } else {
+        // Se não estiver visível, mostra o menu
+        menu.style.display = 'block';
+    }
+}
+
+// Fecha o menu se o usuário clicar fora dele
+window.onclick = function(event) {
+    const menu = document.getElementById('hamburger-menu');
+    const hamburger = document.querySelector('.menu-hamburger');
+
+    // Se o clique não for no menu ou no ícone do menu
+    if (!menu.contains(event.target) && event.target !== hamburger) {
+        menu.style.display = 'none'; // Esconde o menu
+    }
+};
+
+// Fecha o menu ao pressionar a tecla ESC
+document.addEventListener('keydown', function(event) {
+    const menu = document.getElementById('hamburger-menu');
+    if (event.key === 'Escape' && menu.style.display === 'block') {
+        menu.style.display = 'none'; // Esconde o menu
+    }
+});
+
+
+</script>
+
+<script>
+    // Função para verificar e atualizar os números dos vídeos
+    function updateVideoStats(videoId) {
+        const subscribersElement = document.querySelector(`#${videoId} .channel-subscribers`);
+        const viewsElement = document.querySelector(`#${videoId} .video-views`);
+        const publishDateElement = document.querySelector(`#${videoId} .video-publish-date`);
+        const commentsElement = document.querySelector(`#${videoId} .video-comments`);
+
+        // Atualiza os números com base nos IDs
+        subscribersElement.innerHTML = '<i class="fa fa-users"></i> 500.000 inscritos'; // Exemplo: atualiza o número de inscritos
+        viewsElement.innerHTML = '<i class="fa fa-eye"></i> 1.345.678 views'; // Exemplo: atualiza o número de visualizações
+        publishDateElement.innerHTML = '<i class="fa fa-calendar"></i> Publicado há 4 dias'; // Exemplo: atualiza a data de publicação
+        commentsElement.innerHTML = '<i class="fa fa-comments"></i> 234 comentários'; // Exemplo: atualiza o número de comentários
+    }
+
+    // Chamada de exemplo para atualizar os números do vídeo com ID "video9"
+    updateVideoStats("video9");
+</script>
+
+<!-- Adicione este trecho de script no final do seu arquivo HTML, antes da tag de fechamento </body> -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const viewsElement = document.getElementById('video-views');
+
+        function atualizarVisualizacoes() {
+            // Simula um aumento de visualizações
+            const visualizacoesAtuais = parseInt(viewsElement.innerText.replace(/\D/g, ''), 10); // Remove não dígitos
+            const novoNumeroVisualizacoes = visualizacoesAtuais + Math.floor(Math.random() * 1000); // Adiciona visualizações aleatórias
+
+            // Atualiza o elemento HTML
+            viewsElement.innerHTML = '<i class="fa fa-eye"></i> ' + novoNumeroVisualizacoes.toLocaleString() + ' views';
+        }
+
+        // Chama a função para atualizar visualizações a cada 5 segundos (altere conforme necessário)
+        setInterval(atualizarVisualizacoes, 5000);
+    });
+</script>
+
+
+<script>
+// JavaScript para alternar o menu
+function toggleMenu() {
+  var menuContent = document.getElementById('menuContent');
+  if (menuContent.style.display === 'block') {
+    menuContent.style.display = 'none';
+  } else {
+    menuContent.style.display = 'block';
+  }
+}
+
+// Adiciona um ouvinte de evento para fechar o menu quando clicar fora dele
+window.onclick = function(event) {
+  var menuContent = document.getElementById('menuContent');
+  if (event.target == menuContent) {
+    menuContent.style.display = 'none';
+  }
+}
+
+
+</script>
+<!-- Adicione mais seções de vídeo conforme necessário, ajustando os IDs e chamadas de função -->
+
+        
+           
+   
+
+
+
+
+
+<script>
+    // Função para verificar e atualizar as visualizações
+    function checkAndUpdateViews(videoId) {
+        const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
+
+        if (!viewedVideos[videoId]) {
+            // Se o vídeo não foi visualizado, incrementa o número de visualizações
+            const videoStatsElement = document.querySelector(`#${videoId} .video-stats p:first-child span`);
+            const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
+            const newViews = currentViews + 1;
+
+            // Atualiza a exibição no elemento HTML
+            videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
+
+            // Marca o vídeo como visualizado no Local Storage
+            viewedVideos[videoId] = true;
+            localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
+        }
+    }
+</script>
+<script>
+    // Chama a função para verificar e atualizar as visualizações do vídeo1
+    checkAndUpdateViews('video1');
+</script>
+<script>
+        function subscribeChannel() {
+            console.log("Você se inscreveu no canal!");
+        }
+
+        function showDescription() {
+            const description = document.querySelector('.video-description');
+            description.style.display = (description.style.display === 'none' || description.style.display === '') ? 'block' : 'none';
+        }
+
+        function shareVideo() {
+            console.log("Vídeo compartilhado!");
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Adicione este trecho de script no final do seu arquivo HTML, antes da tag de fechamento </body> -->
+
+
+ 
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const numberOfVideos = 100; // Número 
+ de vídeos
+    const videoContainer = document.getElementById('video-container');
+
+    for (let i = 1; i <= numberOfVideos; i++) {
+        const videoId = `video${i}`;
+        const videoTitle = `Vídeo ${i} - Título do Vídeo`;
+
+        // Criação de elementos HTML para cada vídeo
+        const videoSection = document.createElement('section');
+        videoSection.id = videoId;
+        videoSection.className = 'video-section';
+
+        const videoTitleElement = document.createElement('h3');
+        videoTitleElement.className = 'video-title';
+        videoTitleElement.innerText = videoTitle;
+
+        const videoContainerElement = document.createElement('div');
+        videoContainerElement.className = 'video-container';
+
+        const videoIframeElement = document.createElement('iframe');
+        videoIframeElement.src = 'https://www.youtube.com/embed/VIDEO_ID'; // Substitua 'VIDEO_ID' pelo código de incorporação do seu vídeo
+        videoIframeElement.frameborder = '0';
+        videoIframeElement.allowfullscreen = true;
+
+        const videoStatsElement = document.createElement('div');
+        videoStatsElement.className = 'video-stats';
+
+        const viewsElement = document.createElement('p');
+        viewsElement.className = 'video-views';
+        viewsElement.id = `${videoId}-views`;
+        viewsElement.innerText = '0 views';
+
+        // Adiciona os elementos ao contêiner do vídeo
+        videoContainerElement.appendChild(videoIframeElement);
+        videoStatsElement.appendChild(viewsElement);
+
+        videoSection.appendChild(videoTitleElement);
+        videoSection.appendChild(videoContainerElement);
+        videoSection.appendChild(videoStatsElement);
+
+        // Adiciona o vídeo ao contêiner principal
+        videoContainer.appendChild(videoSection);
+    }
+});
+
+</script>
+
+
+
+<script>      
+        let subscribersCount = 500000; // Inicializa o contador de inscritos
+
+function subscribeChannel() {
+    // Verifica se o usuário já está inscrito ou não
+    const isSubscribed = document.querySelector('.subscribe-button').classList.contains('subscribed');
+
+    if (!isSubscribed) {
+        // Incrementa o contador de inscritos
+        subscribersCount++;
+        // Atualiza o número de inscritos no elemento HTML
+        document.getElementById('channel-subscribers').textContent = subscribersCount.toLocaleString('pt-BR') + ' inscritos';
+        // Adiciona a classe 'subscribed' para indicar que o usuário está inscrito
+        document.querySelector('.subscribe-button').classList.add('subscribed');
+        // Altera o texto do botão para refletir que o usuário está inscrito
+        document.querySelector('.subscribe-button span').textContent = 'Inscrito';
+    } else {
+        // Se o usuário já está inscrito, exibe uma mensagem de alerta
+        alert('Você já está inscrito neste canal.');
+    }
+}
+
+    </script>
+
+<script>
+     // JavaScript
+function toggleMenu() {
+  var menu = document.getElementById("menuContent");
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+
+     
+      </script>
+
+
+      <script>
+function shareVideo() {
+    // Capturar o URL do vídeo da página
+    var videoUrl = window.location.href;
+
+    // Verificar se o navegador suporta a API de compartilhamento
+    if (navigator.share) {
+        // Compartilhar usando a API de compartilhamento
+        navigator.share({
+            title: document.title,
+            text: "Confira este vídeo!",
+            url: videoUrl,
+        })
+        .then(() => console.log('Vídeo compartilhado com sucesso.'))
+        .catch((error) => console.error('Erro ao compartilhar vídeo:', error));
+    } else {
+        // Abrir uma janela para compartilhar manualmente
+        var shareUrl = "mailto:?subject=" + encodeURIComponent(document.title) + "&body=Confira este vídeo: " + videoUrl;
+        window.open(shareUrl, '_blank');
+    }
+}
+
+
+
+      </script>
+
+
+
+      <script>
+
+function downloadVideoFromPage() {
+    // Encontra todos os elementos de vídeo na página
+    var videoElements = document.querySelectorAll('video');
+
+    // Verifica se há pelo menos um elemento de vídeo na página
+    if (videoElements.length > 0) {
+        // Obtém o URL do primeiro vídeo encontrado
+        var videoUrl = videoElements[0].src;
+
+        // Chama a função para iniciar o download do vídeo
+        downloadVideo(videoUrl);
+    } else {
+        console.error('Nenhum elemento de vídeo encontrado na página.');
+    }
+}
+
+// Função para iniciar o download do vídeo a partir de uma URL específica
+function downloadVideo(videoUrl) {
+    var a = document.createElement('a');
+    a.href = videoUrl;
+    a.download = 'video.mp4';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+// Exemplo de uso da função para capturar dinamicamente o URL do vídeo da página e iniciar o download
+downloadVideoFromPage();
+
+
+
+      </script>
+
+
+
+
+<script>
+    function castToChromecast() {
+        // Verifica se o navegador suporta a API do Chromecast
+        if (chrome.cast && chrome.cast.isAvailable) {
+            // Cria uma instância do objeto de configuração do Chromecast
+            var castConfig = new chrome.cast.CastConfig();
+            var sessionRequest = new chrome.cast.SessionRequest(chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID);
+            var apiConfig = new chrome.cast.ApiConfig(sessionRequest,
+                sessionListener,
+                receiverListener);
+
+            // Inicia a inicialização do Chromecast
+            chrome.cast.initialize(apiConfig, onInitSuccess, onError);
+        } else {
+            alert("Seu navegador não suporta o Chromecast.");
+        }
+    }
+
+    // Função de callback para tratamento de sucesso na inicialização do Chromecast
+    function onInitSuccess() {
+        console.log('Chromecast inicializado com sucesso.');
+        // Adicione o código aqui para iniciar o cast para o Chromecast
+        // Por exemplo:
+        alert("Cast iniciado para o Chromecast!");
+    }
+
+    // Função de callback para tratamento de erros na inicialização do Chromecast
+    function onError() {
+        console.log('Erro ao inicializar o Chromecast.');
+        alert("Erro ao inicializar o Chromecast.");
+    }
+
+    // Função de callback para tratamento de alterações na sessão do Chromecast
+    function sessionListener() {
+        console.log('Sessão do Chromecast criada com sucesso.');
+    }
+
+    // Função de callback para tratamento de alterações no receptor (Chromecast)
+    function receiverListener() {
+        console.log('Receptor (Chromecast) disponível.');
+    }
+</script>
+
+
+
+         
+<script>
+
+
+
+
+// Função para alternar a exibição da descrição do vídeo
+function showDescription() {
+    // Seleciona o elemento da descrição pelo ID
+    var description = document.getElementById("description");
+
+    // Verifica se a descrição está visível e alterna a visibilidade
+    if (description.style.display === "none" || description.style.display === "") {
+        description.style.display = "block"; // Exibe a descrição
+        document.querySelector('.toggle-description').textContent = "Esconder Descrição"; // Muda o texto do botão
+    } else {
+        description.style.display = "none"; // Esconde a descrição
+        document.querySelector('.toggle-description').textContent = "Mostrar Descrição"; // Muda o texto do botão
+    }
+}
+
+// Função para alternar a exibição da seção de comentários
+function toggleComments(commentSectionId) {
+    // Seleciona a seção de comentários pelo ID fornecido como argumento
+    var commentSection = document.getElementById(commentSectionId);
+
+    // Verifica se os comentários estão visíveis e alterna a visibilidade
+    if (commentSection.style.display === "none" || commentSection.style.display === "") {
+        commentSection.style.display = "block"; // Exibe os comentários
+        document.querySelector('.toggle-comments').textContent = "Esconder Comentários"; // Muda o texto do botão
+    } else {
+        commentSection.style.display = "none"; // Esconde os comentários
+        document.querySelector('.toggle-comments').textContent = "Mostrar Comentários"; // Muda o texto do botão
+    }
+}
+
+
+
+
+
+         
+</script>
+
+
+          
+
+<script>
+    // Função para se inscrever no canal
+    function subscribeChannel() {
+        // Aqui você pode adicionar a lógica para se inscrever no canal
+        // Por exemplo, você pode fazer uma solicitação para uma API de inscrição
+        // e exibir uma mensagem de confirmação
+        alert("Você se inscreveu neste canal!");
+    }
+
+    // Função para lidar com interações de vídeo (like, dislike, love, hate)
+    function handleVideoInteraction(videoId, interaction) {
+        // Aqui você pode adicionar a lógica para lidar com as interações do vídeo
+        // Por exemplo, atualizar contadores de likes, dislikes, visualizações, etc.
+        // Você pode fazer solicitações para uma API para registrar essas interações
+        // e atualizar as informações do vídeo conforme necessário
+        console.log("Interacton:", interaction, "on video:", videoId);
+    }
+
+    // Função para mostrar a descrição do vídeo
+    function showDescription() {
+        // Aqui você pode adicionar a lógica para mostrar a descrição do vídeo
+        // Por exemplo, você pode expandir ou mostrar um elemento de descrição oculto
+        alert("Mostrar descrição do vídeo");
+    }
+
+    // Função para mostrar ou ocultar os comentários
+    function toggleComments() {
+        // Aqui você pode adicionar a lógica para mostrar ou ocultar os comentários
+        // Por exemplo, você pode alternar a visibilidade de um elemento de comentários
+        var commentsSection = document.querySelector('.comments-section');
+        commentsSection.style.display = (commentsSection.style.display === 'none' || commentsSection.style.display === '') ? 'block' : 'none';
+    }
+
+    // Função para exibir a caixa de pesquisa por voz
+    function playAudio() {
+        // Aqui você pode adicionar a lógica para tocar um som de áudio e ativar o reconhecimento de voz
+        // Por exemplo, você pode reproduzir um som de clique e iniciar o reconhecimento de voz
+        alert("Tocar som de áudio e ativar reconhecimento de voz");
+    }
+
+    // Função para realizar uma pesquisa
+    function search() {
+        // Aqui você pode adicionar a lógica para realizar uma pesquisa
+        // Por exemplo, você pode obter o termo de pesquisa do campo de entrada e redirecionar para a página de resultados de pesquisa
+        alert("Realizar pesquisa com o termo digitado");
+    }
+    // Supondo que você tenha uma função que busca e retorna o número atual de inscritos do canal
+// Essa função pode ser uma chamada para uma API ou um valor armazenado localmente
+function getSubscribersCount() {
+    // Aqui você retornaria o número atual de inscritos
+    // Por exemplo, você pode retornar um valor fixo para testar a funcionalidade:
+    return 550000;
+}
+
+// Função para atualizar o número de inscritos exibido na página
+function updateSubscribersCount() {
+    // Obtenha o elemento que mostra o número de inscritos pelo ID
+    var subscribersElement = document.getElementById("channel-subscribers");
+    
+    // Obtenha o número atual de inscritos
+    var currentSubscribersCount = getSubscribersCount();
+    
+    // Atualize o conteúdo do elemento com o novo número de inscritos
+    subscribersElement.textContent = currentSubscribersCount.toLocaleString("pt-BR") + " inscritos";
+}
+
+// Chame a função para atualizar o número de inscritos quando necessário
+// Por exemplo, após uma ação bem-sucedida de inscrição
+updateSubscribersCount();
+
+</script>
+
+
+
+<script>
+
+function subscribeChannel() {
+    const subscribeButton = document.getElementById('subscribe-btn');
+    const buttonText = subscribeButton.querySelector('span');
+
+    // Verifica se já está inscrito ou não
+    if (buttonText.innerText === 'Inscreva-se') {
+        buttonText.innerText = 'Inscrito'; // Muda para "Inscrito"
+        subscribeButton.style.backgroundColor = '#cccccc'; // Muda a cor do botão para indicar que está inscrito
+    } else {
+        buttonText.innerText = 'Inscreva-se'; // Volta para "Inscreva-se" se já estiver inscrito
+        subscribeButton.style.backgroundColor = '#c4302b'; // Cor original do botão
+    }
+}
+
+
+</script>
+
+
+      
+<script>
+
+
+
+
+// Função para alternar a exibição da descrição do vídeo
+function showDescription() {
+    // Seleciona o elemento da descrição pelo ID
+    var description = document.getElementById("description");
+
+    // Verifica se a descrição está visível e alterna a visibilidade
+    if (description.style.display === "none" || description.style.display === "") {
+        description.style.display = "block"; // Exibe a descrição
+        document.querySelector('.toggle-description').textContent = "Esconder Descrição"; // Muda o texto do botão
+    } else {
+        description.style.display = "none"; // Esconde a descrição
+        document.querySelector('.toggle-description').textContent = "Mostrar Descrição"; // Muda o texto do botão
+    }
+}
+
+         
+</script>
+
+
+
+</section>
+
+<header>
+        <h1>Net You Stream</h1>
+    </header>
+    <footer>
+      <!-- Rodapé do site -->
+        <p>&copy; 2024 Net You Stream. Todos os direitos reservados.</p>
+        <p><a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
+    </footer>
+    <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
+
+
+
+           
+
+
+</body>
+</html>
+
