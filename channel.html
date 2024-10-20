@@ -997,6 +997,95 @@ nav a i {
             color: #888;
         }
 
+   #channel-container {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        #channel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .channel-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        #channel-info h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #channel-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .stat-item {
+            font-size: 14px;
+        }
+
+        #channel-description {
+            margin-bottom: 20px;
+        }
+
+        #video-container {
+            /* Aqui podem ir os vídeos */
+        }
+
+        #edit-channel-form {
+            margin-top: 20px;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
+
+        .form-group button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -1023,24 +1112,106 @@ nav a i {
 <!-- Carregar a biblioteca de ícones -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
+
+<body>
     <div id="channel-container">
         <div id="channel-header">
             <div class="channel-info">
-                <!-- Adicionei o atributo alt para a imagem do canal -->
-                <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" alt="Imagem do canal XTELL 777" class="channel-image">
+                <img id="channel-image" src="" alt="Imagem do seu canal " class="channel-image">
                 <div id="channel-info">
-                    <h2>XTELL 777</h2>
+                    <h2 id="channel-name">Seu Nome</h2>
                     <div id="channel-stats">
-                        <div class="stat-item">Inscritos: 500.000</div>
-                        <div class="stat-item">Vídeos: 10</div>
-                        <div class="stat-item">Visualizações: 5.000.000</div>
+                        <div class="stat-item">Inscritos: 0</div>
+                        <div class="stat-item">Vídeos: 0</div>
+                        <div class="stat-item">Visualizações: 0</div>
                     </div>
                 </div>
             </div>
         </div>
         <div id="channel-description">
-            <p>canal do xtell777 ceo do Net You Stream um site de streaming de videos e imagens aqui voce encontra conteúdo diversificados de alta qualidade e ótimo gosto.</p>
+            <p id="description-text">Sua Descrição.</p>
         </div>
+
+        <!-- Formulário para editar nome, imagem e descrição -->
+        <div id="edit-channel-form">
+            <h3>Editar Informações do Canal</h3>
+            <form id="channel-edit-form">
+                <div class="form-group">
+                    <label for="new-channel-name">Novo Nome de Usuário:</label>
+                    <input type="text" id="new-channel-name" placeholder="Digite o novo nome">
+                </div>
+                <div class="form-group">
+                    <label for="new-channel-image">Nova Foto do Usuário:</label>
+                    <input type="file" id="new-channel-image" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="new-description">Nova Descrição do Canal:</label>
+                    <textarea id="new-description" rows="4" placeholder="Digite a nova descrição"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Carrega os dados do localStorage ao carregar a página
+        window.onload = function() {
+            // Carregar o nome do canal
+            const storedName = localStorage.getItem('channelName');
+            if (storedName) {
+                document.getElementById('channel-name').textContent = storedName;
+            }
+
+            // Carregar a descrição do canal
+            const storedDescription = localStorage.getItem('channelDescription');
+            if (storedDescription) {
+                document.getElementById('description-text').textContent = storedDescription;
+            }
+
+            // Carregar a imagem do canal
+            const storedImage = localStorage.getItem('channelImage');
+            if (storedImage) {
+                document.getElementById('channel-image').src = storedImage;
+            }
+        };
+
+        // Manipula o envio do formulário de edição
+        document.getElementById('channel-edit-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Obtém os valores dos campos de edição
+            const newName = document.getElementById('new-channel-name').value;
+            const newDescription = document.getElementById('new-description').value;
+            const newImageFile = document.getElementById('new-channel-image').files[0];
+
+            // Atualiza o nome do canal se houver um novo nome
+            if (newName) {
+                document.getElementById('channel-name').textContent = newName;
+                localStorage.setItem('channelName', newName); // Salva no localStorage
+            }
+
+            // Atualiza a descrição do canal se houver uma nova descrição
+            if (newDescription) {
+                document.getElementById('description-text').textContent = newDescription;
+                localStorage.setItem('channelDescription', newDescription); // Salva no localStorage
+            }
+
+            // Atualiza a imagem do canal se houver uma nova imagem
+            if (newImageFile) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('channel-image').src = e.target.result;
+                    localStorage.setItem('channelImage', e.target.result); // Salva a imagem no localStorage
+                };
+                reader.readAsDataURL(newImageFile); // Converte o arquivo de imagem em base64
+            }
+
+            alert('Informações do canal atualizadas com sucesso!');
+        });
+    </script>
+</body> 
         <div id="video-container">
             <!-- Aqui vão os cartões de vídeo -->
 
@@ -1048,113 +1219,8 @@ nav a i {
 
     <main>
     
-        <!-- Conteúdo principal do site -->
-       <section class="video-section">
-    <h3 class="video-title">XTELL777 - " I Love Money" (Official Áudio)</h3>
-    
-    <!-- Classificação etária -->
-    <p class="video-rating">Classificação: 18+</p>
-
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/gff09WsCcCY" frameborder="0" allowfullscreen></iframe>
-    </div>
-</section>
         
 
-
-<div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
-    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
-</div>
-
-
-
-
-
-
-<section class="video-section">
-    <h3 class="video-title">XTELL777 - "Gang Of Minors" (Official Áudio)</h3>
-    
-    <!-- Classificação etária -->
-    <p class="video-rating">Classificação: 18+</p>
-
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/MwXs33yePsU" frameborder="0" allowfullscreen></iframe>
-    </div>
-</section>
-
-        
-
-        </div>
-    </div>
-</div>
-
-<div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
-    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
-</div>
-
-
-
-
-
-
-<section class="video-section">
-    <h3 class="video-title">Xtell777 -"Guns and Money" 🔫💸</h3>
-    
-    <!-- Classificação etária -->
-    <p class="video-rating">Classificação: 18+</p>
-
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/OJU_rkBKmig" frameborder="0" allowfullscreen></iframe>
-    </div>
-</section>
-
-        
-
-        </div>
-    </div>
-</div>
-
-<div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
-    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
-</div>
-
-
-
-
-
- <section class="video-section">
-    <h3 class="video-title">Xtell777 - "O Poder das Sombras" 🌚</h3>
-    
-    <!-- Classificação etária -->
-    <p class="video-rating">Classificação: 18+</p>
-
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/6Z-oyuCfYVE" frameborder="0" allowfullscreen></iframe>
-    </div>
-</section>
-
-
-        
-
-        </div>
-    </div>
-</div>
-
-<div class="video-stats">
-    <p class="channel-subscribers" id="channel-subscribers"><i class="fa fa-users"></i> 500.000 inscritos</p>
-    <p class="video-views" id="video-views"><i class="fa fa-eye"></i> 1.234.567 views</p>
-    <p class="video-publish-date" id="video-publish-date"><i class="fa fa-calendar"></i> Publicado há 1 <span id="days-since-publish"></span> dias</p>
-    <p class="video-comments" id="video-comments"><i class="fa fa-comments"></i> 123 comentários</p>
-</div>
 
 
 
@@ -1163,43 +1229,8 @@ nav a i {
 
 
     </main>
-<script>
-    // Função para verificar e atualizar os números dos vídeos
-    function updateVideoStats(videoId) {
-        const subscribersElement = document.querySelector(`#${videoId} .channel-subscribers`);
-        const viewsElement = document.querySelector(`#${videoId} .video-views`);
-        const publishDateElement = document.querySelector(`#${videoId} .video-publish-date`);
-        const commentsElement = document.querySelector(`#${videoId} .video-comments`);
 
-        // Atualiza os números com base nos IDs
-        subscribersElement.innerHTML = '<i class="fa fa-users"></i> 500.000 inscritos'; // Exemplo: atualiza o número de inscritos
-        viewsElement.innerHTML = '<i class="fa fa-eye"></i> 1.345.678 views'; // Exemplo: atualiza o número de visualizações
-        publishDateElement.innerHTML = '<i class="fa fa-calendar"></i> Publicado há 4 dias'; // Exemplo: atualiza a data de publicação
-        commentsElement.innerHTML = '<i class="fa fa-comments"></i> 234 comentários'; // Exemplo: atualiza o número de comentários
-    }
 
-    // Chamada de exemplo para atualizar os números do vídeo com ID "video9"
-    updateVideoStats("video9");
-</script>
-
-<!-- Adicione este trecho de script no final do seu arquivo HTML, antes da tag de fechamento </body> -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const viewsElement = document.getElementById('video-views');
-
-        function atualizarVisualizacoes() {
-            // Simula um aumento de visualizações
-            const visualizacoesAtuais = parseInt(viewsElement.innerText.replace(/\D/g, ''), 10); // Remove não dígitos
-            const novoNumeroVisualizacoes = visualizacoesAtuais + Math.floor(Math.random() * 1000); // Adiciona visualizações aleatórias
-
-            // Atualiza o elemento HTML
-            viewsElement.innerHTML = '<i class="fa fa-eye"></i> ' + novoNumeroVisualizacoes.toLocaleString() + ' views';
-        }
-
-        // Chama a função para atualizar visualizações a cada 5 segundos (altere conforme necessário)
-        setInterval(atualizarVisualizacoes, 5000);
-    });
-</script>
 
 
 <script>
@@ -1229,160 +1260,12 @@ window.onclick = function(event) {
            
             </div>
 <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
-<script>
-    let videoReactionCounts = {};
-    let videoInteractionAllowed = {};
-
-    // Número de vídeos desejado
-    const numberOfVideos = 100;
-
-    for (let i = 1; i <= numberOfVideos; i++) {
-        const videoId = `video${i}`;
-        videoReactionCounts[videoId] = {
-            thinking: 999,
-            heart: 999,
-            devil: 999,
-            smirk: 999
-        };
-        videoInteractionAllowed[videoId] = true;
-    }
-
-    function handleVideoInteraction(videoId, type) {
-        if (videoInteractionAllowed[videoId]) {
-            videoReactionCounts[videoId][type]++;
-            updateReactionCounts(videoId);
-            videoInteractionAllowed[videoId] = false;
-        }
-    }
-
-    function updateReactionCounts(videoId) {
-        const thinkingButton = document.querySelector(`#${videoId} .interaction-button:nth-child(1)`);
-        const heartButton = document.querySelector(`#${videoId} .interaction-button:nth-child(2)`);
-        const devilButton = document.querySelector(`#${videoId} .interaction-button:nth-child(3)`);
-        const smirkButton = document.querySelector(`#${videoId} .interaction-button:nth-child(4)`);
-
-        thinkingButton.innerHTML = `👍🏻 Like (${videoReactionCounts[videoId].thinking})`;
-        heartButton.innerHTML = `👎🏻 Dislike (${videoReactionCounts[videoId].heart})`;
-        devilButton.innerHTML = `😍 Amei (${videoReactionCounts[videoId].devil})`;
-        smirkButton.innerHTML = `🤬 Odiei (${videoReactionCounts[videoId].smirk})`;
-    }
-    
-    
-    // Função para obter os dados do vídeo de uma API (simulada)
-    async function fetchVideoData(videoId) {
-        // Simulação de uma API que retorna dados do vídeo com base no videoId
-        const videoData = {
-            subscribers: Math.floor(Math.random() * 1000000), // Simulação de número aleatório de inscritos
-            views: Math.floor(Math.random() * 10000000), // Simulação de número aleatório de visualizações
-            publishDate: "Publicado há 3 dias", // Simulação de data de publicação
-            comments: Math.floor(Math.random() * 1000), // Simulação de número aleatório de comentários
-        };
-        return videoData;
-    }
-
-    // Função para atualizar os números dos elementos HTML com os dados do vídeo
-    async function updateVideoStats(videoId) {
-        // Obter os dados do vídeo da API
-        const videoData = await fetchVideoData(videoId);
-        if (videoData) {
-            // Atualizar os números dos elementos HTML
-            const videoViewsId = `video-views-${videoId}`;
-            document.getElementById(videoViewsId).textContent = videoData.views.toLocaleString("pt-BR") + " views";
-            document.getElementById("channel-subscribers").textContent = videoData.subscribers.toLocaleString("pt-BR") + " inscritos";
-            document.getElementById("video-publish-date").textContent = videoData.publishDate;
-            const videoCommentsId = `video-comments-${videoId}`;
-            document.getElementById(videoCommentsId).textContent = videoData.comments.toLocaleString("pt-BR") + " comentários";
-        }
-    }
-
-    // Atualizar os números de todos os vídeos
-    for (let i = 1; i <= numberOfVideos; i++) {
-        updateVideoStats(`video${i}`);
-    }
-    
-    
-</script>
 
 
 
 
 
-<script>
-    // Função para verificar e atualizar as visualizações
-    function checkAndUpdateViews(videoId) {
-        const viewedVideos = JSON.parse(localStorage.getItem('viewedVideos')) || {};
 
-        if (!viewedVideos[videoId]) {
-            // Se o vídeo não foi visualizado, incrementa o número de visualizações
-            const videoStatsElement = document.querySelector(`#${videoId} .video-stats p:first-child span`);
-            const currentViews = parseInt(videoStatsElement.innerText.replace(/\D/g, ''), 10);
-            const newViews = currentViews + 1;
-
-            // Atualiza a exibição no elemento HTML
-            videoStatsElement.innerText = newViews.toLocaleString('pt-BR') + ' views';
-
-            // Marca o vídeo como visualizado no Local Storage
-            viewedVideos[videoId] = true;
-            localStorage.setItem('viewedVideos', JSON.stringify(viewedVideos));
-        }
-    }
-</script>
-<script>
-    // Chama a função para verificar e atualizar as visualizações do vídeo1
-    checkAndUpdateViews('video1');
-</script>
-<script>
-        function subscribeChannel() {
-            console.log("Você se inscreveu no canal!");
-        }
-
-        function showDescription() {
-            const description = document.querySelector('.video-description');
-            description.style.display = (description.style.display === 'none' || description.style.display === '') ? 'block' : 'none';
-        }
-
-        function shareVideo() {
-            console.log("Vídeo compartilhado!");
-        }
-    </script>
-<script>
-    let videoReactionCounts = {};
-    let videoInteractionAllowed = {};
-
-    // Número de vídeos desejado
-    const numberOfVideos = 100;
-
-    for (let i = 1; i <= numberOfVideos; i++) {
-        const videoId = `video${i}`;
-        videoReactionCounts[videoId] = {
-            thinking: 999,
-            heart: 999,
-            devil: 999,
-            smirk: 999
-        };
-        videoInteractionAllowed[videoId] = true;
-    }
-
-    function handleVideoInteraction(videoId, type) {
-        if (videoInteractionAllowed[videoId]) {
-            videoReactionCounts[videoId][type]++;
-            updateReactionCounts(videoId);
-            videoInteractionAllowed[videoId] = false;
-        }
-    }
-
-    function updateReactionCounts(videoId) {
-        const thinkingButton = document.querySelector(`#${videoId} .interaction-button:nth-child(1)`);
-        const heartButton = document.querySelector(`#${videoId} .interaction-button:nth-child(2)`);
-        const devilButton = document.querySelector(`#${videoId} .interaction-button:nth-child(3)`);
-        const smirkButton = document.querySelector(`#${videoId} .interaction-button:nth-child(4)`);
-
-        thinkingButton.innerHTML = `👍🏻 Like (${videoReactionCounts[videoId].thinking})`;
-        heartButton.innerHTML = `👎🏻 Dislike (${videoReactionCounts[videoId].heart})`;
-        devilButton.innerHTML = `😍 Amei (${videoReactionCounts[videoId].devil})`;
-        smirkButton.innerHTML = `🤬 Odiei (${videoReactionCounts[videoId].smirk})`;
-    }
-</script>
 
 
 
@@ -1403,82 +1286,8 @@ window.onclick = function(event) {
 
 
  
-<script>
-
-document.addEventListener('DOMContentLoaded', function () {
-    const numberOfVideos = 100; // Número 
- de vídeos
-    const videoContainer = document.getElementById('video-container');
-
-    for (let i = 1; i <= numberOfVideos; i++) {
-        const videoId = `video${i}`;
-        const videoTitle = `Vídeo ${i} - Título do Vídeo`;
-
-        // Criação de elementos HTML para cada vídeo
-        const videoSection = document.createElement('section');
-        videoSection.id = videoId;
-        videoSection.className = 'video-section';
-
-        const videoTitleElement = document.createElement('h3');
-        videoTitleElement.className = 'video-title';
-        videoTitleElement.innerText = videoTitle;
-
-        const videoContainerElement = document.createElement('div');
-        videoContainerElement.className = 'video-container';
-
-        const videoIframeElement = document.createElement('iframe');
-        videoIframeElement.src = 'https://www.youtube.com/embed/VIDEO_ID'; // Substitua 'VIDEO_ID' pelo código de incorporação do seu vídeo
-        videoIframeElement.frameborder = '0';
-        videoIframeElement.allowfullscreen = true;
-
-        const videoStatsElement = document.createElement('div');
-        videoStatsElement.className = 'video-stats';
-
-        const viewsElement = document.createElement('p');
-        viewsElement.className = 'video-views';
-        viewsElement.id = `${videoId}-views`;
-        viewsElement.innerText = '0 views';
-
-        // Adiciona os elementos ao contêiner do vídeo
-        videoContainerElement.appendChild(videoIframeElement);
-        videoStatsElement.appendChild(viewsElement);
-
-        videoSection.appendChild(videoTitleElement);
-        videoSection.appendChild(videoContainerElement);
-        videoSection.appendChild(videoStatsElement);
-
-        // Adiciona o vídeo ao contêiner principal
-        videoContainer.appendChild(videoSection);
-    }
-});
-
-</script>
 
 
-
-<script>      
-        let subscribersCount = 500000; // Inicializa o contador de inscritos
-
-function subscribeChannel() {
-    // Verifica se o usuário já está inscrito ou não
-    const isSubscribed = document.querySelector('.subscribe-button').classList.contains('subscribed');
-
-    if (!isSubscribed) {
-        // Incrementa o contador de inscritos
-        subscribersCount++;
-        // Atualiza o número de inscritos no elemento HTML
-        document.getElementById('channel-subscribers').textContent = subscribersCount.toLocaleString('pt-BR') + ' inscritos';
-        // Adiciona a classe 'subscribed' para indicar que o usuário está inscrito
-        document.querySelector('.subscribe-button').classList.add('subscribed');
-        // Altera o texto do botão para refletir que o usuário está inscrito
-        document.querySelector('.subscribe-button span').textContent = 'Inscrito';
-    } else {
-        // Se o usuário já está inscrito, exibe uma mensagem de alerta
-        alert('Você já está inscrito neste canal.');
-    }
-}
-
-    </script>
 
 <script>
      // JavaScript
@@ -1495,114 +1304,8 @@ function toggleMenu() {
       </script>
 
 
-      <script>
-function shareVideo() {
-    // Capturar o URL do vídeo da página
-    var videoUrl = window.location.href;
-
-    // Verificar se o navegador suporta a API de compartilhamento
-    if (navigator.share) {
-        // Compartilhar usando a API de compartilhamento
-        navigator.share({
-            title: document.title,
-            text: "Confira este vídeo!",
-            url: videoUrl,
-        })
-        .then(() => console.log('Vídeo compartilhado com sucesso.'))
-        .catch((error) => console.error('Erro ao compartilhar vídeo:', error));
-    } else {
-        // Abrir uma janela para compartilhar manualmente
-        var shareUrl = "mailto:?subject=" + encodeURIComponent(document.title) + "&body=Confira este vídeo: " + videoUrl;
-        window.open(shareUrl, '_blank');
-    }
-}
 
 
-
-      </script>
-
-
-
-      <script>
-
-function downloadVideoFromPage() {
-    // Encontra todos os elementos de vídeo na página
-    var videoElements = document.querySelectorAll('video');
-
-    // Verifica se há pelo menos um elemento de vídeo na página
-    if (videoElements.length > 0) {
-        // Obtém o URL do primeiro vídeo encontrado
-        var videoUrl = videoElements[0].src;
-
-        // Chama a função para iniciar o download do vídeo
-        downloadVideo(videoUrl);
-    } else {
-        console.error('Nenhum elemento de vídeo encontrado na página.');
-    }
-}
-
-// Função para iniciar o download do vídeo a partir de uma URL específica
-function downloadVideo(videoUrl) {
-    var a = document.createElement('a');
-    a.href = videoUrl;
-    a.download = 'video.mp4';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-}
-
-// Exemplo de uso da função para capturar dinamicamente o URL do vídeo da página e iniciar o download
-downloadVideoFromPage();
-
-
-
-      </script>
-
-
-
-
-<script>
-    function castToChromecast() {
-        // Verifica se o navegador suporta a API do Chromecast
-        if (chrome.cast && chrome.cast.isAvailable) {
-            // Cria uma instância do objeto de configuração do Chromecast
-            var castConfig = new chrome.cast.CastConfig();
-            var sessionRequest = new chrome.cast.SessionRequest(chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID);
-            var apiConfig = new chrome.cast.ApiConfig(sessionRequest,
-                sessionListener,
-                receiverListener);
-
-            // Inicia a inicialização do Chromecast
-            chrome.cast.initialize(apiConfig, onInitSuccess, onError);
-        } else {
-            alert("Seu navegador não suporta o Chromecast.");
-        }
-    }
-
-    // Função de callback para tratamento de sucesso na inicialização do Chromecast
-    function onInitSuccess() {
-        console.log('Chromecast inicializado com sucesso.');
-        // Adicione o código aqui para iniciar o cast para o Chromecast
-        // Por exemplo:
-        alert("Cast iniciado para o Chromecast!");
-    }
-
-    // Função de callback para tratamento de erros na inicialização do Chromecast
-    function onError() {
-        console.log('Erro ao inicializar o Chromecast.');
-        alert("Erro ao inicializar o Chromecast.");
-    }
-
-    // Função de callback para tratamento de alterações na sessão do Chromecast
-    function sessionListener() {
-        console.log('Sessão do Chromecast criada com sucesso.');
-    }
-
-    // Função de callback para tratamento de alterações no receptor (Chromecast)
-    function receiverListener() {
-        console.log('Receptor (Chromecast) disponível.');
-    }
-</script>
 
 
 
