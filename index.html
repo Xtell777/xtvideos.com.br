@@ -1393,8 +1393,13 @@ section a:hover {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-5">567</span> comentários</p>
 </div>
 
+
+
+
+
 <section class="video-section" id="video-6" data-category="Música" data-age-rating="🔞+">
-    <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video1.html')" class="video-link">
+    <!-- Link para o título com redirecionamento correto -->
+    <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video6.html')" class="video-link">
         <h3 class="video-title">XTELL 777 - "AK DO SPORT" (Official Áudio)</h3>
     </a>
 
@@ -1409,7 +1414,8 @@ section a:hover {
     </div>
 
     <div class="video-container">
-        <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video1.html')" class="video-link">
+        <!-- Link do vídeo com redirecionamento correto -->
+        <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video6.html')" class="video-link">
             <iframe src="https://www.youtube.com/embed/Y8C94myqaS0" frameborder="0" allowfullscreen></iframe>
         </a>
     </div>
@@ -1433,8 +1439,12 @@ section a:hover {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-6">678</span> comentários</p>
 </div>
 
+
+
+
+
 <section class="video-section" id="video-7" data-category="Música" data-age-rating="🔞+">
-    <a href="#" onclick="redirectToVideo('XTELL 777 - MENTE DE GANGSTER', 'video2.html')" class="video-link">
+    <a href="#" onclick="redirectToVideo('XTELL 777 - MENTE DE GANGSTER', 'video7.html')" class="video-link">
         <h3 class="video-title">XTELL 777 - "MENTE DE GANGSTER" (Official Áudio)</h3>
     </a>
 
@@ -1475,7 +1485,7 @@ section a:hover {
 
 <section class="video-section" id="video-8" data-category="Música" data-age-rating="🔞+">
     <!-- Link do título com JavaScript para redirecionamento -->
-    <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video3.html')" class="video-link">
+    <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video8.html')" class="video-link">
         <h3 class="video-title">XTELL 777 - "MUNDO A GIRAR" (Official Áudio)</h3>
     </a>
 
@@ -1491,7 +1501,7 @@ section a:hover {
 
     <div class="video-container">
         <!-- Link do vídeo com JavaScript para redirecionamento -->
-        <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video3.html')" class="video-link">
+        <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video8.html')" class="video-link">
             <iframe src="https://www.youtube.com/embed/AnY_VqxTTJI" frameborder="0" allowfullscreen></iframe>
         </a>
     </div>
@@ -1539,6 +1549,22 @@ function redirectToVideo(title, videoFile) {
 
 
 
+
+
+
+<script>
+function redirectToVideo(videoTitle, videoPage) {
+    // Checar se o vídeoPage está correto
+    if (videoPage && videoPage.indexOf('.html') !== -1) {
+        // Redirecionar para a página do vídeo
+        window.location.href = videoPage;
+    } else {
+        console.error("Página do vídeo inválida: " + videoPage);
+    }
+}
+
+
+</script>
 
 
 
