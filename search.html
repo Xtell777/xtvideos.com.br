@@ -6,283 +6,407 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NET YOU STREAM</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-       /* Reset padrão */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+.tema-card {
+  background-color: #fff;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  padding: 10px; /* Reduzido de 20px para 10px */
+  margin-bottom: 10px; /* Reduzido de 20px para 10px */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-header {
-    background-color: #fff;
-    color: #606060;
-    text-align: center;
-    padding: 20px 0;
+.tema-info {
+  color: #7f8c8d;
+  font-size: 14px; /* Reduzido de 16px para 8px */
+  margin-bottom: 5px; /* Reduzido de 10px para 5px */
 }
-
-nav {
-    background-color: #f9f9f9;
-    padding: 10px 0;
-    text-align: center;
+.tema-classificacao {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-bottom: 0;
 }
+        
 
-nav a {
-    color: #606060;
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-}
 
-#search-bar {
-    background-color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-}
-
-#search-bar input[type="text"] {
-    width: 60%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    margin-right: 10px;
-}
-
-#search-bar button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #ff0000;
-    color: #fff;
-    border-radius: 25px;
-    cursor: pointer;
-}
-
-main {
-    padding: 20px;
-}
-
-.video-section {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-
-.video-title {
-    background-color: #fff;
-    color: #000;
-    padding: 10px;
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    /* 16:9 */
-    height: 0;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.video-info-container {
+    display: flex; /* Usar flexbox para alinhar os itens */
+    align-items: center; /* Centraliza verticalmente os itens */
+    margin: 20px 0; /* Margem vertical */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #f1f1f1; /* Cor de fundo suave */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .channel-info {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+    display: flex; /* Usar flexbox para a info do canal */
+    align-items: center; /* Centraliza a imagem e o nome do canal */
 }
 
 .channel-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+    width: 50px; /* Largura da imagem */
+    height: 50px; /* Altura da imagem */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Mantém a proporção da imagem */
+    margin-right: 10px; /* Espaço entre a imagem e o nome */
 }
 
 .channel-name {
-    margin: 0;
-    font-weight: bold;
+    font-size: 18px; /* Tamanho da fonte do nome do canal */
+    font-weight: bold; /* Negrito para o nome do canal */
+    color: #333; /* Cor do texto */
 }
 
+.video-info-container {
+    display: flex; /* Alinhamento em linha */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #ffffff; /* Fundo branco */
+    margin: 10px 0; /* Margem vertical */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.channel-info {
+    display: flex; /* Usar flexbox para alinhar imagem e texto */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.channel-image {
+    width: 48px; /* Largura da imagem do canal */
+    height: 48px; /* Altura da imagem do canal */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Mantém a proporção da imagem */
+    margin-right: 12px; /* Espaço entre a imagem e o nome do canal */
+}
+
+.channel-name {
+    font-size: 16px; /* Tamanho da fonte do nome do canal */
+    font-weight: bold; /* Negrito para o nome do canal */
+    color: #000; /* Cor do texto */
+    white-space: nowrap; /* Evita que o nome quebre em várias linhas */
+    overflow: hidden; /* Esconde o texto que excede a largura */
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+}
+
+.video-info-container {
+    margin: 20px; /* Espaço ao redor da seção */
+}
+
+.channel-info {
+    display: flex; /* Flexbox para alinhar a imagem e o nome */
+    align-items: center; /* Alinha verticalmente ao centro */
+}
+
+.channel-image {
+    width: 50px; /* Largura da imagem do canal */
+    height: 50px; /* Altura da imagem do canal */
+    border-radius: 50%; /* Torna a imagem circular */
+    margin-right: 10px; /* Espaçamento à direita da imagem */
+}
+
+.channel-name {
+    font-size: 18px; /* Tamanho da fonte do nome do canal */
+    color: #333; /* Cor do texto do nome do canal */
+    margin: 0; /* Remove margens padrão do parágrafo */
+}
+
+/* Estilo para o link, se desejado */
+.channel-info a {
+    text-decoration: none; /* Remove sublinhado do link */
+    color: inherit; /* Faz o link herdar a cor do texto */
+}
+
+.channel-info a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+.video-info-container {
+    margin: 20px; /* Espaço ao redor da seção */
+}
+
+.channel-info {
+    display: flex; /* Flexbox para alinhar a imagem e o nome */
+    align-items: center; /* Alinha verticalmente ao centro */
+}
+
+.channel-image {
+    width: 50px; /* Largura da imagem do canal */
+    height: 50px; /* Altura da imagem do canal */
+    border-radius: 50%; /* Torna a imagem circular */
+    margin-right: 10px; /* Espaçamento à direita da imagem */
+}
+
+.channel-name {
+    font-size: 18px; /* Tamanho da fonte do nome do canal */
+    color: #333; /* Cor do texto do nome do canal */
+    margin: 0; /* Remove margens padrão do parágrafo */
+}
+
+/* Estilo para o link, se desejado */
+.channel-info a {
+    text-decoration: none; /* Remove sublinhado do link */
+    color: inherit; /* Faz o link herdar a cor do texto */
+    display: flex; /* Permite o alinhamento horizontal */
+    align-items: center; /* Alinha o conteúdo ao centro */
+}
+
+.channel-info a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+
+.video-link {
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit; /* Herda a cor do texto */
+}
+
+.video-link:hover {
+    opacity: 0.8; /* Diminui a opacidade ao passar o mouse */
+}
+        /* Reset padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #ff0000; /* Vermelho */
+            color: #ffffff; /* Branco */
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #search-bar {
+            background-color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        #search-bar input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            margin-right: 10px;
+        }
+
+        #search-bar button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff0000;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #search-bar button:hover {
+            background-color: #cc0000;
+        }
+
+        #filters {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        #filters select {
+            padding: 10px;
+            margin: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .video-section {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .video-title {
+            font-size: 18px;
+            color: #333;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção de 16:9 (para vídeos do YouTube) */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .channel-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .channel-name {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .video-stats {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .interaction-bar {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .interaction-button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            background-color: #fff;
+            color: #606060;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .interaction-button:hover {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #000000; /* Preto */
+            color: #ffffff; /* Branco */
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer a {
+            color: #ffffff; /* Branco */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+/* Container de informações do vídeo */
+.video-info-container {
+    display: flex; /* Flexbox para alinhar itens */
+    align-items: center; /* Alinha verticalmente ao centro */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #fff; /* Fundo branco */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    margin: 15px 0; /* Margem superior e inferior */
+}
+
+/* Informações do canal */
+.channel-info {
+    display: flex; /* Flexbox para alinhar a imagem e o texto */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Imagem do canal */
+.channel-image {
+    width: 48px; /* Largura da imagem do canal */
+    height: 48px; /* Altura da imagem do canal */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Mantém a proporção da imagem */
+    border: 1px solid #ccc; /* Borda leve ao redor da imagem */
+    margin-right: 10px; /* Espaço à direita da imagem */
+}
+
+/* Nome do canal */
+.channel-name {
+    font-size: 16px; /* Tamanho da fonte do nome do canal */
+    font-weight: bold; /* Negrito para o nome do canal */
+    color: #333; /* Cor do texto */
+    margin: 0; /* Remove margens padrão do parágrafo */
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow: hidden; /* Esconde texto que excede o limite */
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+}
+
+/* Estilo do link */
+.channel-info a {
+    text-decoration: none; /* Remove sublinhado do link */
+    color: inherit; /* Herda a cor do texto */
+    display: flex; /* Permite o alinhamento horizontal */
+    align-items: center; /* Alinha o conteúdo ao centro */
+}
+
+.channel-info a:hover {
+    opacity: 0.8; /* Diminui a opacidade ao passar o mouse */
+}
+
+/* Container de estatísticas do vídeo */
 .video-stats {
-    padding: 10px;
-    font-size: 14px;
+    display: flex; /* Usar flexbox para alinhamento horizontal */
+    justify-content: space-between; /* Espaça uniformemente os itens */
+    align-items: center; /* Alinha verticalmente ao centro */
+    padding: 5px; /* Reduzido para espaçamento interno */
+    background-color: #fff; /* Fundo branco */
+    /* Removido border-radius e box-shadow para eliminar bordas */
+    margin: 10px 0; /* Margem superior e inferior reduzida */
 }
 
-.interaction-bar {
-    background-color: #fff;
-    padding: 10px;
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
+/* Estilo para cada estatística */
+.video-stats p {
+    font-size: 9px; /* Tamanho da fonte das estatísticas reduzido para 50% */
+    color: #555; /* Cor do texto */
+    margin: 0; /* Remove margens padrão do parágrafo */
+    display: auto; /* Flexbox para alinhar ícones e texto */
+    align-items: center; /* Centraliza verticalmente */
 }
 
-.interaction-button {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 0 5px;
-    background-color: #fff;
-    color: #606060;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+/* Estilo para ícones */
+.video-stats i {
+    margin-right: 3px; /* Espaço à direita do ícone reduzido */
+    color: #888; /* Cor do ícone */
 }
 
-.interaction-button:hover {
-    background-color: #ff0000;
-    color: #fff;
+/* Efeito de hover nas estatísticas */
+.video-stats p:hover {
+    color: #0073e6; /* Muda a cor do texto ao passar o mouse */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
 }
 
-footer {
-    background-color: #fff;
-    color: #606060;
-    text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid #e0e0e0;
-}
-/* Estilos para os vídeos */
-.video-section {
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.video-title {
-    font-size: 18px;
-    color: #333;
-    padding: 15px;
-    margin: 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.video-rating {
-    font-size: 14px;
-    color: #666;
-    padding: 15px;
-    margin: 0;
-}
-
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* Proporção de 16:9 (para vídeos do YouTube) */
-}
-
-.video-container iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-/* Estilos para estatísticas do vídeo */
-.video-stats,
-.interaction-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.video-stats p,
-.interaction-buttons button {
-    margin: 5px;
-    padding: 8px 8px;
-    border-radius: 20px;
-}
-
-.interaction-buttons button {
-    cursor: pointer;
-}
-
-.interaction-buttons button:hover {
-    background-color: #ddd;
-}
-
-.interaction-bar {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.interaction-button {
-    background-color: transparent;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px 20px;
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-.interaction-button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para o cabeçalho */
-header {
-    background-color: #ff0000; /* Vermelho */
-    color: #ffffff; /* Branco */
-    padding: 10px;
-    text-align: center;
-}
-
-/* Estilo para o rodapé */
-footer {
-    background-color: #000000; /* Preto */
-    color: #ffffff; /* Branco */
-    padding: 10px;
-    text-align: center;
-}
-
-/* Estilo para os links do rodapé */
-footer a {
-    color: #ffffff; /* Branco */
-    text-decoration: none;
-}
-
-/* Estilo para os links do rodapé quando hover */
-footer a:hover {
-    text-decoration: underline;
-}
-/* Estilo para os botões adicionais */
-.interaction-bar .interaction-button.small {
-    font-size: 18px; /* Tamanho do emoji */
-    padding: 6px 10px; /* Espaçamento interno dos botões */
-    background-color: #ffcc00; /* Cor de fundo dos botões */
-    color: #333; /* Cor do texto dos botões */
-    border: none; /* Remover borda */
-    border-radius: 4px; /* Borda arredondada */
-    cursor: pointer; /* Cursor ao passar por cima */
-    transition: background-color 0.3s; /* Transição suave da cor de fundo */
-}
-
-.interaction-bar .interaction-button.small:hover {
-    background-color: #ffd633; /* Cor de fundo dos botões ao passar por cima */
-}
-
-.interaction-bar {
-  background-color: #f2f2f2; /* Cor de fundo da barra */
-  padding: 10px; /* Espaçamento interno */
-  border-bottom: 1px solid #e1e1e1; /* Borda inferior */
-}
     </style>
 </head>
 
@@ -291,96 +415,364 @@ footer a:hover {
         <h1>NET YOU STREAM</h1>
     </header>
 
-    
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="🔍 Pesquisar Net You Stream" x-webkit-speech>
+        <button id="search-button" onclick="search()">Buscar</button>
+        <button id="audio-button" onclick="playAudio()"><i class="fa fa-microphone"></i></button>
+    </div>
 
-     
-<!-- Carregar a biblioteca de ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div id="filters">
+        <select id="category-filter" onchange="filterVideos()">
+            <option value="">Todas as Categorias</option>
+            <option value="VIP">VIP</option>
+            <option value="Jogos">Jogos</option>
+            <option value="Música">Música</option>
+            <option value="Filmes">Filmes</option>
+            <option value="Live">Live</option>
+            <option value="Esporte">Esporte</option>
+            <option value="Podcast">Podcast</option>
+            <option value="Notícias">Notícias</option>
+        </select>
 
-<!-- Carregar o script para o reconhecimento de voz -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+        <select id="age-rating-filter" onchange="filterVideos()">
+            <option value="">Todas as Idades</option>
+            <option value="Livre">Livre</option>
+            <option value="10">10 anos</option>
+            <option value="12">12 anos</option>
+            <option value="14">14 anos</option>
+            <option value="16">16 anos</option>
+            <option value="18">18 anos</option>
+        </select>
+    </div>
 
-<!-- A barra de pesquisa -->
-<div id="search-bar">
-  <!-- O campo de texto com o atributo x-webkit-speech para ativar o reconhecimento de voz -->
-  <input type="text" id="search-input" placeholder="🔍Pesquisar Net You Stream" x-webkit-speech>
-  <!-- O botão de buscar que executa uma função JavaScript -->
-  <button id="search-button" onclick="search()">Buscar</button>
-  <!-- O botão de áudio que toca um som e ativa o reconhecimento de voz -->
-  <button id="audio-button" onclick="playAudio()"><i class="fa fa-microphone"></i></button>
+    <audio id="audio-element" src="button-sound.mp3"></audio>
+
+    <main>
+
+
+<section class="video-section" id="video-1" data-category="Música" data-age-rating="🔞+">
+    <a href="video1.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "GANG DE PONTE" (Official Áudio)</h3>
+    </a>
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 1:37min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+    <div class="video-container">
+        <a href="video1.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/atLVRfmh9Ps" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
 </div>
 
-<!-- O elemento de áudio que contém o som do botão -->
-<audio id="audio-element" src="button-sound.mp3"></audio>
+<div class="video-stats" id="stats-1">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-1">500.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-1">1.234.567</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-1">1</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-1">123</span> comentários</p>
+</div>
 
-<!-- O script que define as funções JavaScript -->
-<script>
-  // A função que toca o som do botão e ativa o reconhecimento de voz
-  function playAudio() {
-    var audio = document.getElementById("audio-element");
-    audio.play();
-    if (annyang) {
-      annyang.setLanguage("pt-BR");
-      var commands = {
-        "*term": function(term) {
-          document.getElementById("search-input").value = term;
-          search();
-        }
-      };
-      annyang.addCommands(commands);
-      annyang.start();
-    }
-  }
+<section class="video-section" id="video-2" data-category="Música" data-age-rating="🔞+">
+    <a href="video2.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "LUXO E VISÃO 2" (Official Áudio)</h3>
+    </a>
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 1:41min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+    <div class="video-container">
+        <a href="video2.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/-PrAH0-cbQY" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
 
-  // A função que busca o que o usuário digitar ou falar
-  function search() {
-    var input = document.getElementById("search-input");
-    var query = input.value;
-    if (query) {
-      window.location.href = "search.html?q=" + encodeURIComponent(query);
-    }
-  }
-</script>
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
 
-<!-- O script para filtrar os resultados de pesquisa -->
-<script>
-  // Adicionar um evento de keyup ao elemento input para filtrar os resultados
-  document.getElementById("search-input").addEventListener("keyup", function() {
-    var filter = this.value.toUpperCase();
-    var ul = document.getElementById("myUL");
-    var li = ul.getElementsByTagName("li");
-    for (var i = 0; i < li.length; i++) {
-      var a = li[i].getElementsByTagName("a")[0];
-      var txtValue = a.textContent || a.innerText;
-      li[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-    }
-  });
-</script>
+<div class="video-stats" id="stats-2">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-2">600.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-2">2.345.678</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-2">2</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-2">234</span> comentários</p>
+</div>
 
-    <!-- Aqui vão os vídeos e suas informações -->
-    <main>
-    <!-- Vídeo 1 -->
-    
-</main>
+<section class="video-section" id="video-3" data-category="Música" data-age-rating="🔞+">
+    <a href="video3.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "NA MIRA DO CRIME" (Official Áudio)</h3>
+    </a>
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 3:03min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+    <div class="video-container">
+        <a href="video3.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/qPuQ7_rv1xE" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
 
-<!-- JavaScript para interagir com os vídeos -->
-<script>
-    // Funções JavaScript para interagir com os vídeos
-    // Implemente conforme necessário
-    function handleVideoInteraction(videoId, type) {
-        // Lógica para interagir com o vídeo (like, dislike, etc.)
-    }
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
 
-    // Mais funções JavaScript, se necessário
-</script>
+<div class="video-stats" id="stats-3">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-3">700.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-3">3.456.789</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-3">3</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-3">345</span> comentários</p>
+</div>
+
+<section class="video-section" id="video-4" data-category="Música" data-age-rating="🔞+">
+    <a href="video4.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "FAVELA DE PONTE" (Official Áudio)</h3>
+    </a>
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:40min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+    <div class="video-container">
+        <a href="video4.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/XJwfIT8b_5Q" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
+
+<div class="video-stats" id="stats-4">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-4">800.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-4">4.567.890</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-4">4</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-4">456</span> comentários</p>
+</div>
+<section class="video-section" id="video-5" data-category="Música" data-age-rating="🔞+">
+    <a href="video5.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "O REI DO ESTADO" (Official Áudio)</h3>
+    </a>
+
+    <!-- Classificação etária -->
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:27min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <a href="video5.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/IyHusTrbgqM" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
+
+<div class="video-stats" id="stats-5">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-5">900.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-5">5.678.901</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-5">5</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-5">567</span> comentários</p>
+</div>
+
+<section class="video-section" id="video-6" data-category="Música" data-age-rating="🔞+">
+    <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video1.html')" class="video-link">
+        <h3 class="video-title">XTELL 777 - "AK DO SPORT" (Official Áudio)</h3>
+    </a>
+
+    <!-- Classificação etária -->
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:58min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video1.html')" class="video-link">
+            <iframe src="https://www.youtube.com/embed/Y8C94myqaS0" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
+
+<div class="video-stats" id="stats-6">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-6">1.000.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-6">6.789.012</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-6">6</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-6">678</span> comentários</p>
+</div>
+
+<section class="video-section" id="video-7" data-category="Música" data-age-rating="🔞+">
+    <a href="#" onclick="redirectToVideo('XTELL 777 - MENTE DE GANGSTER', 'video2.html')" class="video-link">
+        <h3 class="video-title">XTELL 777 - "MENTE DE GANGSTER" (Official Áudio)</h3>
+    </a>
+
+    <!-- Classificação etária -->
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:02min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <a href="#" onclick="redirectToVideo('XTELL 777 - MENTE DE GANGSTER', 'video2.html')" class="video-link">
+            <iframe src="https://www.youtube.com/embed/5pk2TxN6X8E" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
+
+<div class="video-stats" id="stats-7">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-7">1.100.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-7">7.890.123</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-7">7</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-7">789</span> comentários</p>
+</div>
+
+<section class="video-section" id="video-8" data-category="Música" data-age-rating="🔞+">
+    <!-- Link do título com JavaScript para redirecionamento -->
+    <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video3.html')" class="video-link">
+        <h3 class="video-title">XTELL 777 - "MUNDO A GIRAR" (Official Áudio)</h3>
+    </a>
+
+    <!-- Classificação etária -->
+    <div class="content">
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 4:00min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <!-- Link do vídeo com JavaScript para redirecionamento -->
+        <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video3.html')" class="video-link">
+            <iframe src="https://www.youtube.com/embed/AnY_VqxTTJI" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
+
+<div class="video-stats" id="stats-8">
+    <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-8">1.200.000</span> inscritos</p>
+    <p class="video-views"><i class="fa fa-eye"></i> <span id="views-8">8.901.234</span> views</p>
+    <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-8">8</span> dias</p>
+    <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-8">890</span> comentários</p>
+</div>
 
 
-
-        <!-- Você pode adicionar mais vídeos seguindo a mesma estrutura -->
-
+        <!-- Adicione mais vídeos aqui seguindo a mesma estrutura -->
     </main>
 
-    <!-- Rodapé -->
-    
+    <footer>
+        <p>&copy; 2024 NET YOU STREAM <a href="#"></a>  <a href="#"></a></p>
+    </footer>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script>
+        function playAudio() {
+            var audio = document.getElementById("audio-element");
+            audio.play();
+            if (annyang) {
+                annyang.setLanguage("pt-BR");
+                var commands = {
+                    "*
