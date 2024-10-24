@@ -1107,6 +1107,59 @@ nav a i {
         .chromecast-icon {
             margin-right: 5px;
         }
+
+
+        /* Estilos para o pop-up */
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #popup-content {
+            background-color: #fff;
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #popup-content h2 {
+            margin-top: 0;
+        }
+
+        #popup-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #popup-content button:hover {
+            background-color: #0056b3;
+        }
+
+        #popup-content a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        #popup-content a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
@@ -1139,7 +1192,7 @@ nav a i {
 <!-- A barra de pesquisa -->
 <div id="search-bar">
   <!-- O campo de texto para ativar o reconhecimento de voz -->
-  <input type="text" id="search-input" placeholder="🔍 Pesquisar vídeos" />
+  <input type="text" id="search-input" placeholder="🔍 Pesquisar Net You Stream" />
   <!-- O botão de buscar que executa uma função JavaScript -->
   <button id="search-button" onclick="search()">Buscar</button>
   <!-- O botão de áudio que ativa o reconhecimento de voz -->
@@ -1201,6 +1254,21 @@ nav a i {
             <h2>BEM-VINDO AO NET YOU STREAM!😏</h2>
             <p>O Melhor Site Para Produtores De conteúdo profissional e amadores.</p>
         </section>
+
+    <div id="popup">
+        <div id="popup-content">
+            <h2>Aviso Importante</h2>
+            <p>Ao continuar navegando no site, você concorda com nossos <a href="termos.html" target="_blank">Termos de Serviço</a> e nossa <a href="politica.html" target="_blank">Política de Privacidade</a>.</p>
+            <button id="accept-btn">Concordo</button>
+        </div>
+    </div>
+
+    <script>
+        // Quando o botão "Concordo" é clicado, remove o pop-up
+        document.getElementById('accept-btn').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'none';
+        });
+    </script>
 
 
 
@@ -1687,6 +1755,35 @@ function toggleMenu() {
 </script>
 
 
+
+<script>
+window.onload = function() {
+    alert(`O NET YOU STREAM é uma plataforma inovadora de streaming, criada para oferecer uma ampla variedade de conteúdos tanto para profissionais quanto para amadores. Aqui, você encontra vídeos, áudios, fotos e muito mais, tudo organizado em diversas categorias para atender diferentes interesses e estilos de criação. Se você é um produtor de conteúdo ou simplesmente um fã de entretenimento, o NET YOU STREAM é o lugar perfeito para você.
+
+No site, você tem fácil acesso às principais categorias de conteúdo, como:
+
+- Início: A página principal, onde você pode explorar os conteúdos mais recentes e populares disponíveis na plataforma.
+- VIP: Acesso exclusivo para assinantes VIP, com conteúdos premium e vantagens especiais.
+- Jogos: Para os gamers de plantão, uma coleção diversificada de jogos para todos os gostos e estilos.
+- Música: Uma biblioteca de áudios com as melhores produções musicais, tanto de artistas independentes quanto de grandes nomes.
+- Filmes: Conteúdos cinematográficos variados, desde lançamentos até clássicos imperdíveis.
+- Live: Assista a transmissões ao vivo de eventos, shows e streams diretamente na plataforma.
+- Esporte: Fique por dentro de jogos ao vivo, análises e notícias do mundo dos esportes.
+- Podcast: Ouça os podcasts mais diversos, cobrindo temas que vão de tecnologia a entretenimento.
+- Notícias: Acompanhe as últimas novidades do Brasil e do mundo em diversas áreas, desde política até cultura.
+
+A interface é simples e fácil de navegar, com ícones intuitivos que guiam você pelas seções. Basta clicar em qualquer uma das categorias listadas, como Música, Filmes, Live ou Esportes, para ter acesso ao conteúdo desejado.
+
+Diversidade de Classificação Indicativa:
+
+O site também apresenta conteúdos para todas as idades, organizados de acordo com a classificação indicativa, desde conteúdo Livre até 🔞+. Temos seções dedicadas ao público infantil e jovem, com programas adequados para 10, 12, 14 e 16 anos, além de áreas exclusivas para o público adulto.
+
+Com NET YOU STREAM, você encontra tudo em um só lugar: entretenimento, informação e interação. Seja um produtor ou espectador, aproveite nossa plataforma para explorar o que há de melhor em vídeos, áudios, jogos, filmes e mais!`);
+};
+
+
+ 
+</script>
 
 
 
