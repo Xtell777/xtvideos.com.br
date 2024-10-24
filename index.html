@@ -86,6 +86,22 @@
             left: 0;
         }
 
+
+        /* Estilos para estatísticas do vídeo */
+        .video-stats {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .video-stats p {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+
         /* Estilos para a informação do vídeo */
         .video-info-container {
             padding: 15px;
@@ -101,14 +117,14 @@
         }
 
         .channel-image {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin-right: 10px;
         }
 
         .channel-name {
-            font-size: 16px;
+            font-size: 20px;
             color: #333;
             margin: 0;
         }
@@ -126,21 +142,6 @@
 
         .subscribe-button:hover {
             background-color: #a32924;
-        }
-
-        /* Estilos para estatísticas do vídeo */
-        .video-stats {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        .video-stats p {
-            font-size: 14px;
-            color: #666;
-            margin: 5px 0;
         }
 
         /* Estilos para os comentários */
@@ -485,34 +486,7 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-        }
-.channel-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.channel-info img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.channel-info p {
-    font-weight: bold;
-}
-
-.subscribe-button {
-    background-color: #e62117;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px; /* Adicione este estilo para ajustar a margem esquerda do botão */
-}
+   }
 
 /* Adicione este trecho de código ao seu arquivo style.css ou em um arquivo separado */
 .toggle-description {
@@ -953,131 +927,6 @@ nav a i {
         
 
 
-.video-info-container {
-    display: flex; /* Usar flexbox para alinhar os itens */
-    align-items: center; /* Centraliza verticalmente os itens */
-    margin: 20px 0; /* Margem vertical */
-    padding: 10px; /* Espaçamento interno */
-    background-color: #f1f1f1; /* Cor de fundo suave */
-    border-radius: 8px; /* Cantos arredondados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-.channel-info {
-    display: flex; /* Usar flexbox para a info do canal */
-    align-items: center; /* Centraliza a imagem e o nome do canal */
-}
-
-.channel-image {
-    width: 50px; /* Largura da imagem */
-    height: 50px; /* Altura da imagem */
-    border-radius: 50%; /* Torna a imagem circular */
-    object-fit: cover; /* Mantém a proporção da imagem */
-    margin-right: 10px; /* Espaço entre a imagem e o nome */
-}
-
-.channel-name {
-    font-size: 18px; /* Tamanho da fonte do nome do canal */
-    font-weight: bold; /* Negrito para o nome do canal */
-    color: #333; /* Cor do texto */
-}
-
-.video-info-container {
-    display: flex; /* Alinhamento em linha */
-    align-items: center; /* Centraliza verticalmente */
-    padding: 10px; /* Espaçamento interno */
-    background-color: #ffffff; /* Fundo branco */
-    margin: 10px 0; /* Margem vertical */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra leve */
-}
-
-.channel-info {
-    display: flex; /* Usar flexbox para alinhar imagem e texto */
-    align-items: center; /* Centraliza verticalmente */
-}
-
-.channel-image {
-    width: 48px; /* Largura da imagem do canal */
-    height: 48px; /* Altura da imagem do canal */
-    border-radius: 50%; /* Torna a imagem circular */
-    object-fit: cover; /* Mantém a proporção da imagem */
-    margin-right: 12px; /* Espaço entre a imagem e o nome do canal */
-}
-
-.channel-name {
-    font-size: 16px; /* Tamanho da fonte do nome do canal */
-    font-weight: bold; /* Negrito para o nome do canal */
-    color: #000; /* Cor do texto */
-    white-space: nowrap; /* Evita que o nome quebre em várias linhas */
-    overflow: hidden; /* Esconde o texto que excede a largura */
-    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
-}
-
-.video-info-container {
-    margin: 20px; /* Espaço ao redor da seção */
-}
-
-.channel-info {
-    display: flex; /* Flexbox para alinhar a imagem e o nome */
-    align-items: center; /* Alinha verticalmente ao centro */
-}
-
-.channel-image {
-    width: 50px; /* Largura da imagem do canal */
-    height: 50px; /* Altura da imagem do canal */
-    border-radius: 50%; /* Torna a imagem circular */
-    margin-right: 10px; /* Espaçamento à direita da imagem */
-}
-
-.channel-name {
-    font-size: 18px; /* Tamanho da fonte do nome do canal */
-    color: #333; /* Cor do texto do nome do canal */
-    margin: 0; /* Remove margens padrão do parágrafo */
-}
-
-/* Estilo para o link, se desejado */
-.channel-info a {
-    text-decoration: none; /* Remove sublinhado do link */
-    color: inherit; /* Faz o link herdar a cor do texto */
-}
-
-.channel-info a:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
-}
-.video-info-container {
-    margin: 20px; /* Espaço ao redor da seção */
-}
-
-.channel-info {
-    display: flex; /* Flexbox para alinhar a imagem e o nome */
-    align-items: center; /* Alinha verticalmente ao centro */
-}
-
-.channel-image {
-    width: 50px; /* Largura da imagem do canal */
-    height: 50px; /* Altura da imagem do canal */
-    border-radius: 50%; /* Torna a imagem circular */
-    margin-right: 10px; /* Espaçamento à direita da imagem */
-}
-
-.channel-name {
-    font-size: 18px; /* Tamanho da fonte do nome do canal */
-    color: #333; /* Cor do texto do nome do canal */
-    margin: 0; /* Remove margens padrão do parágrafo */
-}
-
-/* Estilo para o link, se desejado */
-.channel-info a {
-    text-decoration: none; /* Remove sublinhado do link */
-    color: inherit; /* Faz o link herdar a cor do texto */
-    display: flex; /* Permite o alinhamento horizontal */
-    align-items: center; /* Alinha o conteúdo ao centro */
-}
-
-.channel-info a:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
-}
-
 
 .video-link {
     text-decoration: none; /* Remove o sublinhado */
@@ -1160,6 +1009,138 @@ nav a i {
             text-decoration: underline;
         }
 
+       /* Centralização e estilos básicos para o container */
+#uploaded-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título da seção com ícone */
+#uploaded-container h2 {
+    font-size: 24px;
+    color: #ff0000; /* Cor do YouTube */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+/* Estilos para os ícones */
+#uploaded-container h2 i {
+    font-size: 24px;
+    color: #ff0000; /* Cor do ícone igual ao título */
+}
+
+/* Seção dos arquivos enviados */
+#uploaded-files {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+    #uploaded-files div {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Estilos para a seção principal */
+section {
+    background-color: #f9f9f9; /* Cor de fundo clara */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 800px; /* Largura máxima */
+}
+
+/* Estilo do título da seção */
+section h2 {
+    color: #ff0000; /* Cor vermelha */
+    font-size: 28px; /* Tamanho da fonte */
+    text-align: center; /* Centralizar texto */
+    margin-bottom: 20px; /* Margem inferior */
+}
+
+/* Estilo dos parágrafos */
+section p {
+    color: #333; /* Cor do texto */
+    line-height: 1.6; /* Altura da linha */
+    margin-bottom: 15px; /* Margem inferior */
+}
+
+/* Estilo das listas */
+section ul {
+    list-style-type: disc; /* Marcadores de lista */
+    margin-left: 20px; /* Margem esquerda */
+}
+
+/* Estilo dos itens da lista */
+section ul li {
+    margin-bottom: 10px; /* Margem inferior para os itens da lista */
+}
+
+/* Estilo dos links */
+section a {
+    color: #ff0000; /* Cor dos links */
+    text-decoration: none; /* Remover sublinhado */
+}
+
+section a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+/* Define que a seção do vídeo ocupará 100% da largura */
+.video-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Para garantir que o iframe do vídeo preencha 100% da largura disponível */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Mantém a proporção 16:9 */
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Estilos adicionais para outros elementos */
+.video-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o link, se desejado */
+.channel-info a {
+    text-decoration: none; /* Remove sublinhado do link */
+    color: inherit; /* Faz o link herdar a cor do texto */
+    display: flex; /* Permite o alinhamento horizontal */
+    align-items: center; /* Alinha o conteúdo ao centro */
+}
+
+.channel-info a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
     </style>
 </head>
 <body>
@@ -1211,7 +1192,6 @@ nav a i {
 
         <section>
             <h2>BEM-VINDO AO NET YOU STREAM!😏</h2>
-            <p>O Melhor Site Para Produtores De conteúdo profissional e amadores.</p>
         </section>
 
     <div id="popup">
@@ -1251,7 +1231,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
@@ -1288,7 +1268,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
@@ -1325,7 +1305,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
@@ -1362,7 +1342,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
@@ -1401,7 +1381,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
@@ -1441,7 +1421,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
@@ -1481,7 +1461,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
@@ -1523,7 +1503,7 @@ nav a i {
             <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
                  alt="Imagem do canal" 
                  class="channel-image">
-            <p class="channel-name">XTELL777</p>
+            <p class="channel-name">XTELL 777</p>
         </a>
     </div>
 </div>
