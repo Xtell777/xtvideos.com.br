@@ -3,33 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Net You Stream</title>
     <!-- Vincular a biblioteca Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <!-- Adicione o link para o ícone do Chromecast -->
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
     <!-- Estilos para o botão Chromecast -->
-    <style>
-        .chromecast-button {
-            background-color: #4285F4;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .chromecast-button:hover {
-            background-color: #357ae8;
-        }
-
-        .chromecast-icon {
-            margin-right: 5px;
-        }
-    </style>
 <!-- Botão Chromecast -->
 <div style="position: relative;">
   <button class="chromecast-button" onclick="castToChromecast()" style="position: absolute; top: 0; left: -5px; width: 100px; height: 57px; font-size: 35px; background-color: red;">
@@ -61,918 +41,8 @@
   </div>
 </div>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
 
-        /* Estilos para os vídeos */
-        .video-section {
-            margin-bottom: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
 
-        .video-title {
-            font-size: 18px;
-            color: #333;
-            padding: 15px;
-            margin: 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .video-rating {
-            font-size: 14px;
-            color: #666;
-            padding: 15px;
-            margin: 0;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* Proporção de 16:9 (para vídeos do YouTube) */
-        }
-
-        .video-container iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        /* Estilos para a informação do vídeo */
-        .video-info-container {
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .channel-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .channel-image {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .channel-name {
-            font-size: 16px;
-            color: #333;
-            margin: 0;
-        }
-
-        .subscribe-button {
-            background-color: #c4302b;
-            color: #fff;
-            font-size: 14px;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .subscribe-button:hover {
-            background-color: #a32924;
-        }
-
-        /* Estilos para estatísticas do vídeo */
-        .video-stats {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        .video-stats p {
-            font-size: 14px;
-            color: #666;
-            margin: 5px 0;
-        }
-
-        /* Estilos para os comentários */
-        .comments-section {
-            margin-top: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-        }
-
-        .comments-section h3 {
-            font-size: 18px;
-            color: #333;
-            margin: 0 0 10px 0;
-        }
-
-        .comment-list {
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-        }
-
-        .comment {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .comment-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 10px;
-        }
-
-        .comment-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .comment-content {
-            flex-grow: 1;
-        }
-
-        .comment-author {
-            font-size: 16px;
-            color: #333;
-            margin: 0 0 5px 0;
-        }
-
-        .comment-text {
-            font-size: 14px;
-            color: #666;
-            margin: 0;
-        }
-
-        .comment-form {
-            margin-top: 20px;
-        }
-
-        .comment-input {
-            width: 100%;
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            resize: none;
-        }
-
-        .comment-button {
-            background-color: #c4302b;
-            color: #fff;
-            font-size: 14px;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .comment-button:hover {
-            background-color: #a32924;
-        }
-.video-stats,
-.interaction-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.video-stats p,
-.interaction-buttons button {
-    margin: 5px;
-    padding: 8px 15px;
-    border-radius: 20px;
-}
-
-.interaction-buttons button {
-    cursor: pointer;
-}
-
-.interaction-buttons button:hover {
-    background-color: #ddd;
-}
-
-.interaction-bar {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.interaction-button {
-    background-color: transparent;
-    border: none;
-    font-size: 16px; /* Tamanho da fonte aumentado */
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px 20px; /* Aumento do padding para aumentar o tamanho dos botões */
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-.interaction-button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-    </style>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #e62117;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        nav {
-            background-color: #000;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            margin: 0 20px;
-        }
-
-        #search-bar {
-            background-color: #444;
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #search-bar input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        #search-bar button {
-            background-color: #e62117;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: #333;
-        }
-
-        .video-section {
-            margin: 20px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .interaction-bar {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            background-color: #000;
-            padding: 10px;
-        }
-
-        .interaction-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .video-info-container {
-            padding: 20px;
-        }
-
-        .video-title {
-            font-size: 24px;
-            margin: 10px 0;
-        }
-
-        
-        .video-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .video-stats p {
-            flex: 1;
-            text-align: center;
-        }
-
-        .subscribe-button {
-            background-color: #e62117;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .video-description {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .interaction-bar {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .interaction-button {
-            cursor: pointer;
-            background-color: #eee;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-
-        }
-
-        .pagination {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .pagination button, .pagination a {
-            margin: 0 5px;
-            padding: 8px 12px;
-            border: 1px solid #e62117;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            color: #e62117;
-        }
-
-        .pagination button:hover, .pagination a:hover {
-            background-color: #e62117;
-            color: #fff;
-        }
-
-        #prev-button, #next-button {
-            background-color: #e62117;
-            color: #fff;
-            border: none;
-        }
-.comments-section {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #comment-list {
-            /* Estilo da lista de comentários, se necessário */
-        }
-
-        #comment-form {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #comment-text {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            resize: vertical;
-        }
-
-        #comment-form button {
-            background-color: #e62117;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-.channel-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.channel-info img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.channel-info p {
-    font-weight: bold;
-}
-
-.subscribe-button {
-    background-color: #e62117;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px; /* Adicione este estilo para ajustar a margem esquerda do botão */
-}
-
-/* Adicione este trecho de código ao seu arquivo style.css ou em um arquivo separado */
-.toggle-description {
-    color: #e62117;
-    cursor: pointer;
-}
-
-.toggle-comments {
-    cursor: pointer;
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.toggle-comments:hover {
-    background-color: #ddd;
-}
-
-/* Estilo para a descrição do vídeo */
-.video-description {
-    display: none; /* Por padrão, a descrição fica oculta */
-    margin-top: 20px; /* Espaçamento superior */
-    padding: 10px; /* Espaçamento interno */
-    background-color: #f5f5f5; /* Cor de fundo */
-    border: 1px solid #ddd; /* Borda */
-    border-radius: 5px; /* Borda arredondada */
-}
-
-.video-description p {
-    margin: 0; /* Remover margem padrão do parágrafo */
-}
-
-.comments-section {
-    margin-top: 20px;
-}
-
-.comments-section h3 {
-    margin-bottom: 10px;
-}
-
-.comment-list {
-    list-style: none;
-    padding: 0;
-}
-
-.comment {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.comment-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.comment-content {
-    flex: 1;
-}
-
-.comment-author {
-    font-weight: bold;
-    margin: 0;
-}
-
-.comment-text {
-    margin: 5px 0;
-}
-
-.comment-input {
-    width: calc(100% - 20px);
-    padding: 5px 10px;
-    margin-bottom: 10px;
-}
-
-.comment-button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-}
-
-.comment-button:hover {
-    background-color: #0056b3;
-}
-.comment-avatar {
-    width: 40px; /* Largura desejada para a imagem */
-    height: 40px; /* Altura desejada para a imagem */
-    border-radius: 50%; /* Transforma a imagem em um círculo */
-    overflow: hidden; /* Garante que a imagem não ultrapasse os limites do círculo */
-    margin-right: 10px; /* Espaçamento à direita da imagem */
-}
-
-.comment-avatar img {
-    width: 100%; /* Garante que a imagem preencha todo o espaço do círculo */
-    height: auto; /* Mantém a proporção da imagem */
-    display: block; /* Remove qualquer espaço extra ao redor da imagem */
-}
-
-
-/* Estilo para o botão "Mostrar Comentários" */
-.toggle-comments {
-    background-color: #ff0000;
-    color: #ffffff;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.toggle-comments:hover {
-    background-color: #cc0000;
-}
-
-/* Estilo para a seção de comentários */
-.comments-section {
-    display: none; /* Por padrão, a seção de comentários está oculta */
-    margin-top: 20px;
-}
-
-.comments-section h3 {
-    color: #ff0000;
-}
-
-.comment-list {
-    margin-top: 10px;
-}
-
-.comment {
-    border-bottom: 1px solid #cccccc;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-.comment-avatar img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.comment-content {
-    margin-left: 50px;
-}
-
-.comment-author {
-    font-weight: bold;
-    color: #000000;
-}
-
-.comment-text {
-    color: #333333;
-}
-
-.comment-form {
-    margin-top: 20px;
-}
-
-.comment-input {
-    width: calc(100% - 100px);
-    padding: 8px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-}
-
-.comment-button {
-    width: 80px;
-    padding: 8px;
-    background-color: #ff0000;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.comment-button:hover {
-    background-color: #cc0000;
-}
-
-
-/* Estilo para a barra de interação */
-.interaction-bar {
-    margin-top: 10px;
-}
-
-/* Estilo para os botões de interação */
-.interaction-button {
-    display: inline-block;
-    padding: 8px 16px;
-    margin-right: 10px;
-    background-color: #ff0000;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.interaction-button:hover {
-    background-color: #cc0000;
-}
-
-/* Estilo para o cabeçalho */
-header {
-    background-color: #ff0000; /* Vermelho */
-    color: #ffffff; /* Branco */
-    padding: 10px;
-    text-align: center;
-}
-
-/* Estilo para o rodapé */
-footer {
-    background-color: #000000; /* Preto */
-    color: #ffffff; /* Branco */
-    padding: 10px;
-    text-align: center;
-}
-
-/* Estilo para os links do rodapé */
-footer a {
-    color: #ffffff; /* Branco */
-    text-decoration: none;
-}
-
-/* Estilo para os links do rodapé quando hover */
-footer a:hover {
-    text-decoration: underline;
-}
-/* Estilo para os botões adicionais */
-.interaction-bar .interaction-button.small {
-    font-size: 18px; /* Tamanho do emoji */
-    padding: 6px 10px; /* Espaçamento interno dos botões */
-    background-color: #ffcc00; /* Cor de fundo dos botões */
-    color: #333; /* Cor do texto dos botões */
-    border: none; /* Remover borda */
-    border-radius: 4px; /* Borda arredondada */
-    cursor: pointer; /* Cursor ao passar por cima */
-    transition: background-color 0.3s; /* Transição suave da cor de fundo */
-}
-
-.interaction-bar .interaction-button.small:hover {
-    background-color: #ffd633; /* Cor de fundo dos botões ao passar por cima */
-}
-
-.interaction-bar {
-  background-color: #f2f2f2; /* Cor de fundo da barra */
-  padding: 10px; /* Espaçamento interno */
-  border-bottom: 1px solid #e1e1e1; /* Borda inferior */
-}
-
-.interaction-buttons {
-  display: flex; /* Disposição flexível dos botões */
-  justify-content: space-between; /* Espaçamento entre os botões */
-}
-
-.toggle-description,
-.toggle-comments {
-  cursor: pointer; /* Muda o cursor para indicar clicabilidade */
-  padding: 5px 10px; /* Espaçamento interno */
-  background-color: #4CAF50; /* Cor de fundo dos botões */
-  color: white; /* Cor do texto */
-  border-radius: 5px; /* Bordas arredondadas */
-  margin: 0 5px; /* Margem externa */
-}
-
-.toggle-description:hover,
-.toggle-comments:hover {
-  background-color: #45a049; /* Cor de fundo ao passar o mouse */
-}
-
-/* CSS */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-.menu-container {
-  background-color: #ff0000;
-  color: #ffffff;
-  padding: 10px;
-  text-align: right; /* Alinhamento à direita */
-}
-
-.menu-icon {
-  display: inline-block;
-  width: 30px;
-  height: 20px;
-  cursor: pointer;
-  position: relative;
-}
-
-.bar {
-  width: 100%;
-  height: 3px;
-  background-color: #000000;
-  margin: 5px 0;
-}
-
-.menu-content {
-  display: none;
-  background-color: #000000;
-  padding: 10px;
-}
-
-.menu-content a {
-  display: block;
-  color: #ffffff;
-  text-decoration: none;
-  margin-bottom: 10px;
-}
-
-.menu-content a:hover {
-  text-decoration: underline;
-}
-
-.active {
-  display: block;
-}
-/* Estilo para a descrição do vídeo similar ao YouTube */
-.video-description {
-  background-color: #181818; /* Fundo escuro para o tema padrão do YouTube */
-  color: #fff; /* Texto claro para melhor legibilidade */
-  font-family: 'Roboto', sans-serif; /* Fonte padrão do YouTube */
-  font-size: 14px; /* Tamanho de fonte similar ao do YouTube */
-  line-height: 1.5; /* Espaçamento entre linhas */
-  padding: 16px; /* Espaçamento interno */
-  border-top: 1px solid #303030; /* Linha divisória no topo */
-  max-width: 640px; /* Largura máxima para a descrição */
-  margin: 0 auto; /* Centraliza a descrição */
-}
-
-/* Links dentro da descrição */
-.video-description a {
-  color: #3ea6ff; /* Cor azul para links, similar ao YouTube */
-  text-decoration: none; /* Sem sublinhado nos links */
-}
-
-.video-description a:hover {
-  text-decoration: underline; /* Sublinhado ao passar o mouse */
-}
-
-/* Parágrafos dentro da descrição */
-.video-description p {
-  margin-bottom: 12px; /* Espaçamento entre parágrafos */
-}
-
-/* Hashtags e menções */
-.video-description .hashtag,
-.video-description .mention {
-  color: #bbb; /* Cor cinza para hashtags e menções */
-  font-weight: bold; /* Negrito para destacar */
-}
-
-.interaction-button {
-    text-decoration: none; /* Remove o sublinhado padrão dos links */
-}
-
-.video-stats {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        .video-stats p {
-            font-size: 12px;
-            color: #666;
-            margin: 5px 0;
-        }
-    </style>
-    <style>
-
-        /* Estilo para o menu de navegação */
-        nav {
-            background-color: #444;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        /* Estilo para os ícones */
-        .fas {
-            margin-right: 5px;
-        }
-
-        /* Estilo para o conteúdo principal */
-        main {
-            padding: 20px;
-        }
-
-   
-     nav {
-    background-color: #333; /* Cor de fundo */
-    padding: 10px; /* Espaçamento interno */
-}
-
-nav a {
-    color: #fff; /* Cor do texto */
-    text-decoration: none; /* Remover sublinhado dos links */
-    display: inline-block; /* Exibir os links em linha */
-    margin-right: 20px; /* Espaçamento entre os links */
-}
-
-nav a i {
-    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
-}
-
-.tema-card {
-  background-color: #fff;
-  border: 1px solid #bdc3c7;
-  border-radius: 4px;
-  padding: 10px; /* Reduzido de 20px para 10px */
-  margin-bottom: 10px; /* Reduzido de 20px para 10px */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tema-info {
-  color: #7f8c8d;
-  font-size: 14px; /* Reduzido de 16px para 8px */
-  margin-bottom: 5px; /* Reduzido de 10px para 5px */
-}
-.tema-classificacao {
-  color: #e74c3c;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-        
-    </style>
 </head>
 <body>
     <header>
@@ -1066,36 +136,43 @@ nav a i {
             <h2>BEM-VINDO AO NET YOU STREAM!😏</h2>
             <p>O Melhor Site Para Produtores De conteúdo profissional e amadores.</p>
         </section>
-                
-        
-     <section class="video-section" id="video-1">
-
-<h3 class="video-title">XTELL 777 - " GANG DE PONTE" (Official Áudio)</h3>
 
 
-    
+
+<section class="video-section" id="video-1">
+    <!-- Link do título -->
+    <a href="video1.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "GANG DE PONTE" (Official Áudio)</h3>
+    </a>
+
     <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 1:37min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
     </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
-
 
     <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/atLVRfmh9Ps" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
+        <!-- Link do vídeo que abre em uma nova aba -->
+        <a href="video1.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/atLVRfmh9Ps" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
 </section>
 
-
-        
-
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
 
 <div class="video-stats" id="stats-1">
     <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-1">500.000</span> inscritos</p>
@@ -1104,48 +181,38 @@ nav a i {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-1">123</span> comentários</p>
 </div>
 
-
-
-
-
-
-
 <section class="video-section" id="video-2">
+    <a href="video2.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "LUXO E VISÃO 2" (Official Áudio)</h3>
+    </a>
 
-<h3 class="video-title">XTELL 777 - " LUXO E VISÃO 2" (Official Áudio)</h3>
-
-
-    
-   <!-- Classificação etária -->
+    <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
-    </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
-
-
-  <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/-PrAH0-cbQY" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
-</section>
-
-
-
-
-
-        
-
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 1:41min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
         </div>
     </div>
+
+    <div class="video-container">
+        <a href="video2.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/-PrAH0-cbQY" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
 </div>
-
-
 
 <div class="video-stats" id="stats-2">
     <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-2">600.000</span> inscritos</p>
@@ -1154,42 +221,38 @@ nav a i {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-2">234</span> comentários</p>
 </div>
 
-
-
-
 <section class="video-section" id="video-3">
+    <a href="video3.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "NA MIRA DO CRIME" (Official Áudio)</h3>
+    </a>
 
-<h3 class="video-title">XTELL 777 - " NA MIRA DO CRIME" (Official Áudio)</h3>
-
-
-    
-  <!-- Classificação etária -->
+    <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
-    </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
-
-
-  <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/qPuQ7_rv1xE" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
-</section>
-
-
-
-        
-
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 3:03min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
         </div>
     </div>
-</div>
 
+    <div class="video-container">
+        <a href="video3.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/qPuQ7_rv1xE" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
 
 <div class="video-stats" id="stats-3">
     <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-3">700.000</span> inscritos</p>
@@ -1198,35 +261,38 @@ nav a i {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-3">345</span> comentários</p>
 </div>
 
-
-
-
 <section class="video-section" id="video-4">
+    <a href="video4.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "FAVELA DE PONTE" (Official Áudio)</h3>
+    </a>
 
-<h3 class="video-title">XTELL 777 - "FAVELA DE PONTE" (Official Áudio)</h3>
-
-
-
-
-    
-   <!-- Classificação etária -->
+    <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:40min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
     </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
 
-
-   <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/XJwfIT8b_5Q" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
+    <div class="video-container">
+        <a href="video4.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/XJwfIT8b_5Q" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
 </section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
 
 <div class="video-stats" id="stats-4">
     <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-4">800.000</span> inscritos</p>
@@ -1237,36 +303,35 @@ nav a i {
 
 
 <section class="video-section" id="video-5">
+    <a href="video5.html" class="video-link" target="_blank">
+        <h3 class="video-title">XTELL 777 - "O REI DO ESTADO" (Official Áudio)</h3>
+    </a>
 
-<h3 class="video-title">XTELL 777 - " O REI DO ESTADO" (Official Áudio)</h3>
-
-
-    
-   <!-- Classificação etária -->
+    <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:27min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
     </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
-
 
     <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/IyHusTrbgqM" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
+        <a href="video5.html" class="video-link" target="_blank">
+            <iframe src="https://www.youtube.com/embed/IyHusTrbgqM" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
 </section>
 
-
-
-
-        
-
-        </div>
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
     </div>
 </div>
 
@@ -1277,41 +342,41 @@ nav a i {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-5">567</span> comentários</p>
 </div>
 
+
+
+
 <section class="video-section" id="video-6">
+    <!-- Link do título com JavaScript para redirecionamento -->
+    <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video1.html')" class="video-link">
+        <h3 class="video-title">XTELL 777 - "AK DO SPORT" (Official Áudio)</h3>
+    </a>
 
-<h3 class="video-title">XTELL 777 - " AK DO SPORT" (Official Áudio)</h3>
-
-
-
-
-    
-   <!-- Classificação etária -->
+    <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:58min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
     </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
 
-
-   <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/Y8C94myqaS0" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
+    <div class="video-container">
+        <!-- Link do vídeo com JavaScript para redirecionamento -->
+        <a href="#" onclick="redirectToVideo('XTELL 777 - AK DO SPORT', 'video1.html')" class="video-link">
+            <iframe src="https://www.youtube.com/embed/Y8C94myqaS0" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
 </section>
 
-
-
-
-
-
-        
-
-        </div>
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
     </div>
 </div>
 
@@ -1322,46 +387,38 @@ nav a i {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-6">678</span> comentários</p>
 </div>
 
-
 <section class="video-section" id="video-7">
+    <!-- Link do título com JavaScript para redirecionamento -->
+    <a href="#" onclick="redirectToVideo('XTELL 777 - MENTE DE GANGSTER', 'video2.html')" class="video-link">
+        <h3 class="video-title">XTELL 777 - "MENTE DE GANGSTER" (Official Áudio)</h3>
+    </a>
 
-<h3 class="video-title">XTELL 777 - " MENTE DE GANGSTER" (Official Áudio)</h3>
-
-
-
-
-
-
-    
-   <!-- Classificação etária -->
+    <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 2:02min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
+        </div>
     </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
 
-
-   <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/5pk2TxN6X8E" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
+    <div class="video-container">
+        <!-- Link do vídeo com JavaScript para redirecionamento -->
+        <a href="#" onclick="redirectToVideo('XTELL 777 - MENTE DE GANGSTER', 'video2.html')" class="video-link">
+            <iframe src="https://www.youtube.com/embed/5pk2TxN6X8E" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
 </section>
 
-
-
-
-
-
-
-
-        
-
-        </div>
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
     </div>
 </div>
 
@@ -1372,43 +429,40 @@ nav a i {
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-7">789</span> comentários</p>
 </div>
 
-
 <section class="video-section" id="video-8">
+    <!-- Link do título com JavaScript para redirecionamento -->
+    <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video3.html')" class="video-link">
+        <h3 class="video-title">XTELL 777 - "MUNDO A GIRAR" (Official Áudio)</h3>
+    </a>
 
-<h3 class="video-title">XTELL 777 - " MUNDO A GIRAR" (Official Áudio)</h3>
-
-
-
-
-
-
-
-
-    
-   <!-- Classificação etária -->
+    <!-- Classificação etária -->
     <div class="content">
-  <div class="tema-card">
-    <div>
-      <div class="tema-info">Música | 1h 33min</div>
-    </div>
-    <div class="tema-classificacao">Classificação: 18+</div>
-  </div>
-</div>
-
-
-  <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/AnY_VqxTTJI" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
-</section>
-
-        
+        <div class="tema-card">
+            <div>
+                <div class="tema-info">Música | 0h 4:00min</div>
+            </div>
+            <div class="tema-classificacao">Classificação: 🔞+</div>
         </div>
     </div>
-</div>
 
+    <div class="video-container">
+        <!-- Link do vídeo com JavaScript para redirecionamento -->
+        <a href="#" onclick="redirectToVideo('XTELL 777 - MUNDO A GIRAR', 'video3.html')" class="video-link">
+            <iframe src="https://www.youtube.com/embed/AnY_VqxTTJI" frameborder="0" allowfullscreen></iframe>
+        </a>
+    </div>
+</section>
+
+<div class="video-info-container">
+    <div class="channel-info">
+        <a href="channel.html">
+            <img src="https://github.com/Xtell777/xtvideos.com.br/assets/157428126/ea34eb68-011c-4c9e-b7c0-6281550e515a" 
+                 alt="Imagem do canal" 
+                 class="channel-image">
+            <p class="channel-name">XTELL777</p>
+        </a>
+    </div>
+</div>
 
 <div class="video-stats" id="stats-8">
     <p class="channel-subscribers"><i class="fa fa-users"></i> <span id="subscribers-8">1.200.000</span> inscritos</p>
@@ -1416,6 +470,15 @@ nav a i {
     <p class="video-publish-date"><i class="fa fa-calendar"></i> Publicado há <span id="days-since-publish-8">8</span> dias</p>
     <p class="video-comments"><i class="fa fa-comments"></i> <span id="comments-8">890</span> comentários</p>
 </div>
+
+<!-- Script JavaScript -->
+<script>
+function redirectToVideo(title, videoFile) {
+    // Redireciona para a URL com o título do vídeo e .html
+    const baseUrl = "www.netyoustream.com/";
+    window.location.href = baseUrl + title + "/" + videoFile;
+}
+</script>
 
 
 
@@ -1650,6 +713,8 @@ function toggleMenu() {
         <p>&copy; 2024 Net You Stream. Todos os direitos reservados.</p>
         <p><a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
     </footer>
+
+<script src="script.js"></script>
     <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
 
 
