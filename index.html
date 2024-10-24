@@ -1184,64 +1184,23 @@ nav a i {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Carregar a biblioteca de ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-
-<!-- Carregar o script para o reconhecimento de voz -->
+<l<!-- Carregar o script para o reconhecimento de voz -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 
 <!-- A barra de pesquisa -->
 <div id="search-bar">
   <!-- O campo de texto para ativar o reconhecimento de voz -->
-  <input type="text" id="search-input" placeholder="🔍 Pesquisar Net You Stream" />
+  <input type="text" id="search-input" placeholder="🔍 Pesquisar Net You Stream" aria-label="Campo de busca" />
   <!-- O botão de buscar que executa uma função JavaScript -->
-  <button id="search-button" onclick="search()">Buscar</button>
+  <button id="search-button" onclick="search()" aria-label="Buscar">Buscar</button>
   <!-- O botão de áudio que ativa o reconhecimento de voz -->
-  <button id="audio-button" onclick="startRecognition()"><i class="fas fa-microphone"></i></button>
+  <button id="audio-button" onclick="startRecognition()" aria-label="Ativar reconhecimento de voz">
+    <i class="fas fa-microphone"></i>
+  </button>
 </div>
 
 <!-- O elemento de áudio que contém o som do botão -->
 <audio id="audio-element" src="button-sound.mp3"></audio>
-
-<!-- O script que define as funções JavaScript -->
-<script>
-  // Função para iniciar o reconhecimento de voz
-  function startRecognition() {
-    document.getElementById("audio-element").play();
-    if (annyang) {
-      annyang.setLanguage('pt-BR');
-      annyang.addCommands({
-        '*term': function(term) {
-          document.getElementById('search-input').value = term;
-          search();
-        }
-      });
-      annyang.start({ autoRestart: false, continuous: false });
-    }
-  }
-
-  // Função para realizar a busca
-  function search() {
-    const query = document.getElementById('search-input').value;
-    if (query) {
-      window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-    }
-  }
-</script>
-
-<!-- O script para filtrar os resultados de pesquisa -->
-<script>
-  document.getElementById('search-input').addEventListener('input', function() {
-    const filter = this.value.toUpperCase();
-    const ul = document.getElementById('myUL');
-    const li = ul.getElementsByTagName('li');
-    for (let i = 0; i < li.length; i++) {
-      const a = li[i].getElementsByTagName('a')[0];
-      const txtValue = a.textContent || a.innerText;
-      li[i].style.display = txtValue.toUpperCase().includes(filter) ? '' : 'none';
-    }
-  });
-</script>
-
 
 
 </section>
@@ -1624,6 +1583,77 @@ function redirectToVideo(title, videoFile) {
 
     
     
+<!-- O script que define as funções JavaScript -->
+<script>
+  // Função para iniciar o reconhecimento de voz
+  function startRecognition() {
+    document.getElementById("audio-element").play();
+    if (annyang) {
+      annyang.setLanguage('pt-BR');
+      annyang.addCommands({
+        '*term': function(term) {
+          document.getElementById('search-input').value = term;
+          search();
+        }
+      });
+      annyang.start({ autoRestart: false, continuous: false })
+        .catch(error => console.error('Erro ao iniciar o reconhecimento de voz:', error));
+    }
+  }
+
+  // Debounce para a função de pesquisa
+  let debounceTimer;
+  function debounce(func, delay) {
+    return function(...args) {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
+  // Função para realizar a busca
+  function search() {
+    const query = document.getElementById('search-input').value.trim();
+    if (query) {
+      // Mostrar um indicador de carregamento
+      document.getElementById('search-button').innerText = 'Buscando...';
+      window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+    }
+  }
+
+  // Adicionar evento de entrada para filtrar resultados
+  document.getElementById('search-input').addEventListener('input', debounce(function() {
+    const filter = this.value.toUpperCase();
+    const ul = document.getElementById('myUL');
+    const li = ul.getElementsByTagName('li');
+    let hasResults = false;
+
+    for (let i = 0; i < li.length; i++) {
+      const a = li[i].getElementsByTagName('a')[0];
+      const txtValue = a.textContent || a.innerText;
+      li[i].style.display = txtValue.toUpperCase().includes(filter) ? '' : 'none';
+      if (txtValue.toUpperCase().includes(filter)) {
+        hasResults = true;
+      }
+    }
+
+    // Exibir mensagem caso não haja resultados
+    const noResultsMessage = document.getElementById('no-results-message');
+    if (!hasResults) {
+      if (!noResultsMessage) {
+        const message = document.createElement('p');
+        message.id = 'no-results-message';
+        message.textContent = 'Nenhum resultado encontrado.';
+        ul.parentNode.insertBefore(message, ul.nextSibling);
+      }
+    } else if (noResultsMessage) {
+      noResultsMessage.remove();
+    }
+  }, 300)); // Debounce de 300ms
+</script>
+
+
+
+
  
  
     
