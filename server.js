@@ -1,41 +1,20 @@
 const express = require('express');
-const multer = require('multer');
-const mysql = require('mysql');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/auth');
 
+dotenv.config();
 const app = express();
-const upload = multer({ dest: 'uploads/' });
+app.use(bodyParser.json());
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'Root',
-  password: 'tubarao777',
-  database: 'streamflix_db'
-});
+// Conexão com o MongoDB
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB conectado...'))
+    .catch(err => console.log(err));
 
-connection.connect(err => {
-  if (err) {
-    console.error('Erro ao conectar ao banco de dados:', err);
-    return;
-  }
-  console.log('Conexão ao banco de dados estabelecida');
-});
+// Rotas
+app.use('/api/auth', authRoutes);
 
-app.post('/upload', upload.single('file'), (req, res) => {
-  const { title, description } = req.body;
-  const filePath = req.file.path;
-
-  const sql = 'INSERT INTO uploaded_files (title, description, file_path) VALUES (?, ?, ?)';
-  connection.query(sql, [title, description, filePath], (err, result) => {
-    if (err) {
-      console.error('Erro ao inserir arquivo no banco de dados:', err);
-      res.status(500).send('Erro ao enviar o arquivo.');
-      return;
-    }
-    res.send('Arquivo enviado com sucesso!');
-  });
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor iniciado na porta ${PORT}`);
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

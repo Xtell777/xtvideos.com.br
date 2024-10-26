@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - YOU WEB</title>
+    <title>Net You Stream - Login</title>
     <style>
         /* Estilos CSS */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,7 +16,6 @@
             align-items: center;
             height: 100vh;
         }
-
         #login-container {
             width: 300px;
             padding: 20px;
@@ -25,26 +23,22 @@
             box-shadow: 0px 0px 5px 0px #ccc;
             border-radius: 5px;
         }
-
         .login-option {
             margin-bottom: 20px;
         }
-
         .login-label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
         }
-
         .login-input {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         .login-button {
-            background-color: #4caf50;
+            background-color: #cc0000;
             border: none;
             color: white;
             padding: 10px 20px;
@@ -53,20 +47,17 @@
             cursor: pointer;
             width: 100%;
         }
-
         .login-button:hover {
-            background-color: #45a049;
+            background-color: #a80000;
         }
-
         .social-login {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
         }
-
         .social-button {
-            padding: 8px 15px; /* Ajuste do tamanho dos botões */
+            padding: 8px 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
@@ -74,31 +65,47 @@
             display: flex;
             align-items: center;
         }
-
         .social-button:hover {
             background-color: #f0f0f0;
         }
-
         .social-icon {
             margin-right: 10px;
-            width: 24px; /* Ajuste do tamanho dos ícones */
+            width: 24px;
             height: 24px;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #0073e6;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            text-align: center;
+            color: #cc0000;
+            margin-bottom: 20px;
         }
     </style>
 </head>
-
 <body>
     <div id="login-container">
-        <h2 style="text-align: center;">Login</h2>
-        <form id="login-form">
+        <h2>Net You Stream - Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
             <div class="login-option">
-                <label for="username" class="login-label">Nome de Usuário:</label>
-                <input type="text" id="username" class="login-input" placeholder="Digite seu nome de usuário">
+                <label for="username" class="login-label">Nome de Usuário ou E-mail:</label>
+                <input type="text" id="username" class="login-input" placeholder="Digite seu nome de usuário ou e-mail" required>
             </div>
             <div class="login-option">
                 <label for="password" class="login-label">Senha:</label>
-                <input type="password" id="password" class="login-input" placeholder="Digite sua senha">
+                <input type="password" id="password" class="login-input" placeholder="Digite sua senha" required>
             </div>
+            <div id="error-message" class="error-message"></div>
             <button type="submit" class="login-button">Entrar</button>
         </form>
         <div class="social-login">
@@ -111,53 +118,48 @@
                 Login com Facebook
             </button>
         </div>
+        <p>Não tem uma conta? <a href="register.html">Registre-se aqui</a></p>
     </div>
+
     <script>
-        document.getElementById('login-form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
+        async function handleLogin(event) {
+            event.preventDefault(); // Previne o envio do formulário padrão
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = "";
 
-            // Enviar solicitação de login para o servidor
-            fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    password
-                })
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Credenciais inválidas');
-                    }
-                })
-                .then(data => {
-                    alert(data.message); // Exibe mensagem de sucesso ou erro
-                    if (data.success) {
-                        // Redireciona para outra página ou executa ações pós-login
-                        window.location.href = '/dashboard';
-                    }
-                })
-                .catch(error => {
-                    alert(error.message); // Exibe erro se a solicitação falhar
+            try {
+                const response = await fetch("http://localhost:5000/api/auth/login", { // Atualize a URL conforme necessário
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: username, password }) // Envia o e-mail e a senha
                 });
-        });
 
-        function loginWithGoogle() {
-            // Implementar login com Google aqui
-            alert('Login com Google');
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem("token", data.token);
+                    localStorage.setItem("username", username);
+                    window.location.href = "homepage.html"; // Redireciona para a página principal
+                } else {
+                    errorMessage.textContent = data.message || "Erro ao fazer login.";
+                }
+            } catch (error) {
+                errorMessage.textContent = "Erro de conexão. Tente novamente.";
+            }
         }
 
         function loginWithFacebook() {
-            // Implementar login com Facebook aqui
-            alert('Login com Facebook');
+            window.location.href = 'https://www.facebook.com/v12.0/dialog/oauth?client_id=SEU_CLIENT_ID&redirect_uri=URL_DE_REDIRECIONAMENTO&response_type=token';
+        }
+
+        function loginWithGoogle() {
+            const googleClientId = "1005507670334-46elsf2kmk2g973bbc421suci8pdsl88.apps.googleusercontent.com";
+            const redirectUri = "URL_DE_REDIRECIONAMENTO"; // Altere para a URL de redirecionamento correta
+            window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=token&scope=email`;
         }
     </script>
 </body>
-
 </html>
+

@@ -1,0 +1,8 @@
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": "637e60d5e8a7d5d1b68e0abc",
+    "username": "usuario1",
+    "email": "usuario1@example.com"
+  }
+}

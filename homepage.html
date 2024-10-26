@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net You Stream - Home</title>
+    <style>
+        /* Estilos para a página inicial */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        #homepage-container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #cc0000;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .button {
+            background-color: #cc0000;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #a80000;
+        }
+    </style>
+</head>
+<body>
+    <div id="homepage-container">
+        <h1>Bem-vindo ao Net You Stream</h1>
+        <p id="welcome-message">Carregando...</p>
+        <button class="button" onclick="logout()">Sair</button>
+    </div>
+
+    <script>
+        // Verifica se o usuário está autenticado
+        document.addEventListener("DOMContentLoaded", function() {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                alert("Por favor, faça o login primeiro.");
+                window.location.href = "login.html"; // Redireciona para a página de login
+                return;
+            }
+            
+            // Exibe a mensagem de boas-vindas
+            const username = localStorage.getItem("username");
+            document.getElementById("welcome-message").textContent = `Bem-vindo, ${username || "Usuário"}!`;
+        });
+
+        // Função de logout
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("username");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
